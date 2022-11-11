@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMWRF</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
+
+</head>
+<body>
+<div class="row pt-3" id="main_Div">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="row" id="title_Div">
+
+            <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                <h3 class="display-4">Billerica Wastewater Division Lab Sheet</h3>
+            </div>
+
+        </div>
+
+        <div id="user_Input_Div" class="row mt-3 border border-dark d-flex justify-content-center">
+            <!--Date, Day, Operator,  Temp, Barometer, Chlorine Residuals -->
+            <div class="row mt-1" id="row-1">
+                <!--Date -->
+                <div class="col-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                        </div>
+                        <input type="date" class="form-control" aria-label="Small"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+
+                <!--Day of Week -->
+                <div class="col-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="sel1">
+                                <option>Monday</option>
+                                <option>Tuesday</option>
+                                <option>Wednesday</option>
+                                <option>Thursday</option>
+                                <option>Friday</option>
+                                <option>Saturday</option>
+                                <option>Sunday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Operator -->
+                <div class="col-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+
+                <!--Temperature -->
+                <div class="col-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Temp (<span>&#8457;</span>) </span>
+                        </div>
+                        <input type="number" class="form-control" aria-label="Small"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+
+                <!--Barometer -->
+                <div class="col-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Barometer</span>
+                        </div>
+                        <input type="number" class="form-control" aria-label="Small"
+                               aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+
+                </div>
+
+                <!--Chlorine Residuals -->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+
+                        <h4>Chlorine Residuals</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!--Influent, Final Effluent, Reaction Tanks... -->
+            <div class="row mt-1" id="row-2">
+                <!--Influent-->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+                        <h3>Influent</h3>
+                    </div>
+                </div>
+                <!--Final Effluent-->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+                        <h3>Final Influent</h3>
+                    </div>
+                </div>
+                <!--Reaction Tank-->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+                        <h3>Reaction Tank</h3>
+                    </div>
+                </div>
+                <!--COMP. pH/ALK-->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+                        <h3>Comp. pH's/ALK</h3>
+                    </div>
+                </div>
+                <!--WAS Q-->
+                <div class="col-2">
+                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
+                        <h3>WAS Q</h3>
+                    </div>
+                </div>
+                <!--Time/Operator-->
+                <div class="col-2">
+                    <!--Operator-->
+                    <div class="row">
+                        <div class="input-group input-group-sm mb-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Small"
+                                   aria-describedby="inputGroup-sizing-sm">
+                        </div>
+
+                    </div>
+                    <!--Time-->
+                    <div class="row">
+                        <div class="input-group input-group-sm mb-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Time</span>
+                            </div>
+                            <input type="time" class="form-control" aria-label="Small"
+                                   aria-describedby="inputGroup-sizing-sm">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+</body>
+</html>

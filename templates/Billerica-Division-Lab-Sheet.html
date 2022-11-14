@@ -107,39 +107,65 @@
                 </div>
                 <!--Reaction Tank-->
                 <div class="col-2">
-                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
-                        <h3>Reaction Tanks</h3>
-                    </div>
-
+                    <div id="Reaction-Tank-Block"></div>
                 </div>
                 <!--COMP. pH/ALK-->
-                <div class="col-2">
-                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
-                        <h3>Comp. pH's/ALK</h3>
-                    </div>
+                <div class="col-3">
+                    <div id="Composite-PH-and-ALK-Block"></div>
                 </div>
                 <!--WAS Q-->
-                <div class="col-2">
-                    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">
-                        <h3>WAS Q</h3>
-                    </div>
-                </div>
-                <!--Chlorine Residuals -->
-                <div class="col-2">
-                    <div id="Chlorine-Residual-Block"></div>
+                <div class="col-3">
+                    <div id="Waste-Activated-Sludge-Q-Block"></div>
                 </div>
             </div>
 
-
-        </div>
-
-        <div class="row">
-            <div class="col-4">
+            <!--Plant Chemicals and Chlorine Residual -->
+            <div class="row" id="row-3">
+                <div class="col-1"></div>
+                <!--Plant Chemicals... -->
+                <div class="col-4">
                     <div id="Plant-Chemical-Block"></div>
                 </div>
 
+                <div class="col-2"></div>
+
+                <!--Chlorine Residuals -->
+                <div class="col-4">
+                    <div id="Chlorine-Residual-Block"></div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+
+
+            <!--Depth's of Blankets -->
+            <div class="row mb-4" id="row-3">
+                <div class="col-1"></div>
+                <!--Primary... -->
+                <div class="col-3">
+                    <div id="Primary-Blanket-Block"></div>
+                </div>
+
+
+
+                <!--Secondary -->
+                <div class="col-3">
+                    <div id="Secondary-Blanket-Block"></div>
+                </div>
+
+                <!--Tertiary -->
+                <div class="col-3">
+                    <div id="Tertiary-Blanket-Block"></div>
+                </div>
+
+                <div class="col-1"></div>
+            </div>
+
+
 
         </div>
+
+
     </div>
     <div class="col-1"></div>
 
@@ -153,11 +179,32 @@
 
         const sub_title = ["Today", "Yesterday", "Used"];
 
+        const reaction_tank_labels = ["Sec p.H. Grab", "Sec. Meter", "RT #1 p.H", "Tuba (Meter)", "RT #4 p.H."];
+
+        const composite_pH_alk_labels = ["Primary p.H.", "Primary Alk", "Sec p.H.", "Sec Alk"];
+
+        const primary_blanket_labels = ["PST1", "PST2", "PST3"];
+
+        const secondary_blanket_labels = ["SST1", "SST2", "SST3", "SST4"];
+
+        const tertiary_blanket_labels = ["TF1", "TF2"];
+
+        const gravity_thickener_labels = ["GT1", "GT2"];
+
+        const was_flow_labels = ["Set Point", "Actual"];
+
 
         create_Table("Chlorine-Residual-Block", "Chlorine Residual", false, chlorine_labels);
         create_Table("Influent-Block", "Influent", false, influent_labels);
         create_Table("Final-Effluent-Block", "Final Effluent", false, influent_labels);
         create_Table("Plant-Chemical-Block", "Plant Chemicals", sub_title, influent_labels);
+        create_Table("Reaction-Tank-Block", "Reaction Tanks", false, reaction_tank_labels);
+        create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", false, composite_pH_alk_labels);
+        create_Table("Waste-Activated-Sludge-Q-Block", "WAS Q", false, was_flow_labels);
+        create_Table("Primary-Blanket-Block", "Primary DOB's", false, primary_blanket_labels);
+        create_Table("Secondary-Blanket-Block", "Secondary DOB's", false, secondary_blanket_labels);
+        create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", false, tertiary_blanket_labels);
+
 
     </script>
 </div>

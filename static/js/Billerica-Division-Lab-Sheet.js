@@ -44,14 +44,8 @@ function create_Table(div_to_fill_id, title, subtitle, list_of_labels) {
             '        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">'+
             '    </div>' +
             '</div>';
-
-
-
-
     }
 }
 
 
-//'            <input type="text" class="form-control" aria-label="Small"' +
-//'                   aria-describedby="inputGroup-sizing-sm">' +
 

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BWRRF</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
+
+
+</head>
+<body>
+<div class="row pt-3" id="main_Div">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="row" id="title_Div">
+            <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                <h3 class="display-4">Billerica Wastewater Division Lab Sheet</h3>
+            </div>
+        </div>
+
+        <div class="row" id="user_input_Div">
+
+            <!--Tabs For Selecting Roll-->
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="lab-data-tab" data-bs-toggle="tab" data-bs-target="#lab"
+                            type="button"
+                            role="tab" aria-controls="home" aria-selected="true">Lab Data
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="yard-data-tab" data-bs-toggle="tab" data-bs-target="#yard"
+                            type="button"
+                            role="tab" aria-controls="profile" aria-selected="false">Yard Data
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="press-data-tab" data-bs-toggle="tab" data-bs-target="#press"
+                            type="button"
+                            role="tab" aria-controls="profile" aria-selected="false">Press Data
+                    </button>
+                </li>
+            </ul>
+
+            <!--Area for Showing Tab-->
+            <div class="tab-content" id="myTabContent">
+                <!--Lab Data -->
+                <div class="tab-pane fade show active grid justify-content-center" id="lab" role="tabpanel"
+                     aria-labelledby="lab-data-tab">
+                    <h1 class="display-5">Lab Data</h1>
+                    <div class="row">
+                        <!--Influent-->
+                        <div class="col-2">
+                            <div id="Influent-Block"></div>
+                        </div>
+                        <!--Final Effluent-->
+                        <div class="col-2">
+                            <div id="Final-Effluent-Block"></div>
+                        </div>
+                    </div>
+                    <!--Yard Data -->
+                    <div class="row">
+                        <div class="col">
+                            <p>TESTTTT</p>
+
+                        </div>
+                        <div class="col">
+                            <button type="submit" name="submit_button" value="view_users"
+                                    class="btn btn-primary btn-block mb-4">
+                                View Users
+                            </button>
+                        </div>
+                    </div>
+                    <!--Press Data-->
+                    <div class="row">
+                        <div class="col">
+                            <p>Choose between all available personnel and be given the option to update the information.
+                                <b>You can also delete users.</b>
+                            </p>
+
+                        </div>
+                        <div class="col">
+                            <button type="submit" name="submit_button" value="update_user"
+                                    class="btn btn-primary btn-block mb-4">
+                                Update User
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Yard Data -->
+                <div class="tab-pane fade" id="yard" role="tabpanel" aria-labelledby="yard-data-tab">
+                    <h1>Hello World</h1>
+                </div>
+
+                <!--Press Data -->
+                <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
+                    <!--Press Feed & Cake -->
+                    <div class="row">
+                        <!--Press 1-->
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                    <h3 class="display-2">Press 1</h3>
+                                </div>
+                                <!--Feed-->
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                            <h3 class="display-4">Feed</h3>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div id="Feed-Block"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="Feed-Block-2"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--Cake-->
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                            <h3 class="display-4">Cake</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div id="Feed-Block-3"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="Feed-Block-4"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <!--Press 2-->
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                    <h3 class="display-2">Press 2</h3>
+                                </div>
+                                <!--Feed-->
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                            <h3 class="display-4">Feed</h3>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div id="Feed-Block"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="Feed-Block-2"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--Cake-->
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                            <h3 class="display-4">Cake</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div id="Feed-Block-3"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="Feed-Block-4"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Filtrate Data -->
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="row bg-info text-white">
+                                <h1>Filtrate</h1>
+                            </div>
+
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+<script type="text/javascript">
+
+    const influent_labels = ["Time", "Temp", "PH", "D.O.", "Comp P.H.", "ALK", "S.S. (mL/L)"];
+
+    const chlorine_labels = ["Q Effluent Chemical Control", "Hydro Pump Online A or H", "Hypo Tank Level", "Residual Shed 1",
+        "Residual Shed 2", "Residual Shed 3", "Bisulfite Pump Online A or H", "Bisulfite Tank Level", "P.H.",
+        "High Chlorine Residual mg/L", "Final Eff. Chlorine ug/L"];
+
+    const sub_title = ["Today", "Yesterday", "Used"];
+
+    const reaction_tank_labels = ["Sec p.H. Grab", "Sec. Meter", "RT #1 p.H", "Tuba (Meter)", "RT #4 p.H."];
+
+    const composite_pH_alk_labels = ["Primary p.H.", "Primary Alk", "Sec p.H.", "Sec Alk"];
+
+    const primary_blanket_labels = ["PST1", "PST2", "PST3"];
+
+    const secondary_blanket_labels = ["SST1", "SST2", "SST3", "SST4"];
+
+    const tertiary_blanket_labels = ["TF1", "TF2"];
+
+    const gravity_thickener_labels = ["GT1", "GT2"];
+
+    const was_flow_labels = ["Set Point", "Actual"];
+
+    feed_labels = ["Sample Weight", "Tare", "Difference", "Sample Dry", "Tare", "Difference",
+        "% Solids"];
+
+
+    create_Table("Feed-Block", "Tray 1", false, feed_labels);
+    create_Table("Feed-Block-2", "Tray 2", false, feed_labels);
+    create_Table("Feed-Block-3", "Tray 3", false, feed_labels);
+    create_Table("Feed-Block-4", "Tray 4", false, feed_labels);
+
+
+    //create_Table("Chlorine-Residual-Block", "Chlorine Residual", false, chlorine_labels);
+    create_Table("Influent-Block", "Influent", false, influent_labels);
+    create_Table("Final-Effluent-Block", "Final Effluent", false, influent_labels);
+    //create_Table("Plant-Chemical-Block", "Plant Chemicals", sub_title, influent_labels);
+    //create_Table("Reaction-Tank-Block", "Reaction Tanks", false, reaction_tank_labels);
+    //create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", false, composite_pH_alk_labels);
+    //create_Table("Waste-Activated-Sludge-Q-Block", "WAS Q", false, was_flow_labels);
+    //create_Table("Primary-Blanket-Block", "Primary DOB's", false, primary_blanket_labels);
+    //create_Table("Secondary-Blanket-Block", "Secondary DOB's", false, secondary_blanket_labels);
+    //create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", false, tertiary_blanket_labels);
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* CSS For Movable Divs */
+#movable_press_1_div {
+    position: absolute;
+
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#movable_press_2_div {
+    position: absolute;
+    left: 50%;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#movable_filtrate_div {
+    position: absolute;
+    left: 29%;
+    top: 61%;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#movable_gravity_blanket_div {
+    position: absolute;
+    left: 50%;
+    top: 61%;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    padding: 10px;
+
+}
+
+
+#movable_div_header {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+.movable_div_body {
+    padding: 10px;
+}
+
+
+/* *************** */
+
+
+
+.text_label {
+    display: grid;
+    text-align: right;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    white-space: nowrap;
+
+}
+
+
+
+
+
+
+

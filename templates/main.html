@@ -5,8 +5,9 @@
     <title>BWRRF</title>
 
     <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <script src="../static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
 
+    <script src="../static/js/bootstrap.js"></script>
     <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
 
 
@@ -53,40 +54,12 @@
                     <h1 class="display-5">Lab Data</h1>
                     <div class="row">
                         <!--Influent-->
-                        <div class="col-2">
+                        <div class="col">
                             <div id="Influent-Block"></div>
                         </div>
                         <!--Final Effluent-->
-                        <div class="col-2">
+                        <div class="col">
                             <div id="Final-Effluent-Block"></div>
-                        </div>
-                    </div>
-                    <!--Yard Data -->
-                    <div class="row">
-                        <div class="col">
-                            <p>TESTTTT</p>
-
-                        </div>
-                        <div class="col">
-                            <button type="submit" name="submit_button" value="view_users"
-                                    class="btn btn-primary btn-block mb-4">
-                                View Users
-                            </button>
-                        </div>
-                    </div>
-                    <!--Press Data-->
-                    <div class="row">
-                        <div class="col">
-                            <p>Choose between all available personnel and be given the option to update the information.
-                                <b>You can also delete users.</b>
-                            </p>
-
-                        </div>
-                        <div class="col">
-                            <button type="submit" name="submit_button" value="update_user"
-                                    class="btn btn-primary btn-block mb-4">
-                                Update User
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -98,114 +71,96 @@
 
                 <!--Press Data -->
                 <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
-                    <!--Press Feed & Cake -->
-                    <div class="row">
-                        <!--Press 1-->
-                        <div class="col-6">
+                    <!--Press 1 -->
+                    <div id="movable_press_1_div">
+                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                        <div id="movable_div_header">Press #1</div>
+                        <div class="movable_div_body"><!--Press 1-->
                             <div class="row">
-                                <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                    <h3 class="display-2">Press 1</h3>
-                                </div>
                                 <!--Feed-->
-                                <div class="col-6">
+                                <div class="col">
                                     <div class="row">
-                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                            <h3 class="display-4">Feed</h3>
-
-                                        </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col">
                                             <div id="Feed-Block"></div>
                                         </div>
-                                        <div class="col-6">
-                                            <div id="Feed-Block-2"></div>
-                                        </div>
-
                                     </div>
                                 </div>
 
                                 <!--Cake-->
-                                <div class="col-6">
+                                <div class="col">
                                     <div class="row">
-                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                            <h3 class="display-4">Cake</h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div id="Feed-Block-3"></div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div id="Feed-Block-4"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-
-
-                        </div>
-                        <!--Press 2-->
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                    <h3 class="display-2">Press 2</h3>
-                                </div>
-                                <!--Feed-->
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                            <h3 class="display-4">Feed</h3>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div id="Feed-Block"></div>
-                                        </div>
-                                        <div class="col-6">
+                                        <div class="col">
                                             <div id="Feed-Block-2"></div>
                                         </div>
-
                                     </div>
                                 </div>
-
-                                <!--Cake-->
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                            <h3 class="display-4">Cake</h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div id="Feed-Block-3"></div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div id="Feed-Block-4"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
                             </div>
-
                         </div>
                     </div>
-                    <!--Filtrate Data -->
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <div class="col-4 d-flex justify-content-center">
-                            <div class="row bg-info text-white">
-                                <h1>Filtrate</h1>
-                            </div>
 
+                    <!--Press 2 -->
+                    <div id="movable_press_2_div">
+                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                        <div id="movable_div_header">Press #2</div>
+                        <div class="movable_div_body"><!--Press 1-->
+                            <div class="row">
+                                <!--Feed-->
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Feed-Block-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Cake-->
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Feed-Block-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-4"></div>
+                    </div>
+
+                    <!--Filtrate-->
+                    <div id="movable_filtrate_div">
+                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                        <div id="movable_div_header">Filtrate</div>
+                        <div class="movable_div_body"><!--Press 1-->
+                            <div class="row">
+                                <!--Filtrate-->
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Filtrate-Block"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Gravity Thickener Debth of Blankets-->
+                    <div id="movable_gravity_blanket_div">
+                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                        <div id="movable_div_header">GT DOB's</div>
+                        <div class="movable_div_body"><!--Press 1-->
+                            <div class="row">
+                                <!--Filtrate-->
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="GT-DOB-Block"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -223,6 +178,11 @@
 
 
 <script type="text/javascript">
+    dragElement(document.getElementById("movable_press_1_div"));
+    dragElement(document.getElementById("movable_press_2_div"));
+    dragElement(document.getElementById("movable_filtrate_div"));
+    dragElement(document.getElementById("movable_gravity_blanket_div"));
+
 
     const influent_labels = ["Time", "Temp", "PH", "D.O.", "Comp P.H.", "ALK", "S.S. (mL/L)"];
 
@@ -250,10 +210,12 @@
         "% Solids"];
 
 
-    create_Table("Feed-Block", "Tray 1", false, feed_labels);
-    create_Table("Feed-Block-2", "Tray 2", false, feed_labels);
-    create_Table("Feed-Block-3", "Tray 3", false, feed_labels);
-    create_Table("Feed-Block-4", "Tray 4", false, feed_labels);
+    create_Table("Feed-Block", "Feed (Tray 1)", false, feed_labels);
+    create_Table("Feed-Block-2", "Cake (Tray 2)", false, feed_labels);
+    create_Table("Feed-Block-3", "Feed (Tray 3)", false, feed_labels);
+    create_Table("Feed-Block-4", "Cake (Tray 4)", false, feed_labels);
+    create_Table("Filtrate-Block", "Filtrate", false, feed_labels);
+    create_Table("GT-DOB-Block", "GT DOB's", false, feed_labels);
 
 
     //create_Table("Chlorine-Residual-Block", "Chlorine Residual", false, chlorine_labels);

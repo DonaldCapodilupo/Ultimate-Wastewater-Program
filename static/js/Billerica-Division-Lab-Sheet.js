@@ -19,11 +19,11 @@ function create_Table(div_to_fill_id, title, subtitle, list_of_labels) {
             "<!--" + list_of_labels[i] + "-->" +
             '<div class="row mt-1" class="input_data_row">' +
             '   <div class="col" id="data_labels">' +
-            '       <label for="'+ title + ' ' + list_of_labels[i] + '" class="text_label" class="display_label">' + list_of_labels[i] + ':</label>' +
+            '       <label for="'+ title + ' ' + list_of_labels[i] + '" class="text_label">' + list_of_labels[i] + ':</label>' +
             '   </div>' +
 
             '   <div class="col" id="data_user_input" >' +
-            '       <input type="text" class="data_input_field" id="' + title + ' ' + list_of_labels[i] +'">' +
+            '       <input type="text" name="' + title + ' ' + list_of_labels[i] +'" class="data_input_field" id="' + title + ' ' + list_of_labels[i] +'">' +
             '   </div>'+
             '</div>';
 

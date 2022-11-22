@@ -23,154 +23,294 @@
         </div>
 
         <div class="row" id="user_input_Div">
+            <form action="{{ url_for('main_Menu') }}" enctype=multipart/form-data method="POST">
 
-            <!--Tabs For Selecting Roll-->
-            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="lab-data-tab" data-bs-toggle="tab" data-bs-target="#lab"
-                            type="button"
-                            role="tab" aria-controls="home" aria-selected="true">Lab Data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="yard-data-tab" data-bs-toggle="tab" data-bs-target="#yard"
-                            type="button"
-                            role="tab" aria-controls="profile" aria-selected="false">Yard Data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="press-data-tab" data-bs-toggle="tab" data-bs-target="#press"
-                            type="button"
-                            role="tab" aria-controls="profile" aria-selected="false">Press Data
-                    </button>
-                </li>
-            </ul>
 
-            <!--Area for Showing Tab-->
-            <div class="tab-content" id="myTabContent">
-                <!--Lab Data -->
-                <div class="tab-pane fade show active grid justify-content-center" id="lab" role="tabpanel"
-                     aria-labelledby="lab-data-tab">
-                    <h1 class="display-5">Lab Data</h1>
-                    <div class="row">
-                        <!--Influent-->
-                        <div class="col">
-                            <div id="Influent-Block"></div>
+                <!--Tabs For Selecting Roll-->
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="lab-data-tab" data-bs-toggle="tab" data-bs-target="#lab"
+                                type="button"
+                                role="tab" aria-controls="home" aria-selected="true">Lab Data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="yard-data-tab" data-bs-toggle="tab" data-bs-target="#yard"
+                                type="button"
+                                role="tab" aria-controls="profile" aria-selected="false">Yard Data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="press-data-tab" data-bs-toggle="tab" data-bs-target="#press"
+                                type="button"
+                                role="tab" aria-controls="profile" aria-selected="false">Press Data
+                        </button>
+                    </li>
+                </ul>
+
+                <!--Area for Showing Tab-->
+                <div class="tab-content" id="myTabContent">
+
+                    <!--Lab Data -->
+                    <div class="tab-pane fade show active grid justify-content-center" id="lab" role="tabpanel"
+                         aria-labelledby="lab-data-tab">
+                        <div class="row mt-3" id="row-1">
+                            <!--Date -->
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                                    </div>
+                                    <input type="date" class="form-control" aria-label="Small"
+                                           aria-describedby="inputGroup-sizing-sm" name="Date">
+                                </div>
+                            </div>
+
+                            <!--Day of Week -->
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1" name="Day of Week">
+                                            <option>Monday</option>
+                                            <option>Tuesday</option>
+                                            <option>Wednesday</option>
+                                            <option>Thursday</option>
+                                            <option>Friday</option>
+                                            <option>Saturday</option>
+                                            <option>Sunday</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Operator -->
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                           aria-describedby="inputGroup-sizing-sm" name="Operator">
+                                </div>
+                            </div>
+
+                            <!--Temperature -->
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="inputGroup-sizing-sm">Temp (<span>&#8457;</span>) </span>
+                                    </div>
+                                    <input type="number" class="form-control" aria-label="Small"
+                                           aria-describedby="inputGroup-sizing-sm" name="Temperature">
+                                </div>
+                            </div>
+
+                            <!--Barometer -->
+                            <div class="col">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Barometer</span>
+                                    </div>
+                                    <input type="number" class="form-control" aria-label="Small"
+                                           aria-describedby="inputGroup-sizing-sm" name="Barometer">
+                                </div>
+
+
+                            </div>
                         </div>
-                        <!--Final Effluent-->
-                        <div class="col">
-                            <div id="Final-Effluent-Block"></div>
+
+                        <div class="row" id="row-2">
+                            <!--Influent-->
+                            <div class="col">
+                                <div id="Influent-Block"></div>
+                            </div>
+                            <!--Final Effluent-->
+                            <div class="col">
+                                <div id="Final-Effluent-Block"></div>
+                            </div>
+                            <!--Comp.pH's/ALK-->
+                            <div class="col">
+                                <div id="Composite-PH-and-ALK-Block"></div>
+                                <div id="Baker-PH-Block"></div>
+                            </div>
                         </div>
+
+                        <div class="row" id="row-3">
+                            <div class="col">
+                                <div id="D-Box-Block"></div>
+                            </div>
+                            <div class="col">
+                                <div id="TSS-Block"></div>
+                            </div>
+                            <div class="col">
+                                <div id="RAS-Pumps-Block"></div>
+                                <div id="Aluminum-Block"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="row" id="row-4">
+                            <div class="col">
+                                <div id="D-Box-Block"></div>
+                            </div>
+                            <div class="col">
+                                <div id="TSS-Block"></div>
+                            </div>
+                            <div class="col">
+                                <div id="RAS-Pumps-Block"></div>
+                                <div id="Aluminum-Block"></div>
+
+                            </div>
+                        </div>
+
+
                     </div>
+
+                    <!--Yard Data -->
+                    <div class="tab-pane fade" id="yard" role="tabpanel" aria-labelledby="yard-data-tab">
+                        <!--Press 1 -->
+                        <div class="row mt-1">
+
+                            <!--Primary Blanket -->
+                            <div class="col">
+                                <div id="Primary-Blanket-Block"></div>
+                            </div>
+                            <!--Secondary Blanket -->
+                            <div class="col">
+                                <div id="Secondary-Blanket-Block"></div>
+                            </div>
+                            <!--Tertiary Blanket -->
+                            <div class="col">
+                                <div id="Tertiary-Blanket-Block"></div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col">
+                                <div id="Reaction-Tank-Block"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Turbidity-Block"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Press Data -->
+                    <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
+                        <!--Press 1 -->
+                        <div id="movable_press_1_div">
+                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                            <div id="movable_div_header">Press #1</div>
+                            <div class="movable_div_body"><!--Press 1-->
+                                <div class="row">
+                                    <!--Feed-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="Feed-Block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Cake-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="Feed-Block-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Press 2 -->
+                        <div id="movable_press_2_div">
+                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                            <div id="movable_div_header">Press #2</div>
+                            <div class="movable_div_body"><!--Press 1-->
+                                <div class="row">
+                                    <!--Feed-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="Feed-Block-3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Cake-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="Feed-Block-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Filtrate-->
+                        <div id="movable_filtrate_div">
+                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                            <div id="movable_div_header">Filtrate</div>
+                            <div class="movable_div_body"><!--Press 1-->
+                                <div class="row">
+                                    <!--Filtrate-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="Filtrate-Block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Gravity Thickener Debth of Blankets-->
+                        <div id="movable_gravity_blanket_div">
+                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                            <div id="movable_div_header">GT DOB's</div>
+                            <div class="movable_div_body"><!--Press 1-->
+                                <div class="row">
+                                    <!--Filtrate-->
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div id="GT-DOB-Block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons_div">
+                            <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Save Data">
+                                Save Data
+                            </button>
+                            <br>
+                            <br>
+                            <input class="btn btn-dark" type="submit" name="submit_button" value="Reset Positions">
+
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
 
-                <!--Yard Data -->
-                <div class="tab-pane fade" id="yard" role="tabpanel" aria-labelledby="yard-data-tab">
-                    <h1>Hello World</h1>
-                </div>
-
-                <!--Press Data -->
-                <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
-                    <!--Press 1 -->
-                    <div id="movable_press_1_div">
-                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                        <div id="movable_div_header">Press #1</div>
-                        <div class="movable_div_body"><!--Press 1-->
-                            <div class="row">
-                                <!--Feed-->
-                                <div class="col">
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--Cake-->
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block-2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Press 2 -->
-                    <div id="movable_press_2_div">
-                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                        <div id="movable_div_header">Press #2</div>
-                        <div class="movable_div_body"><!--Press 1-->
-                            <div class="row">
-                                <!--Feed-->
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block-3"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--Cake-->
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block-4"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Filtrate-->
-                    <div id="movable_filtrate_div">
-                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                        <div id="movable_div_header">Filtrate</div>
-                        <div class="movable_div_body"><!--Press 1-->
-                            <div class="row">
-                                <!--Filtrate-->
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Filtrate-Block"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Gravity Thickener Debth of Blankets-->
-                    <div id="movable_gravity_blanket_div">
-                        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                        <div id="movable_div_header">GT DOB's</div>
-                        <div class="movable_div_body"><!--Press 1-->
-                            <div class="row">
-                                <!--Filtrate-->
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="GT-DOB-Block"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
+            </form>
         </div>
+
 
     </div>
     <div class="col-1"></div>
@@ -206,8 +346,23 @@
 
     const was_flow_labels = ["Set Point", "Actual"];
 
-    feed_labels = ["Sample Weight", "Tare", "Difference", "Sample Dry", "Tare", "Difference",
+    const baker_labels = ["Composite pH", "Grab pH:"];
+
+    const d_block_labels = ["Time", "Temp", "p.H.", "D.O.", "5 Min", "10 Min", "15 Min", "20 Min", "25 Min", "30 Min", "60 Min"];
+
+    const tss_block = ["Influent", "Primary", "Secondary", "Effluent", "Baker", "% Removal", "MLSS", "MLVSS", "RASS",
+        "RASVSS", "SVI"];
+
+    const feed_labels = ["Sample Weight", "Tare", "Difference", "Sample Dry", "Tare", "Difference",
         "% Solids"];
+
+    const turbidity_labels = ["Meter", "SEC", "F.E.","Comag","Baker C","Baker (G)"];
+
+    const ras_pumps_labels = ["RAS 1","RAS 2","RAS 3","RAS 4","RAS 5","Flow"];
+
+    const aluminum_labels = ["Comag Influent Q", "Comag WAS Q"];
+
+
 
 
     create_Table("Feed-Block", "Feed (Tray 1)", false, feed_labels);
@@ -215,19 +370,25 @@
     create_Table("Feed-Block-3", "Feed (Tray 3)", false, feed_labels);
     create_Table("Feed-Block-4", "Cake (Tray 4)", false, feed_labels);
     create_Table("Filtrate-Block", "Filtrate", false, feed_labels);
-    create_Table("GT-DOB-Block", "GT DOB's", false, feed_labels);
+    create_Table("GT-DOB-Block", "GT DOB's", false, gravity_thickener_labels);
 
 
     //create_Table("Chlorine-Residual-Block", "Chlorine Residual", false, chlorine_labels);
     create_Table("Influent-Block", "Influent", false, influent_labels);
     create_Table("Final-Effluent-Block", "Final Effluent", false, influent_labels);
     //create_Table("Plant-Chemical-Block", "Plant Chemicals", sub_title, influent_labels);
-    //create_Table("Reaction-Tank-Block", "Reaction Tanks", false, reaction_tank_labels);
-    //create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", false, composite_pH_alk_labels);
-    //create_Table("Waste-Activated-Sludge-Q-Block", "WAS Q", false, was_flow_labels);
-    //create_Table("Primary-Blanket-Block", "Primary DOB's", false, primary_blanket_labels);
-    //create_Table("Secondary-Blanket-Block", "Secondary DOB's", false, secondary_blanket_labels);
-    //create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", false, tertiary_blanket_labels);
+    create_Table("Reaction-Tank-Block", "Reaction Tanks", false, reaction_tank_labels);
+    create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", false, composite_pH_alk_labels);
+    create_Table("Baker-PH-Block", "Baker", false, baker_labels);
+    create_Table("D-Box-Block", "#2 D Box", false, d_block_labels);
+    create_Table("TSS-Block", "T.S.S.", false, tss_block);
+    create_Table("Primary-Blanket-Block", "Secondary DOB's", false, primary_blanket_labels);
+
+    create_Table("Secondary-Blanket-Block", "Secondary DOB's", false, secondary_blanket_labels);
+    create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", false, tertiary_blanket_labels);
+    create_Table("Turbidity-Block", "Turbidity", false, turbidity_labels);
+    create_Table("RAS-Pumps-Block", "RAS Pumps", false, ras_pumps_labels);
+    create_Table("Aluminum-Block", "Aluminum", false, aluminum_labels);
 
 
 </script>

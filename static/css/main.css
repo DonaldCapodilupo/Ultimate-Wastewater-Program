@@ -71,8 +71,15 @@
 
 }
 
+.buttons_div{
+    position: absolute;
+    left: 75%;
+    top: 75%;
+}
 
-
+.row1{
+    text-align: center;
+}
 
 
 

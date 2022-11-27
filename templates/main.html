@@ -54,7 +54,7 @@
                     <!--Lab Data -->
                     <div class="tab-pane fade show active grid justify-content-center" id="lab" role="tabpanel"
                          aria-labelledby="lab-data-tab">
-                        <div class="row mt-3" id="row-1">
+                        <div class="row mt-3 pb-1" id="row-1">
                             <!--Date -->
                             <div class="col">
                                 <div class="input-group input-group-sm mb-3">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="row" id="row-2">
+                        <div class="row  pb-1" id="row-2">
                             <!--Influent-->
                             <div class="col">
                                 <div id="Influent-Block"></div>
@@ -139,7 +139,7 @@
                             </div>
                         </div>
 
-                        <div class="row" id="row-3">
+                        <div class="row pb-1" id="row-3">
                             <div class="col">
                                 <div id="D-Box-Block"></div>
                             </div>
@@ -153,17 +153,45 @@
                             </div>
                         </div>
 
-                        <div class="row" id="row-4">
+                        <div class="row pb-1" id="row-4">
                             <div class="col">
-                                <div id="D-Box-Block"></div>
+                                <div id="Chlorine-Residual-Block"></div>
                             </div>
                             <div class="col">
-                                <div id="TSS-Block"></div>
+                                <div id="WAS-Flow-Block"></div>
+                                <div id="Primary-Sludge-Flow-Block"></div>
+                                <div id="RAS-Flow-Block"></div>
+                                <div id="Comag-WAS-Flow-Block"></div>
                             </div>
                             <div class="col">
-                                <div id="RAS-Pumps-Block"></div>
-                                <div id="Aluminum-Block"></div>
+                                <div id="BOD-Block"></div>
+                                <div id="COD-Block"></div>
+                                <div id="Ecoli-Block"></div>
 
+                            </div>
+                        </div>
+
+                        <div class="row pb-1" id="row-5">
+                            <div class="col">
+                                <div id="Plant-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Plant-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Plant-Chemicals-Used-Block"></div>
+                            </div>
+                        </div>
+
+                        <div class="row pb-1" id="row-6">
+                            <div class="col">
+                                <div id="Comag-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Comag-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Comag-Chemicals-Used-Block"></div>
                             </div>
                         </div>
 
@@ -318,77 +346,40 @@
 
 
 <script type="text/javascript">
-    dragElement(document.getElementById("movable_press_1_div"));
-    dragElement(document.getElementById("movable_press_2_div"));
-    dragElement(document.getElementById("movable_filtrate_div"));
-    dragElement(document.getElementById("movable_gravity_blanket_div"));
+    setUpHTML()
 
+    let elementsArray = document.querySelectorAll(".plant_chemical_tanks");
 
-    const influent_labels = ["Time", "Temp", "PH", "D.O.", "Comp P.H.", "ALK", "S.S. (mL/L)"];
+    elementsArray.forEach(function (elem) {
 
-    const chlorine_labels = ["Q Effluent Chemical Control", "Hydro Pump Online A or H", "Hypo Tank Level", "Residual Shed 1",
-        "Residual Shed 2", "Residual Shed 3", "Bisulfite Pump Online A or H", "Bisulfite Tank Level", "P.H.",
-        "High Chlorine Residual mg/L", "Final Eff. Chlorine ug/L"];
+        elem.addEventListener("input", function () {
 
-    const sub_title = ["Today", "Yesterday", "Used"];
-
-    const reaction_tank_labels = ["Sec p.H. Grab", "Sec. Meter", "RT #1 p.H", "Tuba (Meter)", "RT #4 p.H."];
-
-    const composite_pH_alk_labels = ["Primary p.H.", "Primary Alk", "Sec p.H.", "Sec Alk"];
-
-    const primary_blanket_labels = ["PST1", "PST2", "PST3"];
-
-    const secondary_blanket_labels = ["SST1", "SST2", "SST3", "SST4"];
-
-    const tertiary_blanket_labels = ["TF1", "TF2"];
-
-    const gravity_thickener_labels = ["GT1", "GT2"];
-
-    const was_flow_labels = ["Set Point", "Actual"];
-
-    const baker_labels = ["Composite pH", "Grab pH:"];
-
-    const d_block_labels = ["Time", "Temp", "p.H.", "D.O.", "5 Min", "10 Min", "15 Min", "20 Min", "25 Min", "30 Min", "60 Min"];
-
-    const tss_block = ["Influent", "Primary", "Secondary", "Effluent", "Baker", "% Removal", "MLSS", "MLVSS", "RASS",
-        "RASVSS", "SVI"];
-
-    const feed_labels = ["Sample Weight", "Tare", "Difference", "Sample Dry", "Tare", "Difference",
-        "% Solids"];
-
-    const turbidity_labels = ["Meter", "SEC", "F.E.","Comag","Baker C","Baker (G)"];
-
-    const ras_pumps_labels = ["RAS 1","RAS 2","RAS 3","RAS 4","RAS 5","Flow"];
-
-    const aluminum_labels = ["Comag Influent Q", "Comag WAS Q"];
+            let today_caustic = document.getElementById("Today 7,500 Caustic").value;
+            let yesterday_caustic = document.getElementById("Yesterday 7,500 Caustic").value;
+            let today_hypo = document.getElementById("Today 6,000 Hypo").value;
+            let yesterday_hypo = document.getElementById("Yesterday 6,000 Hypo").value;
+            let today_bisulfite = document.getElementById("Today 5,000 Bisulfite").value;
+            let yesterday_bisulfite = document.getElementById("Yesterday 5,000 Bisulfite").value;
+            let today_sodium_alum = document.getElementById("Today 5,000 Sodium Alum").value;
+            let yesterday_sodium_alum = document.getElementById("Yesterday 5,000 Sodium Alum").value;
+            let today_press_polymer = document.getElementById("Today Press Polymer").value;
+            let yesterday_press_polymer = document.getElementById("Yesterday Press Polymer").value;
 
 
 
 
-    create_Table("Feed-Block", "Feed (Tray 1)", false, feed_labels);
-    create_Table("Feed-Block-2", "Cake (Tray 2)", false, feed_labels);
-    create_Table("Feed-Block-3", "Feed (Tray 3)", false, feed_labels);
-    create_Table("Feed-Block-4", "Cake (Tray 4)", false, feed_labels);
-    create_Table("Filtrate-Block", "Filtrate", false, feed_labels);
-    create_Table("GT-DOB-Block", "GT DOB's", false, gravity_thickener_labels);
+            document.getElementById("Used 7,500 Caustic").value = today_caustic - yesterday_caustic;
+            document.getElementById("Used 6,000 Hypo").value = today_hypo - yesterday_hypo;
+            document.getElementById("Used 5,000 Bisulfite").value = today_bisulfite - yesterday_bisulfite;
+            document.getElementById("Used 5,000 Sodium Alum").value = today_sodium_alum - yesterday_sodium_alum;
+            document.getElementById("Used Press Polymer").value = today_press_polymer - yesterday_press_polymer;
 
 
-    //create_Table("Chlorine-Residual-Block", "Chlorine Residual", false, chlorine_labels);
-    create_Table("Influent-Block", "Influent", false, influent_labels);
-    create_Table("Final-Effluent-Block", "Final Effluent", false, influent_labels);
-    //create_Table("Plant-Chemical-Block", "Plant Chemicals", sub_title, influent_labels);
-    create_Table("Reaction-Tank-Block", "Reaction Tanks", false, reaction_tank_labels);
-    create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", false, composite_pH_alk_labels);
-    create_Table("Baker-PH-Block", "Baker", false, baker_labels);
-    create_Table("D-Box-Block", "#2 D Box", false, d_block_labels);
-    create_Table("TSS-Block", "T.S.S.", false, tss_block);
-    create_Table("Primary-Blanket-Block", "Secondary DOB's", false, primary_blanket_labels);
 
-    create_Table("Secondary-Blanket-Block", "Secondary DOB's", false, secondary_blanket_labels);
-    create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", false, tertiary_blanket_labels);
-    create_Table("Turbidity-Block", "Turbidity", false, turbidity_labels);
-    create_Table("RAS-Pumps-Block", "RAS Pumps", false, ras_pumps_labels);
-    create_Table("Aluminum-Block", "Aluminum", false, aluminum_labels);
+
+
+        })
+    })
 
 
 </script>

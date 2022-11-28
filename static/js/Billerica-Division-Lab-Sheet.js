@@ -31,107 +31,9 @@ function create_Table(div_to_fill_id, title, list_of_labels) {
     }
 }
 
-
-function create_Table_2(div_to_fill_id, title, subtitle, list_of_labels) {
-    const div_to_fill = document.getElementById(div_to_fill_id);
-
-    //Title Of The Table
-    div_to_fill.innerHTML +=
-        "<!--" + title + "-->" +
-        '<div class="row">' +
-        '    <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center">' +
-        '        <h4>' + title + '</h4>' +
-        '    </div>' +
-        '</div>';
-
-    //Potential SubTitles for tables that need to expand horizontally
-    if (subtitle) {
-        div_to_fill.innerHTML += '<div class="row" id="sub_title_div">'
-        document.getElementById("sub_title_div").innerHTML += '<div class="col">'
-
-        for (let i = 0; i < sub_title.length; i++) {
-            console.log(sub_title[i]);
-            document.getElementById("sub_title_div").innerHTML +=
-                '<div class="col">' +
-                '    <h4>' + sub_title[i] + '</h4>' +
-                '</div>';
-        }
-    }
-
-    //Table Vertical Labels.
-    for (let i = 0; i < list_of_labels.length; i++) {
-        console.log(list_of_labels[i]);
-        div_to_fill.innerHTML +=
-            "<!--" + list_of_labels[i] + "-->" +
-            '<div class="row">' +
-            '    <div class="col-1">' +
-            '        <div class="input-group input-group-sm mb-1">' +
-            '            <div class="input-group-prepend">' +
-            '                <span class="input-group-text" id="inputGroup-sizing-sm">' + list_of_labels[i] + '</span>' +
-            '            </div>' +
-            '        </div>' +
-            '    </div>' +
-            '    <div class="col">' +
-            '        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">' +
-            '    </div>' +
-            '</div>';
-    }
-}
-
-
-//draggable divs
-// Make the DIV element draggable:
-
-
-function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
-    }
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
-
-    function closeDragElement() {
-        // stop moving when mouse button is released:
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
-
-
 function setUpHTML() {
-    dragElement(document.getElementById("movable_press_1_div"));
-    dragElement(document.getElementById("movable_press_2_div"));
-    dragElement(document.getElementById("movable_filtrate_div"));
-    dragElement(document.getElementById("movable_gravity_blanket_div"));
-
     //Lab
+    //Main Daily Sheet
     const influent_labels = ["Time", "Temp", "PH", "D.O.", "Comp P.H.", "ALK", "S.S. (mL/L)"];
     const composite_pH_alk_labels = ["Primary p.H.", "Primary Alk", "Sec p.H.", "Sec Alk"];
     const baker_labels = ["Composite pH", "Grab pH:"];
@@ -149,6 +51,12 @@ function setUpHTML() {
     const cod_labels = ["Influent", "Baker"];
     const plant_chemicals_labels = ["7,500 Caustic", "6,000 Hypo", "5,000 Bisulfite", "5,000 Sodium Alum", "Press Polymer"];
     const comag_chemicals_labels = ["3,500 Caustic", "7500 Alum", "Polymer"];
+    const ammonia_labels = ["Final Effluent", "Nitrite", "Nitrate"];
+    const total_p_labels = ["Secondary","Final Effluent"];
+    const total_flow_labels = ["WAS Q","Primary Sludge Q", "RAS Q","Comag Was Q", "Comag Influent Q"];
+
+    //TSS Sheet
+    const tss_weight_labels = ["ML Sample", "Dry Weight","Start Weight","Weight Difference","Results"];
 
 
     //Yard
@@ -167,6 +75,7 @@ function setUpHTML() {
 
 
     //Lab
+    //Daily Lab Sheet
     create_Table("Influent-Block", "Influent", influent_labels);
     create_Table("Final-Effluent-Block", "Final Effluent", influent_labels);
     create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", composite_pH_alk_labels);
@@ -176,10 +85,6 @@ function setUpHTML() {
     create_Table("RAS-Pumps-Block", "RAS Pumps", ras_pumps_labels);
     create_Table("Aluminum-Block", "Aluminum", aluminum_labels);
     create_Table("Chlorine-Residual-Block", "Chlorine Residual", chlorine_labels);
-    create_Table("WAS-Flow-Block", "WAS Q", was_flow_labels);
-    create_Table("Primary-Sludge-Flow-Block", "Primary Sludge Q", single_labels);
-    create_Table("RAS-Flow-Block", "RAS Q", single_labels);
-    create_Table("Comag-WAS-Flow-Block", "Comag WAS Q", single_labels);
     create_Table("BOD-Block", "BOD", bod_labels);
     create_Table("COD-Block", "COD", cod_labels);
     create_Table("Ecoli-Block", "Ecoli", single_labels);
@@ -189,6 +94,21 @@ function setUpHTML() {
     create_Table("Comag-Chemicals-Today-Block", "Comag Today", comag_chemicals_labels);
     create_Table("Comag-Chemicals-Yesterday-Block", "Comag Yesterday", comag_chemicals_labels);
     create_Table("Comag-Chemicals-Used-Block", "Comag Used", comag_chemicals_labels);
+    create_Table("Ammonia-Block", "Ammonia", ammonia_labels);
+    create_Table("Total-P-Block", "Total-P", total_p_labels);
+    create_Table("Total-Q-Block", "Total-Q", total_flow_labels);
+
+    //TSS Lab Sheet
+    create_Table("Influent-TSS-Block", "Influent", tss_weight_labels);
+    create_Table("Primary-TSS-Block", "Primary", tss_weight_labels);
+    create_Table("DBox-TSS-Block", "D Box", tss_weight_labels);
+    create_Table("RAS-TSS-Block", "RAS", tss_weight_labels);
+    create_Table("Sec-Effluent-TSS-Block", "Secondary Effluent", tss_weight_labels);
+    create_Table("Final-Effluent-TSS-Block", "Final Effluent", tss_weight_labels);
+    create_Table("Baker-TSS-Block", "Baker", tss_weight_labels);
+    create_Table("H20-TSS-Block", "H20", tss_weight_labels);
+
+
 
 
     //Yard

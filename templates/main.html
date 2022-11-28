@@ -25,173 +25,280 @@
         <div class="row" id="user_input_Div">
             <form action="{{ url_for('main_Menu') }}" enctype=multipart/form-data method="POST">
 
-
                 <!--Tabs For Selecting Roll-->
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <ul class="nav nav-tabs justify-content-center"
+                    id="myTab"
+                    role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="lab-data-tab" data-bs-toggle="tab" data-bs-target="#lab"
+                        <button class="nav-link active"
+                                id="lab-data-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#lab"
                                 type="button"
-                                role="tab" aria-controls="home" aria-selected="true">Lab Data
+                                role="tab"
+                                aria-controls="home"
+                                aria-selected="true">
+                            Lab Data
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="yard-data-tab" data-bs-toggle="tab" data-bs-target="#yard"
+                        <button class="nav-link"
+                                id="yard-data-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#yard"
                                 type="button"
-                                role="tab" aria-controls="profile" aria-selected="false">Yard Data
+                                role="tab"
+                                aria-controls="profile"
+                                aria-selected="false">Yard Data
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="press-data-tab" data-bs-toggle="tab" data-bs-target="#press"
+                        <button class="nav-link"
+                                id="press-data-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#press"
                                 type="button"
-                                role="tab" aria-controls="profile" aria-selected="false">Press Data
+                                role="tab"
+                                aria-controls="profile"
+                                aria-selected="false">Press Data
                         </button>
                     </li>
                 </ul>
+
+                <!--Buttons to persist through tabs.-->
+                <div class="row d-grid justify-content-center">
+                    <div class="buttons_div">
+                        <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Save Data">
+                            Save Data
+                        </button>
+
+                    </div>
+                </div>
 
                 <!--Area for Showing Tab-->
                 <div class="tab-content" id="myTabContent">
 
                     <!--Lab Data -->
-                    <div class="tab-pane fade show active grid justify-content-center" id="lab" role="tabpanel"
+                    <div class="tab-pane fade show active grid justify-content-center"
+                         id="lab"
+                         role="tabpanel"
                          aria-labelledby="lab-data-tab">
-                        <div class="row mt-3 pb-1" id="row-1">
-                            <!--Date -->
-                            <div class="col">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
-                                    </div>
-                                    <input type="date" class="form-control" aria-label="Small"
-                                           aria-describedby="inputGroup-sizing-sm" name="Date">
-                                </div>
-                            </div>
 
-                            <!--Day of Week -->
-                            <div class="col">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel1" name="Day of Week">
-                                            <option>Monday</option>
-                                            <option>Tuesday</option>
-                                            <option>Wednesday</option>
-                                            <option>Thursday</option>
-                                            <option>Friday</option>
-                                            <option>Saturday</option>
-                                            <option>Sunday</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                        <!--Tabs For Selecting Reports-->
+                        <ul class="nav nav-tabs justify-content-center"
+                            id="worksheets_tab"
+                            role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active"
+                                        id="lab-sheet-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#lab_sheet"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="home"
+                                        aria-selected="true">Lab Sheet
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link"
+                                        id="tss-sheet-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#tss_sheet"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="profile"
+                                        aria-selected="false">TSS Sheet
+                                </button>
+                            </li>
+                        </ul>
 
-                            <!--Operator -->
-                            <div class="col">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Small"
-                                           aria-describedby="inputGroup-sizing-sm" name="Operator">
-                                </div>
-                            </div>
+                        <!--Area for Showing report-->
+                        <div class="tab-content" id="worksheets_tab_Content">
 
-                            <!--Temperature -->
-                            <div class="col">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
+                            <!--Main Lab Sheet-->
+                            <div class="tab-pane fade show active grid justify-content-center"
+                                 id="lab_sheet"
+                                 role="tabpanel"
+                                 aria-labelledby="lab-sheet-tab">
+
+                                <div class="row mt-3 pb-1" id="row-1">
+                                    <!--Date -->
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                                            </div>
+                                            <input type="date" class="form-control" aria-label="Small"
+                                                   aria-describedby="inputGroup-sizing-sm" name="Date">
+                                        </div>
+                                    </div>
+
+                                    <!--Day of Week -->
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="Day of Week">
+                                                    <option>Monday</option>
+                                                    <option>Tuesday</option>
+                                                    <option>Wednesday</option>
+                                                    <option>Thursday</option>
+                                                    <option>Friday</option>
+                                                    <option>Saturday</option>
+                                                    <option>Sunday</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Operator -->
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Small"
+                                                   aria-describedby="inputGroup-sizing-sm" name="Operator">
+                                        </div>
+                                    </div>
+
+                                    <!--Temperature -->
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
                                         <span class="input-group-text"
                                               id="inputGroup-sizing-sm">Temp (<span>&#8457;</span>) </span>
+                                            </div>
+                                            <input type="number" class="form-control" aria-label="Small"
+                                                   aria-describedby="inputGroup-sizing-sm" name="Temperature">
+                                        </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Small"
-                                           aria-describedby="inputGroup-sizing-sm" name="Temperature">
+                                    <!--Barometer -->
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                      id="inputGroup-sizing-sm">Barometer</span>
+                                            </div>
+                                            <input type="number" class="form-control" aria-label="Small"
+                                                   aria-describedby="inputGroup-sizing-sm" name="Barometer">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row  pb-1" id="row-2">
+                                    <!--Influent-->
+                                    <div class="col">
+                                        <div id="Influent-Block"></div>
+                                    </div>
+                                    <!--Final Effluent-->
+                                    <div class="col">
+                                        <div id="Final-Effluent-Block"></div>
+                                    </div>
+                                    <!--Comp.pH's/ALK-->
+                                    <div class="col">
+                                        <div id="Composite-PH-and-ALK-Block"></div>
+                                        <div id="Baker-PH-Block"></div>
+                                    </div>
+                                </div>
+                                <div class="row pb-1" id="row-3">
+                                    <div class="col">
+                                        <div id="D-Box-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="TSS-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="RAS-Pumps-Block"></div>
+                                        <div id="Aluminum-Block"></div>
+                                    </div>
+                                </div>
+                                <div class="row pb-1" id="row-4">
+                                    <div class="col">
+                                        <div id="Chlorine-Residual-Block"></div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div id="Total-Q-Block"></div>
+                                        <div id="Total-P-Block"></div>
+                                        <div id="Ammonia-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="BOD-Block"></div>
+                                        <div id="COD-Block"></div>
+                                        <div id="Ecoli-Block"></div>
+                                    </div>
+                                </div>
+                                <div class="row pb-1" id="row-5">
+                                    <div class="col">
+                                        <div id="Plant-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Plant-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Plant-Chemicals-Used-Block"></div>
+                                    </div>
+                                </div>
+                                <div class="row pb-1" id="row-6">
+                                    <div class="col">
+                                        <div id="Comag-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Comag-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Comag-Chemicals-Used-Block"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!--Barometer -->
-                            <div class="col">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Barometer</span>
+                            <!--TSS Sheet-->
+                            <div class="tab-pane fade"
+                                 id="tss_sheet"
+                                 role="tabpanel"
+                                 aria-labelledby="tss-sheet-tab">
+
+
+                                <div class="row  pb-1" id="row-2">
+                                    <!--Influent TSS-->
+                                    <div class="col">
+                                        <div id="Influent-TSS-Block"></div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Small"
-                                           aria-describedby="inputGroup-sizing-sm" name="Barometer">
+                                    <div class="col">
+                                        <div id="Primary-TSS-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="DBox-TSS-Block"></div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="RAS-TSS-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Sec-Effluent-TSS-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Final-Effluent-TSS-Block"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Baker-TSS-Block"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="H20-TSS-Block"></div>
+                                    </div>
                                 </div>
 
 
-                            </div>
-                        </div>
-
-                        <div class="row  pb-1" id="row-2">
-                            <!--Influent-->
-                            <div class="col">
-                                <div id="Influent-Block"></div>
-                            </div>
-                            <!--Final Effluent-->
-                            <div class="col">
-                                <div id="Final-Effluent-Block"></div>
-                            </div>
-                            <!--Comp.pH's/ALK-->
-                            <div class="col">
-                                <div id="Composite-PH-and-ALK-Block"></div>
-                                <div id="Baker-PH-Block"></div>
-                            </div>
-                        </div>
-
-                        <div class="row pb-1" id="row-3">
-                            <div class="col">
-                                <div id="D-Box-Block"></div>
-                            </div>
-                            <div class="col">
-                                <div id="TSS-Block"></div>
-                            </div>
-                            <div class="col">
-                                <div id="RAS-Pumps-Block"></div>
-                                <div id="Aluminum-Block"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="row pb-1" id="row-4">
-                            <div class="col">
-                                <div id="Chlorine-Residual-Block"></div>
-                            </div>
-                            <div class="col">
-                                <div id="WAS-Flow-Block"></div>
-                                <div id="Primary-Sludge-Flow-Block"></div>
-                                <div id="RAS-Flow-Block"></div>
-                                <div id="Comag-WAS-Flow-Block"></div>
-                            </div>
-                            <div class="col">
-                                <div id="BOD-Block"></div>
-                                <div id="COD-Block"></div>
-                                <div id="Ecoli-Block"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="row pb-1" id="row-5">
-                            <div class="col">
-                                <div id="Plant-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
-                            </div>
-                            <div class="col">
-                                <div id="Plant-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
-                            </div>
-                            <div class="col">
-                                <div id="Plant-Chemicals-Used-Block"></div>
-                            </div>
-                        </div>
-
-                        <div class="row pb-1" id="row-6">
-                            <div class="col">
-                                <div id="Comag-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
-                            </div>
-                            <div class="col">
-                                <div id="Comag-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
-                            </div>
-                            <div class="col">
-                                <div id="Comag-Chemicals-Used-Block"></div>
                             </div>
                         </div>
 
@@ -199,7 +306,10 @@
                     </div>
 
                     <!--Yard Data -->
-                    <div class="tab-pane fade" id="yard" role="tabpanel" aria-labelledby="yard-data-tab">
+                    <div class="tab-pane fade"
+                         id="yard"
+                         role="tabpanel"
+                         aria-labelledby="yard-data-tab">
                         <!--Press 1 -->
                         <div class="row mt-1">
 
@@ -230,106 +340,67 @@
 
                     <!--Press Data -->
                     <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
-                        <!--Press 1 -->
-                        <div id="movable_press_1_div">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div id="movable_div_header">Press #1</div>
-                            <div class="movable_div_body"><!--Press 1-->
-                                <div class="row">
-                                    <!--Feed-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="Feed-Block"></div>
-                                            </div>
+                        <div class="row">
+                            <!--Press 1 & 2-->
+                            <div class="row">
+                                <div class="col-6">
+
+                                    <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                        <h6>Press 1</h6>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Feed-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="Feed-Block-2"></div>
                                         </div>
                                     </div>
-                                    <!--Cake-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="Feed-Block-2"></div>
-                                            </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+
+                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
+                                            <h6>Press 2</h6>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Feed-Block-3"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="Feed-Block-4"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!--Press 2 -->
-                        <div id="movable_press_2_div">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div id="movable_div_header">Press #2</div>
-                            <div class="movable_div_body"><!--Press 1-->
-                                <div class="row">
-                                    <!--Feed-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="Feed-Block-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--Cake-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="Feed-Block-4"></div>
-                                            </div>
+                            <!--Filtrate & Blanket Depths-->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Filtrate-Block"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="col-6">
 
-                        <!--Filtrate-->
-                        <div id="movable_filtrate_div">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div id="movable_div_header">Filtrate</div>
-                            <div class="movable_div_body"><!--Press 1-->
-                                <div class="row">
-                                    <!--Filtrate-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="Filtrate-Block"></div>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="GT-DOB-Block"></div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!--Gravity Thickener Debth of Blankets-->
-                        <div id="movable_gravity_blanket_div">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div id="movable_div_header">GT DOB's</div>
-                            <div class="movable_div_body"><!--Press 1-->
-                                <div class="row">
-                                    <!--Filtrate-->
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div id="GT-DOB-Block"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="buttons_div">
-                            <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Save Data">
-                                Save Data
-                            </button>
-                            <br>
-                            <br>
-                            <input class="btn btn-dark" type="submit" name="submit_button" value="Reset Positions">
 
 
                         </div>
-
 
                     </div>
 
@@ -366,16 +437,11 @@
             let yesterday_press_polymer = document.getElementById("Yesterday Press Polymer").value;
 
 
-
-
             document.getElementById("Used 7,500 Caustic").value = today_caustic - yesterday_caustic;
             document.getElementById("Used 6,000 Hypo").value = today_hypo - yesterday_hypo;
             document.getElementById("Used 5,000 Bisulfite").value = today_bisulfite - yesterday_bisulfite;
             document.getElementById("Used 5,000 Sodium Alum").value = today_sodium_alum - yesterday_sodium_alum;
             document.getElementById("Used Press Polymer").value = today_press_polymer - yesterday_press_polymer;
-
-
-
 
 
         })

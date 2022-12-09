@@ -57,6 +57,8 @@ function setUpHTML() {
 
     //TSS Sheet
     const tss_weight_labels = ["ML Sample", "Dry Weight","Start Weight","Weight Difference","Results"];
+    const tvss_weight_labels = ["Burned Weight", "Start Weight", "Weight Difference", "NonVolatile Weight",
+        "Percentage NonVolatile","Volatile Weight (mg/L)", "Percentage Volatile"];
 
 
     //Yard
@@ -99,6 +101,7 @@ function setUpHTML() {
     create_Table("Total-Q-Block", "Total-Q", total_flow_labels);
 
     //TSS Lab Sheet
+    //TSS
     create_Table("Influent-TSS-Block", "Influent", tss_weight_labels);
     create_Table("Primary-TSS-Block", "Primary", tss_weight_labels);
     create_Table("DBox-TSS-Block", "D Box", tss_weight_labels);
@@ -107,6 +110,15 @@ function setUpHTML() {
     create_Table("Final-Effluent-TSS-Block", "Final Effluent", tss_weight_labels);
     create_Table("Baker-TSS-Block", "Baker", tss_weight_labels);
     create_Table("H20-TSS-Block", "H20", tss_weight_labels);
+    //TVSS
+    create_Table("Influent-TVSS-Block", "Influent", tvss_weight_labels);
+    create_Table("Primary-TVSS-Block", "Primary", tvss_weight_labels);
+    create_Table("DBox-TVSS-Block", "D Box", tvss_weight_labels);
+     create_Table("RAS-TVSS-Block", "RAS", tvss_weight_labels);
+    create_Table("Sec-Effluent-TVSS-Block", "Secondary Effluent", tvss_weight_labels);
+    create_Table("Final-Effluent-TVSS-Block", "Final Effluent", tvss_weight_labels);
+    create_Table("Baker-TVSS-Block", "Baker", tvss_weight_labels);
+    create_Table("H20-TVSS-Block", "H20", tvss_weight_labels);
 
 
 

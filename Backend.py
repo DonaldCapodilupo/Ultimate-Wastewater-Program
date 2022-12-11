@@ -1,68 +1,30 @@
 import os, json
 
 from bs4 import BeautifulSoup
-import requests
 
-
-def scrape_RoyCEU_Questions(url):
-
+#Copy/Paste to royCEU Template.html
+def scrape_RoyCEU():
     return_dict = {}
-    soup = BeautifulSoup("templates/royCEU Templates.html", "html.parser")
-    questions = soup.body.find_all(class_='QuestionText')
-    answers = soup.body.find_all("li")
 
-    for question in questions:
-        print(question)
-
-
-    #with open('questions.txt', 'a', encoding="utf-8") as f:
-    #    for question in questions:
-    #        f.write(question.text + "\n")
-
-
-def scrape_RoyCEU_Answers(url):
-    with open("templates/royCEU Template.html") as fp:
+    with open("templates/royCEU Template.html",  encoding="utf8") as fp:
         soup = BeautifulSoup(fp, "html.parser")
-        #print(soup)
+        # print(soup)
 
-        for question in soup.find_all(class_="QuestionText"):
-            print(question)
+        for data in soup.find_all("li", class_="QuizQuestion"):
 
+            question_number = data["id"]
+            question = data.text.partition("?")[0].replace('\n        ',' ').replace("\n","").replace("    ","") + "?"
 
+            return_dict[question_number] = {question: []}
 
-    #return_dict = {}
-#
-    #answers = soup.body.find_all("li")
-#
-    #current_question = ""
-#
-    #for answer in answers:
-    #    answer_text = answer.text
-#
-    #    if answer_text[0] != " ":
-    #        return_dict[answer_text] = []
-    #        current_question = answer_text
-#
-    #    while answer_text[0].isspace():
-    #        return_dict[current_question].append(answer_text[7:])
-    #        break
-    #print(return_dict)
+            for answers in data.find_all("li"):
+                answer_id = "Q_" + answers["id"].split("_")[1]
+                answer_text = answers.text.replace('\n', " ")[25:]
 
+                return_dict[answer_id][question].append(answer_text[:-13].replace("\u00a0\u00a0                 \u00a0\u00a0"," ").strip())
 
-
-
-
-
-    #with open('answers.txt', 'a', encoding="utf-8") as f:
-#
-    #    for answer in answers:
-    #        answer_text = answer.text
-#
-    #        if answer_text[0].isspace():
-    #            f.write(answer_text + "\n")
-    #            print(answer_text[7:])
-    #        else:
-    #            pass
+    with open("Training Questions/royCEU_TestMAth.json", "w") as outfile:
+        json.dump(return_dict, outfile)
 
 
 def get_Historical_Data():
@@ -82,7 +44,3 @@ def get_Historical_Data():
     print(return_data)
     return return_data
 
-
-# get_Historical_Data()
-scrape_RoyCEU_Answers("https://royceu.com/PracticeQuizes/studyguide1.htm")
-#scrape_RoyCEU_Questions("https://royceu.com/PracticeQuizes/studyguide1.htm")

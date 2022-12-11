@@ -23,7 +23,7 @@
         </div>
 
         <div class="row" id="user_input_Div">
-            <form action="{{ url_for('main_Menu') }}" enctype=multipart/form-data method="POST">
+            <form action="{{ url_for('daily_Lab_Sheet') }}" enctype=multipart/form-data method="POST">
 
                 <!--Tabs For Selecting Roll-->
                 <ul class="nav nav-tabs justify-content-center"
@@ -70,6 +70,9 @@
                     <div class="buttons_div">
                         <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Save Data">
                             Save Data
+                        </button>
+                        <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Return Home">
+                            Return Home
                         </button>
 
                     </div>

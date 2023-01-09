@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+<!---Main Div to space page-->
 <div class="row pt-3" id="main_Div">
     <div class="col-1"></div>
     <div class="col-10">
@@ -225,12 +227,14 @@
                                     <div class="col">
                                         <div id="Total-Q-Block"></div>
                                         <div id="Total-P-Block"></div>
+
                                         <div id="Ammonia-Block"></div>
                                     </div>
                                     <div class="col">
                                         <div id="BOD-Block"></div>
                                         <div id="COD-Block"></div>
                                         <div id="Ecoli-Block"></div>
+
                                     </div>
                                 </div>
                                 <div class="row pb-1" id="row-5">
@@ -265,7 +269,8 @@
 
                                 <!--Total Suspended Solids-->
                                 <div class="row">
-                                    <h1 class="display-4 d-grid flex-column justify-content-center">Total Suspended Solids</h1>
+                                    <h1 class="display-4 d-grid flex-column justify-content-center">Total Suspended
+                                        Solids</h1>
                                 </div>
 
                                 <!--Influent TSS-->
@@ -306,7 +311,8 @@
 
                                 <!--Total Volatile Suspended Solids-->
                                 <div class="row">
-                                    <h1 class="display-4 d-grid flex-column justify-content-center">Total Volatile Suspended Solids</h1>
+                                    <h1 class="display-4 d-grid flex-column justify-content-center">Total Volatile
+                                        Suspended Solids</h1>
                                 </div>
 
                                 <!--Influent TVSS-->
@@ -322,7 +328,7 @@
                                     </div>
                                 </div>
 
-                                 <!--RAS, Secondary, Final TVSS-->
+                                <!--RAS, Secondary, Final TVSS-->
                                 <div class="row">
                                     <div class="col">
                                         <div id="RAS-TVSS-Block"></div>
@@ -387,68 +393,35 @@
 
                     <!--Press Data -->
                     <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-data-tab">
-                        <div class="row">
-                            <!--Press 1 & 2-->
+                        <div class="row" id="Press Block">
+                            <!--Cake and Feed Sample Analysis-->
                             <div class="row">
-                                <div class="col-6">
-
-                                    <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                        <h6>Press 1</h6>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block"></div>
-                                        </div>
-                                        <div class="col">
-                                            <div id="Feed-Block-2"></div>
-                                        </div>
-                                    </div>
+                                <div class="col">
+                                    <div id="Press 1 Feed Block"></div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="row">
-
-                                        <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center">
-                                            <h6>Press 2</h6>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Feed-Block-3"></div>
-                                        </div>
-                                        <div class="col">
-                                            <div id="Feed-Block-4"></div>
-                                        </div>
-                                    </div>
+                                <div class="col">
+                                    <div id="Press 1 Cake Block"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="Press 2 Feed Block"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="Press 2 Cake Block"></div>
                                 </div>
                             </div>
 
-                            <!--Filtrate & Blanket Depths-->
+                            <!--Filtrate and Gravity Thickener Blanket Depths-->
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="Filtrate-Block"></div>
-                                        </div>
-                                    </div>
+                                <div class="col">
+                                    <div id="Filtrate Block"></div>
                                 </div>
-                                <div class="col-6">
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div id="GT-DOB-Block"></div>
-                                        </div>
-
-                                    </div>
+                                <div class="col">
+                                    <div id="Gravity Thickener Blanket Block"></div>
                                 </div>
                             </div>
-
 
                         </div>
-
                     </div>
 
 
@@ -464,35 +437,12 @@
 
 
 <script type="text/javascript">
-    setUpHTML()
-
-    let elementsArray = document.querySelectorAll(".plant_chemical_tanks");
-
-    elementsArray.forEach(function (elem) {
-
-        elem.addEventListener("input", function () {
-
-            let today_caustic = document.getElementById("Today 7,500 Caustic").value;
-            let yesterday_caustic = document.getElementById("Yesterday 7,500 Caustic").value;
-            let today_hypo = document.getElementById("Today 6,000 Hypo").value;
-            let yesterday_hypo = document.getElementById("Yesterday 6,000 Hypo").value;
-            let today_bisulfite = document.getElementById("Today 5,000 Bisulfite").value;
-            let yesterday_bisulfite = document.getElementById("Yesterday 5,000 Bisulfite").value;
-            let today_sodium_alum = document.getElementById("Today 5,000 Sodium Alum").value;
-            let yesterday_sodium_alum = document.getElementById("Yesterday 5,000 Sodium Alum").value;
-            let today_press_polymer = document.getElementById("Today Press Polymer").value;
-            let yesterday_press_polymer = document.getElementById("Yesterday Press Polymer").value;
+    setUpHTML();
+    create_Press_Tables()
+    create_Dynamic_Table("Filtrate Block", "Filtrate", filtrate_obj)
+    create_Dynamic_Table("Gravity Thickener Blanket Block", "Gravity Thickener Depth of Blankets", gravity_thickener_obj)
 
 
-            document.getElementById("Used 7,500 Caustic").value = today_caustic - yesterday_caustic;
-            document.getElementById("Used 6,000 Hypo").value = today_hypo - yesterday_hypo;
-            document.getElementById("Used 5,000 Bisulfite").value = today_bisulfite - yesterday_bisulfite;
-            document.getElementById("Used 5,000 Sodium Alum").value = today_sodium_alum - yesterday_sodium_alum;
-            document.getElementById("Used Press Polymer").value = today_press_polymer - yesterday_press_polymer;
-
-
-        })
-    })
 
 
 </script>

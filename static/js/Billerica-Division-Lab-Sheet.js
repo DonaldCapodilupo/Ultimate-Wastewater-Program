@@ -1,6 +1,66 @@
 /*jshint esversion: 6 */
 
 
+//create_Table() is for generic tables that take nothing but numbers as input.
+
+//create_Press_Tables() creates the press tables. Seperate function because this table has labels that update
+// automatically based on user input.
+
+//create_Dynamic_Table() is for tables where not all user input will be numbers. Ex. Filtrate has the user record their
+// initials.
+
+//setup_HTML() creates all of the generic tables using "create_Table()" and includes their titles and input prompts.
+
+
+
+
+let press_table_object = {
+    table_title: "",
+    table_subtitles: ["Feed", "Cake"],
+    questions: {
+        "Sample Wet": "input",
+        "Tare": "input",
+        "Difference Wet": "label",
+        "Sample Dry": "input",
+        "Difference Dry": "label",
+        "Percent Solids": "label"
+    }
+}
+let filtrate_obj = {
+    "mL": {
+        "Input Type": "number",
+        "Default": "25"
+    },
+    "Dry Weight": {
+        "Input Type": "number",
+    },
+    "Tare": {
+        "Input Type": "number",
+    },
+    "Difference": {
+        "Input Type": "Label",
+    },
+    "mg/L": {
+        "Input Type": "Label",
+    },
+    "Operator": {
+        "Input Type": "text",
+    },
+    "GT Used": {
+        "Input Type": "Label",
+    },
+
+}
+const gravity_thickener_obj = {
+    "GT-1": {
+        "Input Type": "number",
+    },
+    "GT-2": {
+        "Input Type": "number",
+    }
+}
+
+
 function create_Table(div_to_fill_id, title, list_of_labels) {
     const div_to_fill = document.getElementById(div_to_fill_id);
 
@@ -31,6 +91,149 @@ function create_Table(div_to_fill_id, title, list_of_labels) {
     }
 }
 
+function create_Press_Tables() {
+
+    const table_names = ["Press 1 Feed", "Press 1 Cake", "Press 2 Feed", "Press 2 Cake"];
+
+
+    for (let name of table_names) {
+        press_table_object.table_title = name;
+
+        const div_to_fill = document.getElementById(name + " Block");
+
+        //Title Of The Table
+        div_to_fill.innerHTML +=
+            "<!--" + name + "-->" +
+            '<div class="row p-3 mb-2 bg-success text-white d-grid justify-content-center">' +
+            '   <h6>' + name + '</h6>' +
+            '</div>'
+
+
+        for (let [label, input_type] of Object.entries(press_table_object.questions)) {
+
+            div_to_fill.innerHTML +=
+                "<!--" + label + "-->" +
+                '<div class="row" class="input_data_row">' +
+                '   <div class="col" id="data_labels">' +
+                '       <label for="' + name + ' ' + label + '" class="text_label">' + label + ':</label>' +
+                '   </div>' +
+                '   <div class="col" id="' + name + ' ' + label + ' Col">' +
+
+                '   </div>' +
+                '</div>';
+
+            let input_div = document.getElementById(name + ' ' + label + " Col");
+
+            if (input_type === "input") {
+                input_div.innerHTML +=
+                    '<input class="form-control" type="number" step="0.01" id="' + name + ' ' + label + '" oninput="update_Current_Block_Totals(this.id)">';
+            } else {
+                input_div.innerHTML +=
+                    '<span id="Output ' + name + ' ' + label + '">0</span>';
+            }
+
+        }
+
+
+    }
+
+
+}
+
+function create_Dynamic_Table(div_to_be_fill, table_name, obj_of_questions) {
+    const div_to_fill = document.getElementById(div_to_be_fill);
+
+
+    div_to_fill.innerHTML +=
+        "<!--" + table_name + "-->" +
+        '<div class="row p-3 mb-2 bg-success text-white d-grid justify-content-center">' +
+        '   <h6>' + table_name + '</h6>' +
+        '</div>'
+
+    for (let [label, input_type] of Object.entries(obj_of_questions)) {
+
+        div_to_fill.innerHTML +=
+            "<!--" + label + "-->" +
+            '<div class="row" class="input_data_row">' +
+            '   <div class="col" id="data_labels">' +
+            '       <label for="' + table_name + ' ' + label + '" class="text_label">' + label + ':</label>' +
+            '   </div>' +
+            '   <div class="col" id="' + table_name + ' ' + label + ' Col">' +
+
+            '   </div>' +
+            '</div>';
+
+        let input_div = document.getElementById(table_name + ' ' + label + " Col");
+
+
+        if (input_type["Input Type"] === "number") {
+            input_div.innerHTML +=
+                '<input class="form-control" type="number" step="0.01" id="' + table_name + ' ' + label + '" oninput="update_Calculated_Input()"  value="' + input_type["Default"] + '">';
+        } else if (input_type["Input Type"] === "text") {
+            input_div.innerHTML +=
+                '<input class="form-control" type=' + input_type["Input Type"] + ' id="' + table_name + ' ' + label + '">';
+        } else if (input_type["Input Type"] === "Label") {
+            input_div.innerHTML +=
+                '<span id="Output ' + table_name + ' ' + label + '">0.00</span>';
+        }
+
+    }
+
+
+}
+
+function update_Current_Block_Totals(field_user_type_into, user_input) {
+
+    function get_Block_User_Typed_Into(field_user_type_into) {
+        for (const [question_to_remove, value] of Object.entries(press_table_object.questions)) {
+            let question_block = field_user_type_into.substring(0, field_user_type_into.indexOf(" " + question_to_remove))
+            if (question_block !== "") {
+                return question_block
+            }
+
+
+        }
+    }
+
+
+    //Turns Press 2 Feed Sample Wet --- > Press 2 Feed
+    let block_user_typed_into = get_Block_User_Typed_Into(field_user_type_into)
+
+    console.log("Block user typed into: " + block_user_typed_into)
+
+    var data_to_crunch = document.getElementById(block_user_typed_into + ' Block').getElementsByTagName('input')
+
+    let sample_wet = data_to_crunch[0].value
+    let tare = data_to_crunch[1].value
+    let sample_dry = data_to_crunch[2].value
+
+    console.log("Sample Wet: " + sample_wet)
+    console.log("Tare: " + tare)
+    console.log("Sample dry: " + sample_dry)
+
+
+    let difference_wet = (sample_wet - tare).toFixed(2);
+    let difference_dry = (sample_dry - tare).toFixed(2);
+
+    console.log("Difference Wet: " + difference_wet)
+    console.log("Difference Dry: " + difference_dry)
+
+    console.log("Output " + field_user_type_into + " Difference Wet")
+
+    document.getElementById("Output " + block_user_typed_into + " Difference Wet").innerHTML = difference_wet.toString();
+    document.getElementById("Output " + block_user_typed_into + " Difference Dry").innerHTML = difference_dry.toString();
+
+    let percentage_solids = ((difference_dry / difference_wet) * 100).toFixed(2);
+
+
+    if (isNaN(percentage_solids)) {
+        document.getElementById("Output " + block_user_typed_into + " Percent Solids").innerHTML = "0.00%";
+    } else {
+        document.getElementById("Output " + block_user_typed_into + " Percent Solids").innerHTML = percentage_solids + "%"
+    }
+
+}
+
 function setUpHTML() {
     //Lab
     //Main Daily Sheet
@@ -52,13 +255,13 @@ function setUpHTML() {
     const plant_chemicals_labels = ["7,500 Caustic", "6,000 Hypo", "5,000 Bisulfite", "5,000 Sodium Alum", "Press Polymer"];
     const comag_chemicals_labels = ["3,500 Caustic", "7500 Alum", "Polymer"];
     const ammonia_labels = ["Final Effluent", "Nitrite", "Nitrate"];
-    const total_p_labels = ["Secondary","Final Effluent"];
-    const total_flow_labels = ["WAS Q","Primary Sludge Q", "RAS Q","Comag Was Q", "Comag Influent Q"];
+    const total_p_labels = ["Secondary", "Final Effluent"];
+    const total_flow_labels = ["WAS Q", "Primary Sludge Q", "RAS Q", "Comag Was Q", "Comag Influent Q"];
 
     //TSS Sheet
-    const tss_weight_labels = ["ML Sample", "Dry Weight","Start Weight","Weight Difference","Results"];
+    const tss_weight_labels = ["ML Sample", "Dry Weight", "Start Weight", "Weight Difference", "Results"];
     const tvss_weight_labels = ["Burned Weight", "Start Weight", "Weight Difference", "NonVolatile Weight",
-        "Percentage NonVolatile","Volatile Weight (mg/L)", "Percentage Volatile"];
+        "Percentage NonVolatile", "Volatile Weight (mg/L)", "Percentage Volatile"];
 
 
     //Yard
@@ -67,10 +270,6 @@ function setUpHTML() {
     const tertiary_blanket_labels = ["TF1", "TF2"];
     const reaction_tank_labels = ["Sec p.H. Grab", "Sec. Meter", "RT #1 p.H", "Tuba (Meter)", "RT #4 p.H."];
     const turbidity_labels = ["Meter", "SEC", "F.E.", "Comag", "Baker C", "Baker (G)"];
-
-    //Press
-    const feed_labels = ["Sample Weight", "Tare", "Difference", "Sample Dry", "Tare", "Difference", "% Solids"];
-    const gravity_thickener_labels = ["GT1", "GT2"];
 
     //Generic
     const single_labels = ["Value"];
@@ -114,13 +313,11 @@ function setUpHTML() {
     create_Table("Influent-TVSS-Block", "Influent", tvss_weight_labels);
     create_Table("Primary-TVSS-Block", "Primary", tvss_weight_labels);
     create_Table("DBox-TVSS-Block", "D Box", tvss_weight_labels);
-     create_Table("RAS-TVSS-Block", "RAS", tvss_weight_labels);
+    create_Table("RAS-TVSS-Block", "RAS", tvss_weight_labels);
     create_Table("Sec-Effluent-TVSS-Block", "Secondary Effluent", tvss_weight_labels);
     create_Table("Final-Effluent-TVSS-Block", "Final Effluent", tvss_weight_labels);
     create_Table("Baker-TVSS-Block", "Baker", tvss_weight_labels);
     create_Table("H20-TVSS-Block", "H20", tvss_weight_labels);
-
-
 
 
     //Yard
@@ -131,15 +328,7 @@ function setUpHTML() {
     create_Table("Turbidity-Block", "Turbidity", turbidity_labels);
 
     //Press
-    create_Table("Feed-Block", "Feed (Tray 1)", feed_labels);
-    create_Table("Feed-Block-2", "Cake (Tray 2)", feed_labels);
-    create_Table("Feed-Block-3", "Feed (Tray 3)", feed_labels);
-    create_Table("Feed-Block-4", "Cake (Tray 4)", feed_labels);
-    create_Table("Filtrate-Block", "Filtrate", feed_labels);
-    create_Table("GT-DOB-Block", "GT DOB's", gravity_thickener_labels);
-
-
-
+    //Press has a separate function create_Dynamic_Tables
 
 
 }

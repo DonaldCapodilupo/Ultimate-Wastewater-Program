@@ -166,7 +166,7 @@ function create_Dynamic_Table(div_to_be_fill, table_name, obj_of_questions) {
 
         if (input_type["Input Type"] === "number") {
             input_div.innerHTML +=
-                '<input class="form-control" type="number" step="0.01" id="' + table_name + ' ' + label + '" oninput="update_Calculated_Input()"  value="' + input_type["Default"] + '">';
+                '<input class="form-control" type="number" step="0.01" id="' + table_name + ' ' + label + '"  value="' + input_type["Default"] + '">';
         } else if (input_type["Input Type"] === "text") {
             input_div.innerHTML +=
                 '<input class="form-control" type=' + input_type["Input Type"] + ' id="' + table_name + ' ' + label + '">';
@@ -379,6 +379,49 @@ function setUpHTML() {
                     let yesterday_value = document.getElementById("Comag Yesterday " + tank).value;
 
                     document.getElementById("Comag Used " + tank).value = today_value - yesterday_value;
+
+                }
+
+
+            }
+
+
+        })
+    })
+
+
+    let filtrate_array = document.querySelectorAll(".filtrate");
+
+    filtrate_array.forEach(function (elem) {
+
+        elem.addEventListener("input", function (event) {
+
+            console.log(event);
+            console.log(event.target);
+            console.log(event.target["id"]);
+
+            let field_user_typed_into = event.target["id"];
+
+            const plant_tank_data = ["Dry Weight", "Tare",];
+
+            for (let tank of plant_tank_data) {
+                console.log(tank);
+                console.log(field_user_typed_into);
+                console.log("Is " + tank + " the same as " + field_user_typed_into+ "?")
+
+                if (field_user_typed_into === "Filtrate " + tank) {
+
+                    console.log("They matched");
+
+                    let dry_weight = document.getElementById("Filtrate Dry Weight" ).value;
+                    let tare = document.getElementById("Filtrate Tare").value;
+
+                    let difference = (dry_weight - tare).toString()
+                    let milligrams_per_litre = ((difference * 100000) / 25).toString()
+
+                    document.getElementById("Output Filtrate Difference").innerHTML = difference;
+                    document.getElementById("Output Filtrate mg/L").innerHTML = milligrams_per_litre;
+
 
                 }
 

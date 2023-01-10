@@ -12,8 +12,6 @@
 //setup_HTML() creates all of the generic tables using "create_Table()" and includes their titles and input prompts.
 
 
-
-
 let press_table_object = {
     table_title: "",
     table_subtitles: ["Feed", "Cake"],
@@ -253,7 +251,7 @@ function setUpHTML() {
     const bod_labels = ["Influent", "Primary", "Secondary", "Effluent", "Baker", "% Removal"];
     const cod_labels = ["Influent", "Baker"];
     const plant_chemicals_labels = ["7,500 Caustic", "6,000 Hypo", "5,000 Bisulfite", "5,000 Sodium Alum", "Press Polymer"];
-    const comag_chemicals_labels = ["3,500 Caustic", "7500 Alum", "Polymer"];
+    const comag_chemicals_labels = ["3,500 Caustic", "7,500 Alum", "Polymer"];
     const ammonia_labels = ["Final Effluent", "Nitrite", "Nitrate"];
     const total_p_labels = ["Secondary", "Final Effluent"];
     const total_flow_labels = ["WAS Q", "Primary Sludge Q", "RAS Q", "Comag Was Q", "Comag Influent Q"];
@@ -331,5 +329,71 @@ function setUpHTML() {
     //Press has a separate function create_Dynamic_Tables
 
 
+    let plant_chemicals_array = document.querySelectorAll(".plant_chemical_tanks");
+
+    plant_chemicals_array.forEach(function (elem) {
+
+        elem.addEventListener("input", function (event) {
+
+
+            let field_user_typed_into = event.target["name"];
+
+            const plant_tank_data = ["7,500 Caustic", "6,000 Hypo", "5,000 Bisulfite", "5,000 Sodium Alum",
+                "Press Polymer",]; // "3,500 Caustic", "7,500 Alum", "Polymer"
+
+            for (let tank of plant_tank_data) {
+
+                if (field_user_typed_into.includes(tank)) {
+
+                    let today_value = document.getElementById("Plant Chemicals Today " + tank).value;
+                    let yesterday_value = document.getElementById("Plant Chemicals Yesterday " + tank).value;
+
+                    document.getElementById("Plant Chemicals Used " + tank).value = today_value - yesterday_value;
+
+                }
+
+
+            }
+
+
+        })
+    })
+
+
+    let comag_chemicals_array = document.querySelectorAll(".comag_chemical_tanks");
+
+    comag_chemicals_array.forEach(function (elem) {
+
+        elem.addEventListener("input", function (event) {
+
+
+            let field_user_typed_into = event.target["name"];
+
+            const plant_tank_data = ["3,500 Caustic", "7,500 Alum", "Polymer",]; //
+
+            for (let tank of plant_tank_data) {
+
+                if (field_user_typed_into.includes(tank)) {
+
+                    let today_value = document.getElementById("Comag Today " + tank).value;
+                    let yesterday_value = document.getElementById("Comag Yesterday " + tank).value;
+
+                    document.getElementById("Comag Used " + tank).value = today_value - yesterday_value;
+
+                }
+
+
+            }
+
+
+        })
+    })
+
+
 }
+
+
+
+
+
 

@@ -416,8 +416,8 @@ function setUpHTML() {
                     let dry_weight = document.getElementById("Filtrate Dry Weight" ).value;
                     let tare = document.getElementById("Filtrate Tare").value;
 
-                    let difference = (dry_weight - tare).toString()
-                    let milligrams_per_litre = ((difference * 100000) / 25).toString()
+                    let difference = (dry_weight - tare).toFixed(2).toString()
+                    let milligrams_per_litre = ((difference * 100000) / 25).toFixed(2).toString()
 
                     document.getElementById("Output Filtrate Difference").innerHTML = difference;
                     document.getElementById("Output Filtrate mg/L").innerHTML = milligrams_per_litre;

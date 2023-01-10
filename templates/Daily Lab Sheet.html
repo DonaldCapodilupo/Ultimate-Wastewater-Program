@@ -145,7 +145,8 @@
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control" id="sel1" name="Day of Week">
+                                                <select class="form-control" id="Day of Week" name="Day of Week"
+                                                        onchange=log_Day()>
                                                     <option>Monday</option>
                                                     <option>Tuesday</option>
                                                     <option>Wednesday</option>
@@ -310,44 +311,46 @@
                                 </div>
 
                                 <!--Total Volatile Suspended Solids-->
-                                <div class="row">
-                                    <h1 class="display-4 d-grid flex-column justify-content-center">Total Volatile
-                                        Suspended Solids</h1>
-                                </div>
+                                <div class="row" id="TVSS Section">
+                                    <div class="row">
+                                        <h1 class="display-4 d-grid flex-column justify-content-center">Total Volatile
+                                            Suspended Solids</h1>
+                                    </div>
 
-                                <!--Influent TVSS-->
-                                <div class="row">
-                                    <div class="col">
-                                        <div id="Influent-TVSS-Block"></div>
+                                    <!--Influent TVSS-->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Influent-TVSS-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="Primary-TVSS-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="DBox-TVSS-Block"></div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <div id="Primary-TVSS-Block"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="DBox-TVSS-Block"></div>
-                                    </div>
-                                </div>
 
-                                <!--RAS, Secondary, Final TVSS-->
-                                <div class="row">
-                                    <div class="col">
-                                        <div id="RAS-TVSS-Block"></div>
+                                    <!--RAS, Secondary, Final TVSS-->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="RAS-TVSS-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="Sec-Effluent-TVSS-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="Final-Effluent-TVSS-Block"></div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <div id="Sec-Effluent-TVSS-Block"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="Final-Effluent-TVSS-Block"></div>
-                                    </div>
-                                </div>
 
-                                <!--Baker, H20 TVSS-->
-                                <div class="row">
-                                    <div class="col">
-                                        <div id="Baker-TVSS-Block"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="H20-TVSS-Block"></div>
+                                    <!--Baker, H20 TVSS-->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="Baker-TVSS-Block"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="H20-TVSS-Block"></div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -438,9 +441,24 @@
 
 <script type="text/javascript">
     setUpHTML();
-    create_Press_Tables()
-    create_Dynamic_Table("Filtrate Block", "Filtrate", filtrate_obj)
-    create_Dynamic_Table("Gravity Thickener Blanket Block", "Gravity Thickener Depth of Blankets", gravity_thickener_obj)
+    create_Press_Tables();
+    create_Dynamic_Table("Filtrate Block", "Filtrate", filtrate_obj);
+    create_Dynamic_Table("Gravity Thickener Blanket Block", "Gravity Thickener Depth of Blankets", gravity_thickener_obj);
+
+    function log_Day() {
+
+        const days_ignore_tvss = ["Tuesday", "Thursday"];
+
+        console.log(document.getElementById("Day of Week").value)
+        console.log(days_ignore_tvss)
+
+        if (days_ignore_tvss.includes(document.getElementById("Day of Week").value)) {
+            document.getElementById("TVSS Section").style.display = "none";
+        }else{
+            document.getElementById("TVSS Section").style.display = "block";
+        }
+
+    }
 
 
 </script>

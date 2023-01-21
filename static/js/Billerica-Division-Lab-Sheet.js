@@ -348,7 +348,7 @@ function setUpHTML() {
                     let today_value = document.getElementById("Plant Chemicals Today " + tank).value;
                     let yesterday_value = document.getElementById("Plant Chemicals Yesterday " + tank).value;
 
-                    document.getElementById("Plant Chemicals Used " + tank).value = today_value - yesterday_value;
+                    document.getElementById("Plant Chemicals Used " + tank).value = Math.abs(today_value - yesterday_value);
 
                 }
 
@@ -378,7 +378,7 @@ function setUpHTML() {
                     let today_value = document.getElementById("Comag Today " + tank).value;
                     let yesterday_value = document.getElementById("Comag Yesterday " + tank).value;
 
-                    document.getElementById("Comag Used " + tank).value = today_value - yesterday_value;
+                    document.getElementById("Comag Used " + tank).value = Math.abs(today_value - yesterday_value);
 
                 }
 

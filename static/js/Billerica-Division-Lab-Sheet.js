@@ -58,6 +58,316 @@ const gravity_thickener_obj = {
     }
 }
 
+const
+    table_structure = {
+        "Influent":
+            {
+                "Time": "time",
+                "Temp": "number",
+                "PH": "number",
+                "D.O.": "number",
+                "Comp P.H.": "number",
+                "ALK": "number",
+                "S.S. (mL/L)": "number"
+            },
+        "Final Effluent":
+            {
+                "Time": "time",
+                "Temp": "number",
+                "PH": "number",
+                "D.O.": "number",
+                "Comp P.H.": "number",
+                "ALK": "number",
+                "S.S. (mL/L)": "number"
+            },
+
+        "Comp. pH/ALK": {
+            "Primary p.H.": "number",
+            "Primary Alk": "number",
+            "Sec p.H.": "number",
+            "Sec Alk": "number",
+        },
+
+        "Baker": {
+            "Composite pH": "number",
+            "Grab pH": "number",
+        },
+
+        "#2 D Box": {
+            "Time": "number",
+            "Temp": "number",
+            "p.H.": "number",
+            "D.O.": "number",
+            "5 Min": "number",
+            "10 Min": "number",
+            "15 Min": "number",
+            "20 Min": "number",
+            "25 Min": "number",
+            "30 Min": "number",
+            "60 Min": "number"
+
+        },
+        "TSS": {
+
+            "Influent": "number",
+            "Primary": "number",
+            "Secondary": "number",
+            "Effluent": "number",
+            "Baker": "number",
+            "% Removal": "number",
+            "MLSS": "number",
+            "MLVSS": "number",
+            "RASS": "number",
+            "RASVSS": "number",
+            "SVI": "number"
+
+        },
+
+        "RAS Pumps": {
+            "RAS 1": "number",
+            "RAS 2": "number",
+            "RAS 3": "number",
+            "RAS 4": "number",
+            "RAS 5": "number",
+            "Flow": "number"
+
+        },
+
+        "Aluminum": {
+            "Comag Influent Q": "number",
+            "Comag WAS Q": "number"
+        },
+
+        "Chlorine Residual": {
+
+            "Q Effluent Chemical Control": "number",
+            "Hydro Pump Online A or H": "number",
+            "Hypo Tank Level": "number",
+            "Residual Shed 1": "number",
+            "Residual Shed 2": "number",
+            "Residual Shed 3": "number",
+            "Bisulfite Pump Online A or H": "number",
+            "Bisulfite Tank Level": "number",
+            "P.H.": "number",
+            "High Chlorine Residual mg/L": "number",
+            "Final Eff. Chlorine ug/L": "number"
+        },
+
+        "Total Q": {
+            "WAS Q": "number",
+            "Primary Sludge Q": "number",
+            "RAS Q": "number",
+            "Comag Was Q": "number",
+            "Comag Influent Q": "number",
+
+        },
+        "Total-P": {
+
+            "Secondary": "number",
+            "Final Effluent": "number",
+
+        },
+        "Ammonia": {
+
+            "Final Effluent": "number",
+            "Nitrite": "number",
+            "Nitrate": "number",
+
+        },
+        "BOD": {
+
+            "Influent": "number",
+            "Primary": "number",
+            "Secondary": "number",
+            "Effluent": "number",
+            "Baker": "number",
+            "% Removal": "number",
+
+        },
+        "COD": {
+
+            "Influent": "number",
+            "Baker": "number",
+
+        },
+        "Ecoli": {
+            "Value": "number"
+        },
+
+        "Plant Chemicals": {
+            "Today":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+            "Yesterday":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+            "Total":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+        },
+
+        "Comag Chemicals": {
+            "Today":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+            "Yesterday":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+            "Total":
+                {
+                    "7,500 Caustic": "number",
+                    "6,000 Hypo": "number",
+                    "5,000 Bisulfite": "number",
+                    "5,000 Sodium Alum": "number",
+                    "Press Polymer": "number",
+                },
+        },
+
+    }
+
+let test_obj = {}
+
+class Table_Creator {
+    constructor(title, question_and_input_dict) {
+
+        this.title = title;
+        this.question_and_input_dict = question_and_input_dict;
+
+
+        //Find the div within the HTML File
+        this.div = title.replaceAll(" ", "-") + "-Table"
+        this.div_to_be_filled = document.getElementById(this.div);
+
+        this.table_name = title + ' Table';
+
+
+    }
+
+    create_Table_Header() {
+        console.log(this.div_to_be_filled)
+        this.div_to_be_filled.innerHTML +=
+            '<div class="Input-Table">' +
+            '   <div class="Title-Row">' +
+            '       <p>' + this.title + '</p>' +
+            '   </div>' +
+            '   <table id="' + this.table_name + '"> </table>' +
+            '</div>';
+    }
+
+
+    create_Table_Body() {
+        for (let [label, input_type] of Object.entries(this.question_and_input_dict)) {
+
+            let table_to_fill = document.getElementById(this.table_name);
+            let backend_label_text = this.title + ' ' + label;
+            let row_to_be_fill = backend_label_text + '-Row'
+
+            table_to_fill.innerHTML +=
+                '<tr id="' + row_to_be_fill + '">' +
+                '<td><label for="' + backend_label_text + '" class="text_label">' + label + ': </label></td>' +
+                '</tr>';
+
+            let row_to_fill = document.getElementById(row_to_be_fill)
+
+
+            if (input_type === "number") {
+                row_to_fill.innerHTML +=
+                    '<td><input class="form-control" type="number" step="0.01" id="' + backend_label_text + '"  value="' + input_type + '"></td></tr>';
+            } else if (input_type === "text") {
+                row_to_fill.innerHTML +=
+                    '<td><input class="form-control" type=' + input_type + ' id="' + backend_label_text + '"></td></tr>';
+            } else if (input_type === "time") {
+                row_to_fill.innerHTML +=
+                    '<td><input class="form-control" type=' + input_type + ' id="' + backend_label_text + '" value="07:00"></td></tr>';
+
+            } else if (input_type === "label") {
+                row_to_fill.innerHTML +=
+                    '<td><span id="Output ' + backend_label_text + '">0.00</span></td></tr>';
+            }
+
+
+            //table_to_fill.innerHTML +=
+            //    '<tr>' +
+            //    '<td><label for="' + label_text + '" class="text_label">' + label + ': </label></td>' +
+            //    '<td><input type="' + input_type + '" step="0.01" id="' + label_text + '"></td>' +
+            //    '</tr>';
+        }
+
+
+    }
+
+
+    create_Complex_Table() {
+
+
+        let table_to_fill = document.getElementById(this.table_name);
+
+        //let row_to_be_fill = backend_label_text + '-Row'
+
+
+        table_to_fill.innerHTML +=
+            '<tr>' +
+            '<th></th>' +
+            '<th>Today</th>' +
+            '<th>Yesterday</th>' +
+            '<th>Used</th>' +
+            '</tr>';
+
+
+        ;
+
+
+        for (let [question, dict_of_stuff] of Object.entries(this.question_and_input_dict)) {
+            for (let [test, input_type] of Object.entries(dict_of_stuff)) {
+
+                console.log(test)
+
+                let backend_label_text = this.title + ' ' + test;
+
+                console.log("backend label text: " + backend_label_text)
+
+                table_to_fill.innerHTML +=
+                    '<td><p>' + test + ':</p></td>' +
+                    '<td><input class="form-control" type="number" step="0.01" id="' + backend_label_text + ' Today" value="' + input_type[0] + '"></td>' +
+                    '<td><input class="form-control" type="number" step="0.01" id="' + backend_label_text + ' Yesterday" value="' + input_type + '"></td>' +
+                    '<td><input class="form-control" type="number" step="0.01" id="' + backend_label_text + ' Used" value="' + input_type + '"></td>';
+
+
+            }
+            break
+
+
+        }
+
+
+    }
+}
+
 
 function create_Table(div_to_fill_id, title, list_of_labels) {
     const div_to_fill = document.getElementById(div_to_fill_id);
@@ -275,27 +585,27 @@ function setUpHTML() {
 
     //Lab
     //Daily Lab Sheet
-    create_Table("Influent-Block", "Influent", influent_labels);
-    create_Table("Final-Effluent-Block", "Final Effluent", influent_labels);
-    create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", composite_pH_alk_labels);
-    create_Table("Baker-PH-Block", "Baker", baker_labels);
-    create_Table("D-Box-Block", "#2 D Box", d_block_labels);
-    create_Table("TSS-Block", "T.S.S.", tss_block);
-    create_Table("RAS-Pumps-Block", "RAS Pumps", ras_pumps_labels);
-    create_Table("Aluminum-Block", "Aluminum", aluminum_labels);
-    create_Table("Chlorine-Residual-Block", "Chlorine Residual", chlorine_labels);
-    create_Table("BOD-Block", "BOD", bod_labels);
-    create_Table("COD-Block", "COD", cod_labels);
-    create_Table("Ecoli-Block", "Ecoli", single_labels);
-    create_Table("Plant-Chemicals-Today-Block", "Plant Chemicals Today", plant_chemicals_labels);
-    create_Table("Plant-Chemicals-Yesterday-Block", "Plant Chemicals Yesterday", plant_chemicals_labels);
-    create_Table("Plant-Chemicals-Used-Block", "Plant Chemicals Used", plant_chemicals_labels);
-    create_Table("Comag-Chemicals-Today-Block", "Comag Today", comag_chemicals_labels);
-    create_Table("Comag-Chemicals-Yesterday-Block", "Comag Yesterday", comag_chemicals_labels);
-    create_Table("Comag-Chemicals-Used-Block", "Comag Used", comag_chemicals_labels);
-    create_Table("Ammonia-Block", "Ammonia", ammonia_labels);
-    create_Table("Total-P-Block", "Total-P", total_p_labels);
-    create_Table("Total-Q-Block", "Total-Q", total_flow_labels);
+    //create_Table("Influent-Block", "Influent", influent_labels);
+    //create_Table("Final-Effluent-Block", "Final Effluent", influent_labels);
+    //create_Table("Composite-PH-and-ALK-Block", "Comp. PH/ALK", composite_pH_alk_labels);
+    //create_Table("Baker-PH-Block", "Baker", baker_labels);
+    //create_Table("D-Box-Block", "#2 D Box", d_block_labels);
+    //create_Table("TSS-Block", "T.S.S.", tss_block);
+    //create_Table("RAS-Pumps-Block", "RAS Pumps", ras_pumps_labels);
+    //create_Table("Aluminum-Block", "Aluminum", aluminum_labels);
+    //create_Table("Chlorine-Residual-Block", "Chlorine Residual", chlorine_labels);
+    //create_Table("BOD-Block", "BOD", bod_labels);
+    //create_Table("COD-Block", "COD", cod_labels);
+    //create_Table("Ecoli-Block", "Ecoli", single_labels);
+    //create_Table("Plant-Chemicals-Today-Block", "Plant Chemicals Today", plant_chemicals_labels);
+    //create_Table("Plant-Chemicals-Yesterday-Block", "Plant Chemicals Yesterday", plant_chemicals_labels);
+    //create_Table("Plant-Chemicals-Used-Block", "Plant Chemicals Used", plant_chemicals_labels);
+    //create_Table("Comag-Chemicals-Today-Block", "Comag Today", comag_chemicals_labels);
+    //create_Table("Comag-Chemicals-Yesterday-Block", "Comag Yesterday", comag_chemicals_labels);
+    //create_Table("Comag-Chemicals-Used-Block", "Comag Used", comag_chemicals_labels);
+    //create_Table("Ammonia-Block", "Ammonia", ammonia_labels);
+    //create_Table("Total-P-Block", "Total-P", total_p_labels);
+    //create_Table("Total-Q-Block", "Total-Q", total_flow_labels);
 
     //TSS Lab Sheet
     //TSS
@@ -329,32 +639,23 @@ function setUpHTML() {
     //Press has a separate function create_Dynamic_Tables
 
 
-    let plant_chemicals_array = document.querySelectorAll(".plant_chemical_tanks");
+    let plant_chemicals_array = document.querySelectorAll(".plant_chemical_tanks, .comag_chemicals_tanks");
 
     plant_chemicals_array.forEach(function (elem) {
 
         elem.addEventListener("input", function (event) {
 
-
-            let field_user_typed_into = event.target["name"];
-
-            const plant_tank_data = ["7,500 Caustic", "6,000 Hypo", "5,000 Bisulfite", "5,000 Sodium Alum",
-                "Press Polymer",]; // "3,500 Caustic", "7,500 Alum", "Polymer"
-
-            for (let tank of plant_tank_data) {
-
-                if (field_user_typed_into.includes(tank)) {
-
-                    let today_value = document.getElementById("Plant Chemicals Today " + tank).value;
-                    let yesterday_value = document.getElementById("Plant Chemicals Yesterday " + tank).value;
-
-                    document.getElementById("Plant Chemicals Used " + tank).value = Math.abs(today_value - yesterday_value);
-
-                }
+            console.log(event.target["id"]);
+            let field_user_typed_into = event.target["id"];
 
 
-            }
+            let row_user_typed_into = field_user_typed_into.substring(0, field_user_typed_into.lastIndexOf(" "));
 
+
+            let today_value = document.getElementById(row_user_typed_into + " Today").value;
+            let yesterday_value = document.getElementById(row_user_typed_into + " Yesterday").value;
+
+            document.getElementById(row_user_typed_into + " Used").value = Math.abs(today_value - yesterday_value);
 
         })
     })
@@ -407,13 +708,13 @@ function setUpHTML() {
             for (let tank of plant_tank_data) {
                 console.log(tank);
                 console.log(field_user_typed_into);
-                console.log("Is " + tank + " the same as " + field_user_typed_into+ "?")
+                console.log("Is " + tank + " the same as " + field_user_typed_into + "?")
 
                 if (field_user_typed_into === "Filtrate " + tank) {
 
                     console.log("They matched");
 
-                    let dry_weight = document.getElementById("Filtrate Dry Weight" ).value;
+                    let dry_weight = document.getElementById("Filtrate Dry Weight").value;
                     let tare = document.getElementById("Filtrate Tare").value;
 
                     let difference = (dry_weight - tare).toFixed(2).toString()
@@ -431,6 +732,25 @@ function setUpHTML() {
 
         })
     })
+
+
+    for (let [title, question_and_prompt_dict] of Object.entries(table_structure)) {
+
+
+        let new_table = new Table_Creator(title, question_and_prompt_dict)
+
+        new_table.create_Table_Header()
+
+
+        if ("Plant Chemicals" === title || "Comag Chemicals" === title) {
+            new_table.create_Complex_Table()
+
+        } else {
+            new_table.create_Table_Body()
+        }
+
+
+    }
 
 
 }

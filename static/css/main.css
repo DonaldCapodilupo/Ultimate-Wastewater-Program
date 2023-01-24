@@ -2,7 +2,7 @@ body {
     background-color: #222222;
 }
 
-
+/*Lab Sheet - Following functions determine how the main tables of user input will look.*/
 .Input-Table {
     background-color: #D4CBE5;
     padding: 10px 10px 10px;
@@ -26,19 +26,29 @@ body {
 
 }
 
-
-
 label {
-
     text-align: left;
     font-weight: bold;
 }
 
+/*Lab Sheet - Main page*/
 .Plant-Chemical-Table {
     background-color: #08A4BD;
     border-radius: 20px;
 }
 
+/*Lab Sheet - TSS & TVSS Unique*/
+.TSS-Background{
+    background: #BFAE48;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.TVSS-Backround{
+    background: #A4303F;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 
 
 

@@ -193,73 +193,62 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row  pb-1" id="row-2">
-                                    <!--Influent-->
+
+                                <div class="row">
                                     <div class="col">
-                                        <div id="Influent-Block"></div>
-                                    </div>
-                                    <!--Final Effluent-->
-                                    <div class="col">
-                                        <div id="Final-Effluent-Block"></div>
-                                    </div>
-                                    <!--Comp.pH's/ALK-->
-                                    <div class="col">
-                                        <div id="Composite-PH-and-ALK-Block"></div>
-                                        <div id="Baker-PH-Block"></div>
-                                    </div>
-                                </div>
-                                <div class="row pb-1" id="row-3">
-                                    <div class="col">
-                                        <div id="D-Box-Block"></div>
+                                        <div id="Influent-Table"></div>
+                                        <div id="Ammonia-Table"></div>
                                     </div>
                                     <div class="col">
-                                        <div id="TSS-Block"></div>
+                                        <div id="Final-Effluent-Table"></div>
+                                        <div id="Ecoli-Table"></div>
                                     </div>
                                     <div class="col">
-                                        <div id="RAS-Pumps-Block"></div>
-                                        <div id="Aluminum-Block"></div>
-                                    </div>
-                                </div>
-                                <div class="row pb-1" id="row-4">
-                                    <div class="col">
-                                        <div id="Chlorine-Residual-Block"></div>
+
+                                        <div id="Comp.-pH/ALK-Table"></div>
+                                        <div id="Baker-Table"></div>
 
                                     </div>
                                     <div class="col">
-                                        <div id="Total-Q-Block"></div>
-                                        <div id="Total-P-Block"></div>
+                                        <div id="BOD-Table"></div>
+                                        <div id="COD-Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="TSS-Table"></div>
+                                    </div>
+                                </div>
 
-                                        <div id="Ammonia-Block"></div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Chlorine-Residual-Table"></div>
                                     </div>
                                     <div class="col">
-                                        <div id="BOD-Block"></div>
-                                        <div id="COD-Block"></div>
-                                        <div id="Ecoli-Block"></div>
+                                        <div id="Total-Q-Table"></div>
+                                        <div id="Total-P-Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="#2-D-Box-Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="RAS-Pumps-Table"></div>
+                                        <div id="Aluminum-Table"></div>
+                                    </div>
 
-                                    </div>
                                 </div>
-                                <div class="row pb-1" id="row-5">
+
+
+                                <div class="row">
                                     <div class="col">
-                                        <div id="Plant-Chemicals-Today-Block" class="plant_chemical_tanks"></div>
+                                        <div id="Plant-Chemicals-Table" class="plant_chemical_tanks">
+                                        </div>
                                     </div>
                                     <div class="col">
-                                        <div id="Plant-Chemicals-Yesterday-Block" class="plant_chemical_tanks"></div>
+                                        <div id="Comag-Chemicals-Table" class="comag_chemicals_tanks">
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <div id="Plant-Chemicals-Used-Block"></div>
-                                    </div>
+
                                 </div>
-                                <div class="row pb-1" id="row-6">
-                                    <div class="col">
-                                        <div id="Comag-Chemicals-Today-Block" class="comag_chemical_tanks"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="Comag-Chemicals-Yesterday-Block" class="comag_chemical_tanks"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="Comag-Chemicals-Used-Block" class="comag_chemical_tanks"></div>
-                                    </div>
-                                </div>
+
                             </div>
 
                             <!--TSS Sheet-->
@@ -454,7 +443,7 @@
 
         if (days_ignore_tvss.includes(document.getElementById("Day of Week").value)) {
             document.getElementById("TVSS Section").style.display = "none";
-        }else{
+        } else {
             document.getElementById("TVSS Section").style.display = "block";
         }
 

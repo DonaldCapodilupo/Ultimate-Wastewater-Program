@@ -248,6 +248,142 @@ const
                 },
         },
 
+        "Influent TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+
+
+        "Primary Effluent TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "D Box TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "RAS TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Secondary Effluent TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Final Effluent TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Baker TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Water Dept TSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Influent TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+
+
+        "Primary Effluent TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "D Box TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "RAS TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Secondary Effluent TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Final Effluent TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Baker TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+        "Water Dept TVSS": {
+            "ML Sample": "number",
+            "Dry Weight": "number",
+            "Start Weight": "number",
+            "Weight Difference": "number",
+            "Results": "number",
+        },
+
+
+
+
+
     }
 
 let test_obj = {}
@@ -609,23 +745,23 @@ function setUpHTML() {
 
     //TSS Lab Sheet
     //TSS
-    create_Table("Influent-TSS-Block", "Influent", tss_weight_labels);
-    create_Table("Primary-TSS-Block", "Primary", tss_weight_labels);
-    create_Table("DBox-TSS-Block", "D Box", tss_weight_labels);
-    create_Table("RAS-TSS-Block", "RAS", tss_weight_labels);
-    create_Table("Sec-Effluent-TSS-Block", "Secondary Effluent", tss_weight_labels);
-    create_Table("Final-Effluent-TSS-Block", "Final Effluent", tss_weight_labels);
-    create_Table("Baker-TSS-Block", "Baker", tss_weight_labels);
-    create_Table("H20-TSS-Block", "H20", tss_weight_labels);
-    //TVSS
-    create_Table("Influent-TVSS-Block", "Influent", tvss_weight_labels);
-    create_Table("Primary-TVSS-Block", "Primary", tvss_weight_labels);
-    create_Table("DBox-TVSS-Block", "D Box", tvss_weight_labels);
-    create_Table("RAS-TVSS-Block", "RAS", tvss_weight_labels);
-    create_Table("Sec-Effluent-TVSS-Block", "Secondary Effluent", tvss_weight_labels);
-    create_Table("Final-Effluent-TVSS-Block", "Final Effluent", tvss_weight_labels);
-    create_Table("Baker-TVSS-Block", "Baker", tvss_weight_labels);
-    create_Table("H20-TVSS-Block", "H20", tvss_weight_labels);
+    //create_Table("Influent-TSS-Block", "Influent", tss_weight_labels);
+    //create_Table("Primary-TSS-Block", "Primary", tss_weight_labels);
+    //create_Table("DBox-TSS-Block", "D Box", tss_weight_labels);
+    //create_Table("RAS-TSS-Block", "RAS", tss_weight_labels);
+    //create_Table("Sec-Effluent-TSS-Block", "Secondary Effluent", tss_weight_labels);
+    //create_Table("Final-Effluent-TSS-Block", "Final Effluent", tss_weight_labels);
+    //create_Table("Baker-TSS-Block", "Baker", tss_weight_labels);
+    //create_Table("H20-TSS-Block", "H20", tss_weight_labels);
+    ////TVSS
+    //create_Table("Influent-TVSS-Block", "Influent", tvss_weight_labels);
+    //create_Table("Primary-TVSS-Block", "Primary", tvss_weight_labels);
+    //create_Table("DBox-TVSS-Block", "D Box", tvss_weight_labels);
+    //create_Table("RAS-TVSS-Block", "RAS", tvss_weight_labels);
+    //create_Table("Sec-Effluent-TVSS-Block", "Secondary Effluent", tvss_weight_labels);
+    //create_Table("Final-Effluent-TVSS-Block", "Final Effluent", tvss_weight_labels);
+    //create_Table("Baker-TVSS-Block", "Baker", tvss_weight_labels);
+    //create_Table("H20-TVSS-Block", "H20", tvss_weight_labels);
 
 
     //Yard

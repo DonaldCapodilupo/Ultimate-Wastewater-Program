@@ -48,24 +48,48 @@ def get_Historical_Data():
     return return_data
 
 
-def prior_Day_Values():
+def get_Prior_Day_Values():
+    import datetime
+
+    relevant_values = [
+        "Plant Chemicals Today 7,500 Caustic",
+        "Plant Chemicals Today 6,000 Hypo",
+        "Plant Chemicals Today 5,000 Bisulfite",
+        "Plant Chemicals Today 5,000 Sodium Alum",
+        "Plant Chemicals Today Press Polymer",
+        "Comag Today 3,500 Caustic",
+        "Comag Today 7,500 Alum"
+        "Comag Today Polymer"
+    ]
+
+
     prior_data = os.listdir("Historical Data")
+    today = str(datetime.date.today())
 
-    prior_values = prior_data[-1]  # yyyy-mm-dd.json format
+    directory_items_to_ignore = [today+".json","Yesterday's Data.json"]
 
-    return_data = {prior_values[:-5]: []}
+    for item in directory_items_to_ignore:
 
-    with open("Historical Data/" + prior_values) as json_item:
+        try:
+            prior_data.remove(item)
+        except ValueError:
+            print(item + " was not found in the directory.")
+
+
+    prior_date = prior_data[-1][:-5]  # yyyy-mm-dd format
+
+    return_data = {prior_date: {}}
+
+    with open("Historical Data/" + prior_date + ".json") as json_item:
         data = json.load(json_item)
 
         for category, value in data.items():
-            try:
+            if category in relevant_values:
+                return_data[prior_date][category] = value
 
-                return_data[category].append(value)
-            except KeyError:
-                return_data[category] = [value]
+    with open("Historical Data/Yesterday's Data.json", "w") as outfile:
+        json.dump(return_data, outfile)
 
-    print(return_data)
     return return_data
 
-# prior_Day_Values()
+get_Prior_Day_Values()

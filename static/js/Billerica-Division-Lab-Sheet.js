@@ -257,7 +257,6 @@ const
         },
 
 
-
         "Primary Effluent TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
@@ -323,7 +322,6 @@ const
         },
 
 
-
         "Primary Effluent TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
@@ -380,8 +378,95 @@ const
             "Results": "number",
         },
 
+        "Primary DOB's": {
 
+            "PST1": "number",
+            "PST2": "number",
+            "PST3": "number",
+        },
 
+        "Secondary DOB's": {
+
+            "SST1": "number",
+            "SST2": "number",
+            "SST3": "number",
+            "SST4": "number",
+        },
+
+        "Tertiary DOB's": {
+
+            "TST1": "number",
+            "TST2": "number",
+            "TST3": "number",
+        },
+
+        "Reaction Tanks": {
+            "Sec p.H. Grab?": "number",
+            "Sec. Meter?": "number",
+            "RT #1 p.H?": "number",
+            "Tuba (Meter)": "number",
+            "RT #4 p.H.:": "number",
+        },
+
+        "Turbidity": {
+            "Meter": "number",
+            "SEC": "number",
+            "F.E.": "number",
+            "Comag": "number",
+            "Baker C": "number",
+            "Baker (G)": "number",
+        },
+
+        "Press 1 Feed": {
+
+            "Sample Wet": "number",
+            "Tare": "number",
+            "Difference Wet": "label",
+            "Sample Dry": "number",
+            "Difference Dry": "label",
+        },
+
+        "Press 1 Cake": {
+            "Sample Wet": "number",
+            "Tare": "number",
+            "Difference Wet": "label",
+            "Sample Dry": "number",
+            "Difference Dry": "label",
+        },
+
+        "Press 2 Feed": {
+            "Sample Wet": "number",
+            "Tare": "number",
+            "Difference Wet": "label",
+            "Sample Dry": "number",
+            "Difference Dry": "label",
+        },
+
+        "Press 2 Cake": {
+            "Sample Wet": "number",
+            "Tare": "number",
+            "Difference Wet": "label",
+            "Sample Dry": "number",
+            "Difference Dry": "label",
+        },
+
+        "Filtrate": {
+
+            "mL": "number",
+            "Dry Weight": "number",
+            "Tare": "number",
+            "Difference": "label",
+            "mg/L": "number",
+            "Operator": "text",
+            "GT Used": "number",
+        }
+        ,
+
+        "Gravity Thickener Depth of Blankets": {
+
+            "GT-1": "number",
+            "GT-2": "number",
+        }
 
 
     }
@@ -765,11 +850,11 @@ function setUpHTML() {
 
 
     //Yard
-    create_Table("Primary-Blanket-Block", "Primary DOB's", primary_blanket_labels);
-    create_Table("Secondary-Blanket-Block", "Secondary DOB's", secondary_blanket_labels);
-    create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", tertiary_blanket_labels);
-    create_Table("Reaction-Tank-Block", "Reaction Tanks", reaction_tank_labels);
-    create_Table("Turbidity-Block", "Turbidity", turbidity_labels);
+    //create_Table("Primary-Blanket-Block", "Primary DOB's", primary_blanket_labels);
+    //create_Table("Secondary-Blanket-Block", "Secondary DOB's", secondary_blanket_labels);
+    //create_Table("Tertiary-Blanket-Block", "Tertiary DOB's", tertiary_blanket_labels);
+    //create_Table("Reaction-Tank-Block", "Reaction Tanks", reaction_tank_labels);
+    //create_Table("Turbidity-Block", "Turbidity", turbidity_labels);
 
     //Press
     //Press has a separate function create_Dynamic_Tables

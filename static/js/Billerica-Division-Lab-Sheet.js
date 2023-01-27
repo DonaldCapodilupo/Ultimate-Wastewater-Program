@@ -465,17 +465,17 @@ class Table_Creator {
 
             if (input_type === "number") {
                 row_to_fill.innerHTML +=
-                    '<td><input class="form-control" type="number" step="0.01" id="' + backend_label_text + '"  value="' + input_type + '"></td></tr>';
+                    '<td><input name="'+ backend_label_text +'" class="form-control" type="number" step="0.01" id="' + backend_label_text + '"  value="' + input_type + '"></td></tr>';
             } else if (input_type === "text") {
                 row_to_fill.innerHTML +=
-                    '<td><input class="form-control" type=' + input_type + ' id="' + backend_label_text + '"></td></tr>';
+                    '<td><input name="'+ backend_label_text +'" class="form-control" type=' + input_type + ' id="' + backend_label_text + '"></td></tr>';
             } else if (input_type === "time") {
                 row_to_fill.innerHTML +=
-                    '<td><input class="form-control" type=' + input_type + ' id="' + backend_label_text + '" value="07:00"></td></tr>';
+                    '<td><input name="'+ backend_label_text +'" class="form-control" type=' + input_type + ' id="' + backend_label_text + '" value="07:00"></td></tr>';
 
             } else if (input_type === "label") {
                 row_to_fill.innerHTML +=
-                    '<td><span id="Output ' + backend_label_text + '">0.00</span></td></tr>';
+                    '<td><span  id="Output ' + backend_label_text + '">0.00</span></td></tr>';
             }
 
 

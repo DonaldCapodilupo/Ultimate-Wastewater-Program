@@ -66,7 +66,18 @@ def get_Prior_Day_Values():
     prior_data = os.listdir("Historical Data")
     today = str(datetime.date.today())
 
-    directory_items_to_ignore = [today+".json","Yesterday's Data.json"]
+    directory_items_to_ignore = [today + ".json", "Yesterday's Data.json"]
+
+    last_date_data_was_recorded = [data_json for data_json in os.listdir("Historical Data") if data_json not in directory_items_to_ignore][-1]
+    #last_date_of_data_recorded = last_date_data_was_recorded[0:-5]
+
+    with open('Historical Data/' + last_date_data_was_recorded) as json_file:
+        data = json.load(json_file)
+
+    
+
+
+
 
     for item in directory_items_to_ignore:
 
@@ -77,6 +88,8 @@ def get_Prior_Day_Values():
 
 
     prior_date = prior_data[-1][:-5]  # yyyy-mm-dd format
+
+    print("Prior Date: " + prior_date)
 
     return_data = {prior_date: {}}
 
@@ -92,4 +105,8 @@ def get_Prior_Day_Values():
 
     return return_data
 
-get_Prior_Day_Values()
+for key, value in get_Prior_Day_Values().items():
+    try:
+        print("Key:" + key + " Value: " + value )
+    except:
+        print("Key: " + key)

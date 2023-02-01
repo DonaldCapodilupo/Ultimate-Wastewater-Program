@@ -196,8 +196,8 @@ const
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
 
@@ -205,64 +205,64 @@ const
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "D Box TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "RAS TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Secondary Effluent TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Final Effluent TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Baker TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Water Dept TSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Influent TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
 
@@ -270,56 +270,56 @@ const
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "D Box TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "RAS TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Secondary Effluent TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Final Effluent TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Baker TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Water Dept TVSS": {
             "ML Sample": "number",
             "Dry Weight": "number",
             "Start Weight": "number",
-            "Weight Difference": "number",
-            "Results": "number",
+            "Weight Difference": "label",
+            "Results": "label",
         },
 
         "Primary DOB's": {
@@ -465,13 +465,13 @@ class Table_Creator {
 
             if (input_type === "number") {
                 row_to_fill.innerHTML +=
-                    '<td><input name="'+ backend_label_text +'" class="form-control" type="number" step="0.01" id="' + backend_label_text + '"  value="' + input_type + '"></td></tr>';
+                    '<td><input name="' + backend_label_text + '" class="form-control" type="number" step="0.01" id="' + backend_label_text + '"  value="' + input_type + '"></td></tr>';
             } else if (input_type === "text") {
                 row_to_fill.innerHTML +=
-                    '<td><input name="'+ backend_label_text +'" class="form-control" type=' + input_type + ' id="' + backend_label_text + '"></td></tr>';
+                    '<td><input name="' + backend_label_text + '" class="form-control" type=' + input_type + ' id="' + backend_label_text + '"></td></tr>';
             } else if (input_type === "time") {
                 row_to_fill.innerHTML +=
-                    '<td><input name="'+ backend_label_text +'" class="form-control" type=' + input_type + ' id="' + backend_label_text + '" value="07:00"></td></tr>';
+                    '<td><input name="' + backend_label_text + '" class="form-control" type=' + input_type + ' id="' + backend_label_text + '" value="07:00"></td></tr>';
 
             } else if (input_type === "label") {
                 row_to_fill.innerHTML +=
@@ -558,6 +558,7 @@ function setUpHTML() {
     setup_Calculating_Comag_Chemical_Tables()
     setup_Calculating_Press_Tables()
     setup_Calculating_Filtrate_Tables()
+    setup_Calculating_TSS_And_TVSS()
 
 
 }
@@ -690,6 +691,43 @@ function setup_Calculating_Filtrate_Tables() {
 }
 
 
+function setup_Calculating_TSS_And_TVSS() {
 
+    let suspended_solids_array = document.querySelectorAll(".suspended_solids_array");
+
+    suspended_solids_array.forEach(function (elem) {
+
+        elem.addEventListener("input", function (event) {
+            console.log(event.target["id"]);
+
+
+            let specific_press_user_input = event.target["id"].split(" ").slice(0, 2).join(" ");
+
+            console.log(specific_press_user_input);
+
+
+
+            let milliliters_used = document.getElementById(specific_press_user_input + " ML Sample").value;
+            let tare = document.getElementById(specific_press_user_input + " Dry Weight").value;
+            let sample_dry = document.getElementById(specific_press_user_input + " Start Weight").value;
+
+
+            let weight_difference = (sample_dry - tare).toFixed(4).toString()
+            let results = ((weight_difference * 1000000) /milliliters_used ).toFixed(2).toString()
+
+            document.getElementById("Output " + specific_press_user_input + " Weight Difference").innerHTML =
+                Math.abs(weight_difference);
+
+
+
+            if (isNaN(results)) {
+                document.getElementById("Output " + specific_press_user_input + " Results").innerHTML = "0.00%";
+            } else {
+                document.getElementById("Output " + specific_press_user_input + " Results").innerHTML = results + "%"
+            }
+        })
+    })
+
+}
 
 

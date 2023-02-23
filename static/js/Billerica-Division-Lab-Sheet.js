@@ -690,7 +690,7 @@ function setup_Calculating_Filtrate_Tables() {
     })
 }
 
-
+//This function needs to be completed. How to check "TSS Influent" and "TSS Primary Effluent" with one haveing 2 words and the other having 3.
 function setup_Calculating_TSS_And_TVSS() {
 
     let suspended_solids_array = document.querySelectorAll(".suspended_solids_array");
@@ -701,7 +701,7 @@ function setup_Calculating_TSS_And_TVSS() {
             console.log(event.target["id"]);
 
 
-            let specific_press_user_input = event.target["id"].split(" ").slice(0, 2).join(" ");
+            let specific_press_user_input = event.target["id"].split(" ").slice(0, 3).join(" ");
 
             console.log(specific_press_user_input);
 

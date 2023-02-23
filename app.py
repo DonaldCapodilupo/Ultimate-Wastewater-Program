@@ -3,6 +3,25 @@ import datetime
 
 app = Flask(__name__)
 
+
+@app.route('/', methods=["POST","GET"])
+def main_Menu():
+    if request.method == "POST":
+        if request.form['submit_button'] == "Main Lab Sheet":
+
+
+            return redirect(url_for('daily_Lab_Sheet'))
+
+        elif request.form['submit_button'] == "View Data":
+
+
+            return redirect(url_for('data_Menu'))
+
+
+    else:
+        return render_template("Main Menu.html")
+
+
 @app.route('/Daily-Lab-Sheet', methods=["POST","GET"])
 def daily_Lab_Sheet():
     if request.method == "POST":
@@ -29,23 +48,6 @@ def daily_Lab_Sheet():
 
     else:
         return render_template("Daily Lab Sheet.html")
-
-@app.route('/', methods=["POST","GET"])
-def main_Menu():
-    if request.method == "POST":
-        if request.form['submit_button'] == "Main Lab Sheet":
-
-
-            return redirect(url_for('daily_Lab_Sheet'))
-
-        elif request.form['submit_button'] == "View Data":
-
-
-            return redirect(url_for('data_Menu'))
-
-
-    else:
-        return render_template("Main Menu.html")
 
 
 

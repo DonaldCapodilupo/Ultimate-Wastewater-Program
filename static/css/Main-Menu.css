@@ -1,0 +1,18 @@
+.main-content-div {
+    background-color: #1C6C4F;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+
+}
+
+button {
+
+    margin: 100px 100px 100px 100px;
+    height: 95%;
+    width: 95%;
+
+
+
+
+}

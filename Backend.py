@@ -1,6 +1,19 @@
-import os, json
+import os, json, datetime
 
 from bs4 import BeautifulSoup
+
+def program_Setup_On_Startup():
+
+    if not os.path.isdir("Historical Data"):
+        print(os.getcwd())
+        print("Historical Data Directory not found. Initializing.")
+        os.mkdir("Historical Data")
+        os.mkdir("Historical Data/Time Cards")
+    else:
+        print("Historical Data directory is present.")
+
+
+
 
 
 # Copy/Paste to royCEU Template.html
@@ -62,22 +75,17 @@ def get_Prior_Day_Values():
         "Comag Today Polymer"
     ]
 
-
     prior_data = os.listdir("Historical Data")
     today = str(datetime.date.today())
 
     directory_items_to_ignore = [today + ".json", "Yesterday's Data.json"]
 
-    last_date_data_was_recorded = [data_json for data_json in os.listdir("Historical Data") if data_json not in directory_items_to_ignore][-1]
-    #last_date_of_data_recorded = last_date_data_was_recorded[0:-5]
+    last_date_data_was_recorded = \
+        [data_json for data_json in os.listdir("Historical Data") if data_json not in directory_items_to_ignore][-1]
+    # last_date_of_data_recorded = last_date_data_was_recorded[0:-5]
 
     with open('Historical Data/' + last_date_data_was_recorded) as json_file:
         data = json.load(json_file)
-
-    
-
-
-
 
     for item in directory_items_to_ignore:
 
@@ -85,7 +93,6 @@ def get_Prior_Day_Values():
             prior_data.remove(item)
         except ValueError:
             print(item + " was not found in the directory.")
-
 
     prior_date = prior_data[-1][:-5]  # yyyy-mm-dd format
 
@@ -105,8 +112,71 @@ def get_Prior_Day_Values():
 
     return return_data
 
-for key, value in get_Prior_Day_Values().items():
-    try:
-        print("Key:" + key + " Value: " + value )
-    except:
-        print("Key: " + key)
+
+class Time_Clock:
+    def __init__(self, user_input, ):
+        self.user_input = user_input
+        self.employee_directory = {
+            "001": "Nick",
+            "002": "Keith",
+            "003": "Chris",
+            "004": "Dragan",
+            "005": "Dave",
+            "006": "Connor",
+            "007": "Donald",
+            "008": "Shayne",
+        }
+
+        self.today = str(datetime.date.today())
+
+        self.setup_files()
+
+
+
+    def setup_files(self):
+
+
+        if os.path.isfile("Historical Data/Time Cards/" + self.today+ ".json"):
+            print("There is already a time card created today, no need to create another one.")
+            return
+        else:
+
+            time_card_obj = {}
+
+            for key, value in self.employee_directory.items():
+                time_card_obj[value] = {"Punch In":"",
+                                       "Punch Out":"", }
+
+            with open("Historical Data/Time Cards/" + self.today+ ".json","w") as output_file:
+                json.dump(time_card_obj, output_file)
+
+
+    def check_Employee_ID(self):
+
+        try:
+            employee = self.employee_directory[self.user_input]
+            print("Input: " + self.user_input + " returns user: " + employee)
+            return employee
+        except KeyError:
+            print("Input: " + self.user_input + " is not a valid employee ID.")
+            return False
+
+    def return_Employee_Name(self):
+        return self.employee_directory[self.user_input]
+
+    def log_Employee_Punch(self):
+
+        current_time = datetime.datetime.now().strftime("%H:%M")
+
+        with open("Historical Data/Time Cards/"+ self.today + ".json","r") as json_file:
+            current__day_data = json.load(json_file)
+            print("This: " + current__day_data[self.employee_directory[self.user_input]]["Punch In"])
+            if current__day_data[self.employee_directory[self.user_input]]["Punch In"] =="":
+                current__day_data[self.employee_directory[self.user_input]]["Punch In"] = current_time
+            else:
+                current__day_data[self.employee_directory[self.user_input]]["Punch Out"] = current_time
+
+
+        with open("Historical Data/Time Cards/"+ self.today + ".json","w") as json_file:
+            json.dump(current__day_data, json_file)
+

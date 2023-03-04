@@ -62,3 +62,18 @@ body {
 .Conformation-Prompt-Div{
 
 }
+
+.blink-bg{
+		color: lightcyan;
+		padding: 10px;
+		display: inline-block;
+		border-radius: 5px;
+		animation: blinkingBackground 1s;
+	}
+	@keyframes blinkingBackground{
+		0%		{ background-color: seagreen;}
+		25%		{ background-color: #77dd77;}
+		50%		{ background-color: seagreen;}
+		75%		{ background-color: #77dd77;}
+		100%	        { background-color: #77dd77;}
+	}

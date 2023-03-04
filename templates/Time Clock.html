@@ -27,22 +27,28 @@
         </div>
 
         <div class="row Clock-Row">
+
             <div class="col"></div>
             <div class="col time_stamp" id="time_span" onload="updateTime(); setInterval('updateTime()', 1000 )">
+                {% if employee_name %}
+                <div class="row confirmation_div blink-bg">
+                    {{ employee_name }} has been logged.
+
+                </div>
+            {% endif %}
             </div>
             <div class="col"></div>
 
 
         </div>
 
-        <form method="post" action="/">
+        <form action="{{ url_for('time_Clock') }}" enctype=multipart/form-data method="POST">
             <div class="row User-Input-Row">
                 <div class="row Subtitle-Row">
                     <label for="employee_id">What is your employee ID?</label>
                     <input type="number" id="employee_id" name="request_input">
-                    <input type="submit" style="display: none" />
+                    <input type="submit" style="display: none"/>
                 </div>
-
 
 
                 <div class="Submit-Row">
@@ -80,8 +86,6 @@
     setInterval(updateTime, 1000);
 
     setupHTML();
-
-
 
 
 </script>

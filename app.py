@@ -81,22 +81,25 @@ def time_Clock():
             return redirect(url_for('main_Menu'))
         elif request.form['submit_button'] == "Punch In":
             from Backend import Time_Clock
+
+            #Capture User Input
             user_input_employee_id = request.form["request_input"]
 
+            #Create Time Card Object
             time_card_obj = Time_Clock(user_input_employee_id)
 
-            if employee :=time_card_obj.check_Employee_ID():
+            #Check to see if the employee ID returns valid
+            if employee := time_card_obj.check_Employee_ID():
+                #Record the user punch.
                 print("Logging in user " + employee)
                 time_card_obj.log_Employee_Punch()
+
                 return render_template("Time Clock.html", employee_name=employee)
 
-
-
-
             else:
+                #Show the frontend that the employee id was invalid.
                 print(user_input_employee_id + " is not a valid employee ID.")
-
-                return render_template("Time Clock.html", employee_name="Not A Valid ID")
+                return render_template("Time Clock.html", invalid=True)
 
     else:
         return render_template("Time Clock.html")

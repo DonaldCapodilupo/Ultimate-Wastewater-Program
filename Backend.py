@@ -132,7 +132,6 @@ class Time_Clock:
         self.setup_files()
 
 
-
     def setup_files(self):
 
 
@@ -152,13 +151,22 @@ class Time_Clock:
 
 
     def check_Employee_ID(self):
+        import winsound
 
         try:
             employee = self.employee_directory[self.user_input]
             print("Input: " + self.user_input + " returns user: " + employee)
+
+            duration = 100  # milliseconds
+            freq = 550  # 440  # Hz
+            winsound.Beep(freq, duration)
+            winsound.Beep(freq, duration)
+
+
             return employee
         except KeyError:
             print("Input: " + self.user_input + " is not a valid employee ID.")
+            winsound.Beep(250, 300)
             return False
 
     def return_Employee_Name(self):

@@ -31,11 +31,18 @@
             <div class="col"></div>
             <div class="col time_stamp" id="time_span" onload="updateTime(); setInterval('updateTime()', 1000 )">
                 {% if employee_name %}
-                <div class="row confirmation_div blink-bg">
-                    {{ employee_name }} has been logged.
+                    <div class="row confirmation_div blink-bg">
+                        {{ employee_name }} has been logged.
 
-                </div>
-            {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if invalid %}
+                    <div class="row confirmation_div blink-bg">
+                        Invalid Employee ID.
+
+                    </div>
+                {% endif %}
             </div>
             <div class="col"></div>
 

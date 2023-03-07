@@ -5,12 +5,14 @@
     <title>BWRRF Quiz</title>
 
     <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/Practice%20Quiz.css">
     <link rel="stylesheet" href="../static/css/main.css">
 
     <script src="../static/js/bootstrap.js"></script>
     <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
     <script src="../static/js/Practice%20Quiz.js"></script>
     <script src="../static/js/Practice-Quiz-1-Questions.js"></script>
+
 </head>
 <body>
 
@@ -33,42 +35,66 @@
         </div>
 
 
-        <div class="row" id="question_Div">
+        <div class="row question_Div">
+
+            {% for question_number, value_dict in questions.items() %}
+
+                <div class="row individual_question">
+                    {{ question_number }}
+                    {% for key, list_of_information in value_dict.items() %}
+                        <div class="row question_information" id="{{ question_number }}">
+                            {% if key == "Answer" %}
+                                <div class="row answer_div" style="display: none">{{ value_dict[key] }}</div>
+                            {% else %}
+                                <h3>{{ key }}</h3>
+                                {% for possible_answer in list_of_information %}
+
+                                    <li>
+                                        <button value="{{ possible_answer }}" onclick="log_possible_answer(this)">?</button>
+                                        {{ possible_answer }}
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+
+                            {{ question_text }}
+                            <br>
+                            {% for possible_answers in answer_text %}
+                                {{ question_text }}
+
+                            {% endfor %}
+                        </div>
+
+
+
+
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+
 
         </div>
 
-
     </div>
-    <div class="col-1"></div>
 
 
-    <script>
-        create_Question_Divs()
-        show_One_Question_Div()
+</div>
+<div class="col-1"></div>
 
 
-        function next_Question() {
-            const question_numbers = Object.keys(quiz_1_questions)
-            
-            for (var i = 0; i < question_numbers.length; i++) {
+<script>
+
+    function log_possible_answer(button_clicked) {
+
+        let button_value = button_clicked.value;
+        let question_number = button_clicked.parentElement.parentNode["id"];
+        console.log(button_value);
+        console.log(question_number);
 
 
-                if (question_numbers[i].id === div_to_reveal) {
-                    question_numbers[i].style.display = "block";
-                } else {
-                    divsToHide[i].style.display = "none";
-                }
+    }
 
-            }
-        }
-
-
-        next_Question()
-
-        function previous_Question() {
-        }
-
-    </script>
+</script>
 </div>
 
 </body>

@@ -188,3 +188,53 @@ class Time_Clock:
         with open("Historical Data/Time Cards/"+ self.today + ".json","w") as json_file:
             json.dump(current__day_data, json_file)
 
+
+
+class Quiz_Generator:
+    def __init__(self):
+        pass
+
+def organize_royCEU_questions_into_one_question_bank():
+    final_json = {}
+    question_number = 1
+
+
+
+    for json_file in os.listdir("Training Questions"):
+        with open("Training Questions/" + json_file,"r", encoding="utf8") as open_json_file:
+            data = json.load(open_json_file)
+
+
+            for dictionary in data.values():
+                final_json['Question number: ' + str(question_number)] = dictionary
+                question_number += 1
+
+    with open("Test Questions.json","w") as json_file:
+        json.dump(final_json,json_file)
+    print(final_json)
+
+
+
+
+
+
+
+
+            #final_json["Question Number " + str(question_number)] = value[0]
+            #final_json["Question Number " + str(question_number) + " Answer"] = value[1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

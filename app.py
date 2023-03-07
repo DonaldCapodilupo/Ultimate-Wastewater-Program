@@ -111,7 +111,11 @@ def practice_Quiz():
         if request.form['submit_button'] == "Return Home":
             return redirect(url_for('main_Menu'))
     else:
-        return render_template("Practice Quiz.html")
+        import json
+        with open("Test Questions.json", "r") as json_file:
+            data = json.load(json_file)
+        print(data)
+        return render_template("Practice Quiz.html", questions=data)
 
 
 @app.route('/Compliance', methods=["POST", "GET"])

@@ -10,8 +10,7 @@
 
     <script src="../static/js/bootstrap.js"></script>
     <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
-    <script src="../static/js/Practice%20Quiz.js"></script>
-    <script src="../static/js/Practice-Quiz-1-Questions.js"></script>
+
 
 </head>
 <body>
@@ -28,9 +27,9 @@
 
         <div class="row d-flex justify-content-center mb-3 mt-2" id="navigation_Div">
             <div class="col-2">
-                <button type="button" class="btn btn-secondary">Previous</button>
+                <button type="button" class="btn btn-secondary" onclick="previous_Question()">Previous</button>
                 1/175
-                <button type="button" class="btn btn-success">Next</button>
+                <button type="button" class="btn btn-success" onclick="next_Question()">Next</button>
             </div>
         </div>
 
@@ -39,7 +38,7 @@
 
             {% for question_number, value_dict in questions.items() %}
 
-                <div class="row individual_question">
+                <div class="row individual_question" id="{{ question_number }}" style="display: none">
                     {{ question_number }}
                     {% for key, list_of_information in value_dict.items() %}
                         <div class="row question_information" id="{{ question_number }}">
@@ -91,8 +90,44 @@
         console.log(button_value);
         console.log(question_number);
 
+        for (let [key, value] of Object.entries({{ questions | tojson}})){
+            if(key === question_number){
+                if(value["Answer"][0] === button_value){
+                    alert("Correct! \n "+ value["Answer"][1])
+                    next_Question(question_number)
+                }else{
+                    alert(button_value + " was not a correct answer.")
+                }
+            }
+        }
+
 
     }
+
+
+    function next_Question(current_question){
+        const first_question = document.getElementById(current_question).style.display = "none";
+        console.log(current_question)
+        let next_question_number = parseInt(current_question.charAt(current_question.length - 1)) +1
+        console.log(next_question_number)
+        document.getElementById("Question number: " + next_question_number.toString()).style.display = "block"
+    }
+
+    function previous_Question(current_question){
+        const first_question = document.getElementById(current_question).style.display = "none";
+        console.log(current_question)
+        let next_question_number = parseInt(current_question.charAt(current_question.length - 1)) -1
+        console.log(next_question_number)
+        document.getElementById("Question number: " + next_question_number.toString()).style.display = "block"
+    }
+
+    function setup_HTML(){
+        const first_question = document.getElementById("Question number: 1");
+
+        first_question.style.display = "block";
+    }
+
+    setup_HTML()
 
 </script>
 </div>

@@ -61,3 +61,13 @@ function show_One_Question_Div(){
     const question_div_array = document.getElementById("Question_Card_Div")
     question_div_array.style.display = "block";
 }
+
+
+const Quiz_Tracker =
+    {
+        "Current Question" : 1,
+        "Current Score":0,
+        "Total Number of Questions":0,
+        "Questions Correct":0,
+        "Questions Wrong":0
+    }

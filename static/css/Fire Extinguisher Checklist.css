@@ -1,0 +1,52 @@
+.container {
+
+
+}
+
+body img {
+    position: absolute;
+    background-size: cover;
+}
+
+
+.btn {
+    position: absolute;
+    top: 65%;
+    left: 71%;
+
+
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .btn:hover {
+    background-color: black;
+}
+
+.headworks_div {
+    float: left;
+    position: absolute;
+    left: 30%;
+    top: 15%;
+    z-index: 1000;
+    background-color: #92AD40;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+
+    border-radius: 10px;
+    height: 360px;
+}
+
+.headworks_div img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}

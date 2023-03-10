@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/Fire%20Extinguisher%20Checklist.css">
+</head>
+<body>
+
+
+<div class="headworks_div" id="Headworks" style="display: none">
+    <h1>In this building there are fire extinguishers.</h1>
+    <!--Tabs For Selecting Roll-->
+    <ul class="nav nav-tabs justify-content-center"
+        id="worksheets_tab"
+        role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active"
+                    id="FireInf01-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#FireInf01"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true">
+                FireInf01
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link"
+                    id="FireInf02-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#FireInf02"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false">
+                FireInf02
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link"
+                    id="press-data-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#press"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false">
+                FireInf3
+            </button>
+        </li>
+    </ul>
+
+    <!--Area for Showing Tab-->
+    <div class="tab-content" id="worksheets_tab_Content">
+
+        <!--FireInf01 -->
+        <div class="tab-pane fade show active grid justify-content-center"
+             id="FireInf01"
+             role="tabpanel"
+             aria-labelledby="FireInf01-tab">
+
+
+            <img src="../static/images/Fire%20Extinguishers/influent_01.png">
+        </div>
+
+
+        <!--FireInf02 -->
+        <div class="tab-pane fade"
+             id="FireInf02"
+             role="tabpanel"
+             aria-labelledby="FireInf02-tab">
+
+            <h2>Test Yo</h2>
+            <img src="../static/images/Fire%20Extinguishers/influent_01.png">
+        </div>
+
+
+    </div>
+</div>
+
+<img src="../static/images/Plant%20Satelite.png">
+<button class="btn" onclick="show_Headworks()">Headworks</button>
+
+
+</body>
+
+
+<script>
+    function show_Headworks() {
+        let div_status = document.getElementById("Headworks").style.display
+
+        if (div_status === "none") {
+            document.getElementById("Headworks").style.display = "block"
+        } else {
+            document.getElementById("Headworks").style.display = "none"
+        }
+
+
+    }
+
+
+</script>
+</html>
+

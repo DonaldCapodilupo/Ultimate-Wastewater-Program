@@ -133,7 +133,18 @@ def check_Checklists():
         if request.form['submit_button'] == "Return Home":
             return redirect(url_for('main_Menu'))
     else:
-        return render_template("Checklists.html")
+        import json
+
+        extinguisher_data = {"Headworks":{"FEINF001":
+                                 "This extinguisher can be located in the screening building, to the right of the main "
+                                 "door after you enter. This is extinguisher FEINF001",
+                             "FEINF002": "This extinguisher can be located in the side boiler room. After opening the "
+                                         "main door look to the left. This is extinguisher FEINF002",
+                             "FEINF003":
+                             "This extinguisher can be located in the basement of the influent building.After opening "
+                             "the main door look to the left. This is extinguisher FEINF003"}
+                }
+        return render_template("Fire Extinguisher Checklist.html", data=extinguisher_data)
 
 
 print("Starting program.")

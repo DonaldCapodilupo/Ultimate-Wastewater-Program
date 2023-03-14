@@ -6,100 +6,157 @@
 
     <link rel="stylesheet" href="../static/css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/Fire%20Extinguisher%20Checklist.css">
+
+    <script src="../static/js/bootstrap.js"></script>
 </head>
 <body>
 
 
-<div class="headworks_div" id="Headworks" style="display: none">
-    <h1>In this building there are fire extinguishers.</h1>
-    <!--Tabs For Selecting Roll-->
-    <ul class="nav nav-tabs justify-content-center"
-        id="worksheets_tab"
-        role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active"
-                    id="FireInf01-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#FireInf01"
-                    type="button"
-                    role="tab"
-                    aria-controls="home"
-                    aria-selected="true">
-                FireInf01
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link"
-                    id="FireInf02-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#FireInf02"
-                    type="button"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false">
-                FireInf02
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link"
-                    id="press-data-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#press"
-                    type="button"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false">
-                FireInf3
-            </button>
-        </li>
-    </ul>
+{% for building in data %}
+    <div class="headworks_div" id="{{ building }}" style="display: none">
+        <div class="row title_div">
+            <div class="col-3"></div>
+            <div class="col">
+                <h1>{{ building }} Fire Extinguishers</h1>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=""
+                           id="{{ building }} flexCheckCheckedDisabled" checked
+                           disabled
+                           style="display:none;">
+                    <label class="form-check-label" for="{{ building }} flexCheckCheckedDisabled" style="display: none">
+                        Disabled checked checkbox
+                    </label>
+                    <input class="form-check-input" type="checkbox" value="" id="{{ building }} flexCheckDisabled"
+                           disabled>
+                    <label class="form-check-label" for="{{ building }} flexCheckDisabled">
+                        All Extinguishers Checked
+                    </label>
+                </div>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn-close" aria-label="Close" onclick="close_Window(this)"></button>
+            </div>
 
-    <!--Area for Showing Tab-->
-    <div class="tab-content" id="worksheets_tab_Content">
-
-        <!--FireInf01 -->
-        <div class="tab-pane fade show active grid justify-content-center"
-             id="FireInf01"
-             role="tabpanel"
-             aria-labelledby="FireInf01-tab">
-
-
-            <img src="../static/images/Fire%20Extinguishers/influent_01.png">
         </div>
 
+        <div class="row information_div">
 
-        <!--FireInf02 -->
-        <div class="tab-pane fade"
-             id="FireInf02"
-             role="tabpanel"
-             aria-labelledby="FireInf02-tab">
+            <!--Tabs For Selecting Roll-->
+            <ul class="nav nav-tabs justify-content-center"
+                id="worksheets_tab"
+                role="tablist">
+                {% for extinguisher, location_description in data[building].items() %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if "001" in extinguisher %}active{% endif %}"
+                                id="{{ extinguisher }}-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#{{ extinguisher }}"
+                                type="button"
+                                role="tab"
+                                aria-controls="{% if "001" in extinguisher %}home{% else %}profile{% endif %}"
+                                aria-selected="{% if "001" in extinguisher %}true{% else %}false{% endif %}">
+                            {{ extinguisher }}
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
 
-            <h2>Test Yo</h2>
-            <img src="../static/images/Fire%20Extinguishers/influent_01.png">
+
+            <!--Area for Showing Tab-->
+            <div class="tab-content" id="worksheets_tabContent">
+
+                {% for extinguisher, location_description in data[building].items() %}
+                    <!--{{building}} {{ extinguisher }}-->
+                    <div class="tab-pane fade {% if "001" in extinguisher %} show active grid justify-content-center{% endif %}"
+                         id="{{ extinguisher }}"
+                         role="tabpanel"
+                         aria-labelledby="{{ extinguisher }}-tab">
+
+                        <div class="row pt-3">
+                            <div class="extinguisher_photo">
+                                <img src="../static/images/Fire%20Extinguishers/{{ extinguisher }}.jpg">
+
+                            </div>
+
+                            <div class="extinguisher_location_description">
+                                <p>{{ location_description }}</p>
+                                <input class="form-check-input" type="checkbox" id="check1" name="option1"
+                                       value="{{ extinguisher }}"
+                                       onclick="checkbox_Logic(this)">
+                                <label class="form-check-label">Extinguisher Checked</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
         </div>
-
-
     </div>
+
+{% endfor %}
 </div>
 
+
 <img src="../static/images/Plant%20Satelite.png">
-<button class="btn" onclick="show_Headworks()">Headworks</button>
+<button class="btn" onclick="show_Building_Div('Headworks')">Headworks</button>
 
 
 </body>
 
 
 <script>
-    function show_Headworks() {
-        let div_status = document.getElementById("Headworks").style.display
+    function show_Building_Div(div_to_show) {
+        let div_status = document.getElementById(div_to_show).style.display
 
         if (div_status === "none") {
-            document.getElementById("Headworks").style.display = "block"
+            document.getElementById(div_to_show).style.display = "block"
         } else {
-            document.getElementById("Headworks").style.display = "none"
+            document.getElementById(div_to_show).style.display = "none"
         }
 
 
+    }
+
+
+    const list_of_extinguishers = ["FEINF001", "FEINF002", "FEINF003"]
+
+    const extinguishers_checked = {};
+
+    for (const key of list_of_extinguishers) {
+        extinguishers_checked[key] = false;
+    }
+
+    function checkbox_Logic(current_checkbox) {
+        let box_checked = current_checkbox.value;
+        console.log(box_checked)
+
+        extinguishers_checked[box_checked] = !extinguishers_checked[box_checked];
+
+        const buildings = ["Headworks","Admin","Ras","Comag Ras", "Press", "Sludge"]
+
+        for (let building of buildings){
+            if (Object.values(extinguishers_checked).every(Boolean)) {
+            document.getElementById(building + " flexCheckCheckedDisabled").style.display = "block"
+            document.getElementById(building + " flexCheckDisabled").style.display = "none"
+        } else {
+            document.getElementById(building + " flexCheckCheckedDisabled").style.display = "none"
+            document.getElementById(building + " flexCheckDisabled").style.display = "block"
+        }
+
+        }
+
+
+
+    }
+
+
+    function close_Window(current_div) {
+        let window_to_close = current_div.parentElement.parentElement.parentElement.id
+        document.getElementById(window_to_close).style.display = "none"
     }
 
 

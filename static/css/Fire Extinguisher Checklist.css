@@ -41,12 +41,20 @@ body img {
     font-weight: bold;
 
     border-radius: 10px;
-    height: 360px;
+    height: 400px;
+    width: 1000px;
 }
 
 .headworks_div img {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 150px;
+    width: 300px;
+}
+
+.extinguisher_location_description{
+    width: 350px;
+}
+.extinguisher_photo{
+    width: 500px;
 }

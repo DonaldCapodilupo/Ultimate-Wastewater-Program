@@ -98,18 +98,22 @@
     </div>
 
 {% endfor %}
-</div>
 
 
 <img src="../static/images/Plant%20Satelite.png">
-<button class="btn" onclick="show_Building_Div('Headworks')">Headworks</button>
-
+<button class="btn headworks" onclick="show_Building_Div('Headworks')">Headworks</button>
+<button class="btn admin" onclick="show_Building_Div('Admin')">Admin</button>
+<button class="btn ras" onclick="show_Building_Div('Ras')">Ras</button>
+<button class="btn comag_ras" onclick="show_Building_Div('Comag Ras')">Comag Ras</button>
+<button class="btn press" onclick="show_Building_Div('Press Building')">Press Building</button>
+<button class="btn sludge" onclick="show_Building_Div('Sludge Building')">Sludge Building</button>
 
 </body>
 
 
 <script>
     function show_Building_Div(div_to_show) {
+        console.log(div_to_show)
         let div_status = document.getElementById(div_to_show).style.display
 
         if (div_status === "none") {

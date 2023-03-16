@@ -9,11 +9,8 @@ body img {
 }
 
 
-.btn {
+.btn{
     position: absolute;
-    top: 65%;
-    left: 71%;
-
 
     background-color: #555;
     color: white;
@@ -23,6 +20,36 @@ body img {
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+}
+
+.headworks{
+    top: 65%;
+    left: 71%;
+}
+
+.admin{
+    top: 37%;
+    left: 54%;
+}
+
+.ras{
+    top: 75%;
+    left: 36%;
+}
+
+.comag_ras{
+    top: 50%;
+    left: 20%;
+}
+
+.press{
+    top: 34%;
+    left: 23%;
+}
+
+.sludge{
+    top: 20%;
+    left: 45%;
 }
 
 .container .btn:hover {

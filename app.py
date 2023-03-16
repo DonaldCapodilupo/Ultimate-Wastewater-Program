@@ -4,7 +4,7 @@ import datetime
 app = Flask(__name__)
 
 
-@app.route('/', methods=["POST","GET"])
+@app.route('/', methods=["POST", "GET"])
 def main_Menu():
     if request.method == "POST":
 
@@ -33,7 +33,7 @@ def main_Menu():
         return render_template("Main Menu.html")
 
 
-@app.route('/Daily-Lab-Sheet', methods=["POST","GET"])
+@app.route('/Daily-Lab-Sheet', methods=["POST", "GET"])
 def daily_Lab_Sheet():
     if request.method == "POST":
         if request.form['submit_button'] == "Save Data":
@@ -42,7 +42,7 @@ def daily_Lab_Sheet():
             data = {}
 
             data_to_store = request.form
-            for key,value in data_to_store.items():
+            for key, value in data_to_store.items():
                 data[key] = value
 
             today_date = str(datetime.date.today())
@@ -52,15 +52,14 @@ def daily_Lab_Sheet():
             return render_template("Daily Lab Sheet.html")
 
         if request.form['submit_button'] == "Return Home":
-
-
             return redirect(url_for('main_Menu'))
 
 
     else:
         return render_template("Daily Lab Sheet.html")
 
-@app.route('/Data', methods=["POST","GET"])
+
+@app.route('/Data', methods=["POST", "GET"])
 def data_Menu():
     if request.method == "POST":
         if request.form['submit_button'] == "Return Home":
@@ -82,22 +81,22 @@ def time_Clock():
         elif request.form['submit_button'] == "Punch In":
             from Backend import Time_Clock
 
-            #Capture User Input
+            # Capture User Input
             user_input_employee_id = request.form["request_input"]
 
-            #Create Time Card Object
+            # Create Time Card Object
             time_card_obj = Time_Clock(user_input_employee_id)
 
-            #Check to see if the employee ID returns valid
+            # Check to see if the employee ID returns valid
             if employee := time_card_obj.check_Employee_ID():
-                #Record the user punch.
+                # Record the user punch.
                 print("Logging in user " + employee)
                 time_card_obj.log_Employee_Punch()
 
                 return render_template("Time Clock.html", employee_name=employee)
 
             else:
-                #Show the frontend that the employee id was invalid.
+                # Show the frontend that the employee id was invalid.
                 print(user_input_employee_id + " is not a valid employee ID.")
                 return render_template("Time Clock.html", invalid=True)
 
@@ -135,23 +134,53 @@ def check_Checklists():
     else:
         import json
 
-        extinguisher_data = {"Headworks":{"FEINF001":
-                                 "This extinguisher can be located in the screening building, to the right of the main "
-                                 "door after you enter. This is extinguisher FEINF001",
-                             "FEINF002": "This extinguisher can be located in the side boiler room. After opening the "
-                                         "main door look to the left. This is extinguisher FEINF002",
-                             "FEINF003":
-                             "This extinguisher can be located in the basement of the influent building.After opening "
-                             "the main door look to the left. This is extinguisher FEINF003"}
-                }
+        extinguisher_data = {
+            "Headworks": {
+                "FEINF001":
+                    "This extinguisher can be located in the screening building, to the right of the main "
+                    "door after you enter. This is extinguisher FEINF001",
+                "FEINF002": "This extinguisher can be located in the side boiler room. After opening the "
+                            "main door look to the left. This is extinguisher FEINF002",
+                "FEINF003":
+                    "This extinguisher can be located in the basement of the influent building.After opening "
+                    "the main door look to the left. This is extinguisher FEINF003"},
+            "Admin": {
+                "FEADMIN001": "This is located right at the main enterence.",
+                "FEADMIN002": "This is located near the back enterence.",
+                "FEADMIN003": "This is located in the main lab.",
+                "FEADMIN004": "This one is located in the specimin room."},
+            "Ras": {
+                "FERAS001": "This is located right at the main enterence.",
+                "FERAS002": "This is located near the back enterence.",
+                "FERAS003": "This is located in the main lab.",
+                "FERAS004": "This one is located in the specimin room."},
+            "Comag Ras": {
+                "FECRAS001": "This is located right at the main enterence.",
+                "FECRAS002": "This is located near the back enterence.",
+                "FECRAS003": "This is located in the main lab.",
+                "FECRAS004": "This one is located in the specimin room."},
+
+            "Press Building": {
+                "FEPRESS001": "This is located right at the main enterence.",
+                "FEPRESS002": "This is located near the back enterence.",
+                "FEPRESS003": "This is located in the main lab.",
+                "FEPRESS004": "This one is located in the specimin room."},
+
+            "Sludge Building": {
+                "FESLUDGE001": "This is located right at the main enterence.",
+                "FESLUDGE002": "This is located near the back enterence.",
+                "FESLUDGE003": "This is located in the main lab.",
+                "FESLUDGE004": "This one is located in the specimin room."},
+        }
         return render_template("Fire Extinguisher Checklist.html", data=extinguisher_data)
 
 
 print("Starting program.")
 from Backend import program_Setup_On_Startup
+
 print("Checking to see if the program needs to be set up...")
 program_Setup_On_Startup()
 
-
 if __name__ == '__main__':
     app.run()
+

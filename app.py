@@ -145,26 +145,28 @@ def check_Checklists():
                     "This extinguisher can be located in the basement of the influent building.After opening "
                     "the main door look to the left. This is extinguisher FEINF003"},
             "Admin": {
-                "FEADMIN001": "This is located right at the main enterence.",
-                "FEADMIN002": "This is located near the back enterence.",
+                "FEADMIN001": "This is located right at the main entrance.",
+                "FEADMIN002": "This is located near the back entrance.",
                 "FEADMIN003": "This is located in the main lab.",
-                "FEADMIN004": "This one is located in the specimin room."},
+                "FEADMIN004": "This one is located in the specimen room.",
+                "FEADMIN005": "This one is located in the garage, to the left of the little office room.",
+                "FEADMIN006": "This one is located in the garage, next to the boiler room and the garage door.",
+                "FEADMIN007": "This one is located in the safety locker room, at the bottom of the stairs."
+            },
             "Ras": {
-                "FERAS001": "This is located right at the main enterence.",
-                "FERAS002": "This is located near the back enterence.",
+                "FERAS001": "This is located right at the main entrance at the top of the stairs.",
+                "FERAS002": "This is located at teh bottom of the stairs on the wall to the right.",
                 "FERAS003": "This is located in the main lab.",
-                "FERAS004": "This one is located in the specimin room."},
+                "FERAS004": "This one is located in the specimen room."},
             "Comag Ras": {
-                "FECRAS001": "This is located right at the main enterence.",
-                "FECRAS002": "This is located near the back enterence.",
-                "FECRAS003": "This is located in the main lab.",
-                "FECRAS004": "This one is located in the specimin room."},
+                "FECRAS001": "This is located right at the main entrance at the top of the stairs.",
+                },
 
             "Press Building": {
-                "FEPRESS001": "This is located right at the main enterence.",
-                "FEPRESS002": "This is located near the back enterence.",
-                "FEPRESS003": "This is located in the main lab.",
-                "FEPRESS004": "This one is located in the specimin room."},
+                "FEPRESS001": "This is located at the enterence near the electrical room.",
+                "FEPRESS002": "This is located next to the back door that leads to the gravity thickeners.",
+                "FEPRESS003": "This is located in the basement at the bottom of the stairs.",
+                },
 
             "Sludge Building": {
                 "FESLUDGE001": "This is located right at the main enterence.",

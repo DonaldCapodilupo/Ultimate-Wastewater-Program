@@ -56,7 +56,7 @@ body img {
     background-color: black;
 }
 
-.headworks_div {
+.building_div {
     float: left;
     position: absolute;
     left: 30%;
@@ -66,22 +66,21 @@ body img {
     padding: 5px;
     color: #FFFFFF;
     font-weight: bold;
-
     border-radius: 10px;
-    height: 400px;
-    width: 1000px;
+
 }
 
-.headworks_div img {
+.building_div img {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 5px;
-    width: 300px;
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
 }
 
 .extinguisher_location_description{
-    width: 350px;
+
 }
 .extinguisher_photo{
-    width: 500px;
+
 }

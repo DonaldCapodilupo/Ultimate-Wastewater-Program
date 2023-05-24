@@ -13,9 +13,12 @@
 
 
 {% for building in data %}
-    <div class="headworks_div" id="{{ building }}" style="display: none">
+
+    <div class="row building_div" id="{{ building }}" style="display: none">
+
+
         <div class="row title_div">
-            <div class="col-3"></div>
+
             <div class="col">
                 <h1>{{ building }} Fire Extinguishers</h1>
                 <div class="form-check">
@@ -23,10 +26,12 @@
                            id="{{ building }} flexCheckCheckedDisabled" checked
                            disabled
                            style="display:none;">
-                    <label class="form-check-label" for="{{ building }} flexCheckCheckedDisabled" style="display: none">
+                    <label class="form-check-label" for="{{ building }} flexCheckCheckedDisabled"
+                           style="display: none">
                         Disabled checked checkbox
                     </label>
-                    <input class="form-check-input" type="checkbox" value="" id="{{ building }} flexCheckDisabled"
+                    <input class="form-check-input" type="checkbox" value=""
+                           id="{{ building }} flexCheckDisabled"
                            disabled>
                     <label class="form-check-label" for="{{ building }} flexCheckDisabled">
                         All Extinguishers Checked
@@ -34,12 +39,14 @@
                 </div>
             </div>
             <div class="col-1">
-                <button type="button" class="btn-close" aria-label="Close" onclick="close_Window(this)"></button>
+                <button type="button" class="btn-close" aria-label="Close"
+                        onclick="close_Window(this)"></button>
             </div>
 
         </div>
 
         <div class="row information_div">
+
 
             <!--Tabs For Selecting Roll-->
             <ul class="nav nav-tabs justify-content-center"
@@ -67,37 +74,64 @@
 
                 {% for extinguisher, location_description in data[building].items() %}
                     <!--{{building}} {{ extinguisher }}-->
-                    <div class="tab-pane fade {% if "001" in extinguisher %} show active grid justify-content-center{% endif %}"
+                    <div class="row tab-pane fade {% if "001" in extinguisher %} show active grid justify-content-center{% endif %}"
                          id="{{ extinguisher }}"
                          role="tabpanel"
                          aria-labelledby="{{ extinguisher }}-tab">
 
                         <div class="row pt-3">
-                            <div class="extinguisher_photo">
+                            <div class="col extinguisher_photo">
+
+
                                 <img src="../static/images/Fire%20Extinguishers/{{ extinguisher }}.jpg">
 
-                            </div>
 
-                            <div class="extinguisher_location_description">
-                                <p>{{ location_description }}</p>
-                                <input class="form-check-input" type="checkbox" id="check1" name="option1"
-                                       value="{{ extinguisher }}"
-                                       onclick="checkbox_Logic(this)">
-                                <label class="form-check-label">Extinguisher Checked</label>
                             </div>
 
 
+                            <div class="col extinguisher_location_description">
+                                <div class="row">
+                                    <p>{{ location_description }}</p>
+                                    <input class="form-check-input" type="checkbox" id="check1" name="option1"
+                                           value="{{ extinguisher }}"
+                                           onclick="checkbox_Logic(this)">
+                                    <label class="form-check-label">Extinguisher Checked</label>
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="basic-addon3">Comment</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="basic-url"
+                                               aria-describedby="basic-addon3">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
 
+
+                    </div>
+
+                {% endfor %}
             </div>
 
 
         </div>
+
     </div>
 
+
+
+
+
+
+
 {% endfor %}
+
 
 
 <img src="../static/images/Plant%20Satelite.png">
@@ -140,19 +174,18 @@
 
         extinguishers_checked[box_checked] = !extinguishers_checked[box_checked];
 
-        const buildings = ["Headworks","Admin","Ras","Comag Ras", "Press", "Sludge"]
+        const buildings = ["Headworks", "Admin", "Ras", "Comag Ras", "Press", "Sludge"]
 
-        for (let building of buildings){
+        for (let building of buildings) {
             if (Object.values(extinguishers_checked).every(Boolean)) {
-            document.getElementById(building + " flexCheckCheckedDisabled").style.display = "block"
-            document.getElementById(building + " flexCheckDisabled").style.display = "none"
-        } else {
-            document.getElementById(building + " flexCheckCheckedDisabled").style.display = "none"
-            document.getElementById(building + " flexCheckDisabled").style.display = "block"
-        }
+                document.getElementById(building + " flexCheckCheckedDisabled").style.display = "block"
+                document.getElementById(building + " flexCheckDisabled").style.display = "none"
+            } else {
+                document.getElementById(building + " flexCheckCheckedDisabled").style.display = "none"
+                document.getElementById(building + " flexCheckDisabled").style.display = "block"
+            }
 
         }
-
 
 
     }

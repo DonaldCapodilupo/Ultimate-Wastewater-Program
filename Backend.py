@@ -191,8 +191,16 @@ class Time_Clock:
 
 
 class Quiz_Generator:
-    def __init__(self):
-        pass
+    def __init__(self,):
+        import json
+
+        self.question_bank = json.load(open("Test Questions.json", "r"))
+        self.total_questions = len(self.question_bank.keys())
+        self.current_correct_answers = 0
+
+        self.current_score = self.current_correct_answers/ self.total_questions
+
+
 
 def organize_royCEU_questions_into_one_question_bank():
     final_json = {}
@@ -214,16 +222,32 @@ def organize_royCEU_questions_into_one_question_bank():
     print(final_json)
 
 
+def PDF_data_scraper():
+    # importing all the required modules
+    import PyPDF2
 
+    # creating a pdf reader object
+    reader = PyPDF2.PdfReader('Historical Data/Compliance Reports/Example Compliance Document.pdf')
 
+    # print the number of pages in pdf file
+    print(len(reader.pages))
 
+    data_we_care_about = ["Arsenic","Cadmium","Chromium","Copper", "Lead", "Molybdenum", "Nickel", "Silver", "Zinc",
+                          "Mercury", "TotalND"]
 
+    # print the text of the first page
+    for element in [reader.pages[33].extract_text()]:
+        print("Checking: " + element)
+        if element in  data_we_care_about :
+            print(element + "!!!!!!!!!!!!!!!!!!!!!11")
 
 
             #final_json["Question Number " + str(question_number)] = value[0]
             #final_json["Question Number " + str(question_number) + " Answer"] = value[1]
 
-
+class Changeovers:
+    def __init__(self):
+        pass
 
 
 

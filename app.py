@@ -3,32 +3,22 @@ import datetime
 
 app = Flask(__name__)
 
+route_paths = {
+    "Main Lab Sheet": 'daily_Lab_Sheet',
+    "View Data": 'data_Menu',
+    "Access Time Clock": 'time_Clock',
+    "Take Practice Test": 'practice_Quiz',
+    "Check Permit Compliance": 'check_Compliance',
+    "Check Weekly Tasks": 'check_Checklists',
+
+}
+
 
 @app.route('/', methods=["POST", "GET"])
 def main_Menu():
     if request.method == "POST":
-
         button_clicked = request.form['submit_button']
-
-        if button_clicked == "Main Lab Sheet":
-            return redirect(url_for('daily_Lab_Sheet'))
-
-        elif button_clicked == "View Data":
-            return redirect(url_for('data_Menu'))
-
-        elif button_clicked == "Access Time Clock":
-            return redirect(url_for('time_Clock'))
-
-        elif button_clicked == "Take Practice Test":
-            return redirect(url_for('practice_Quiz'))
-
-        elif button_clicked == "Check Permit Compliance":
-            return redirect(url_for('check_Compliance'))
-
-        elif button_clicked == "Check Weekly Tasks":
-            return redirect(url_for('check_Checklists'))
-
-
+        return redirect(url_for(route_paths[button_clicked]))
     else:
         return render_template("Main Menu.html")
 
@@ -37,23 +27,15 @@ def main_Menu():
 def daily_Lab_Sheet():
     if request.method == "POST":
         if request.form['submit_button'] == "Save Data":
-            import json
-
-            data = {}
-
+            from FunctionsDailyLab import save_Form_Data
             data_to_store = request.form
-            for key, value in data_to_store.items():
-                data[key] = value
 
-            today_date = str(datetime.date.today())
-            with open("Historical Data/" + today_date + '.json', 'w') as f:
-                json.dump(data, f)
+            save_Form_Data(data_to_store)
 
             return render_template("Daily Lab Sheet.html")
 
         if request.form['submit_button'] == "Return Home":
             return redirect(url_for('main_Menu'))
-
 
     else:
         return render_template("Daily Lab Sheet.html")
@@ -160,13 +142,13 @@ def check_Checklists():
                 "FERAS004": "This one is located in the specimen room."},
             "Comag Ras": {
                 "FECRAS001": "This is located right at the main entrance at the top of the stairs.",
-                },
+            },
 
             "Press Building": {
                 "FEPRESS001": "This is located at the enterence near the electrical room.",
                 "FEPRESS002": "This is located next to the back door that leads to the gravity thickeners.",
                 "FEPRESS003": "This is located in the basement at the bottom of the stairs.",
-                },
+            },
 
             "Sludge Building": {
                 "FESLUDGE001": "This is located right at the main enterence.",
@@ -184,5 +166,4 @@ print("Checking to see if the program needs to be set up...")
 program_Setup_On_Startup()
 
 if __name__ == '__main__':
-    app.run()
-
+    app.run(host="0.0.0.0")

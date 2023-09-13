@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comp Time</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+    <script src="../static/js/bootstrap.js"></script>
+</head>
+<body class="bg-dark">
+
+<div class="container bg-info pb-5">
+    <div class="row">
+        <div class="text-center display-1">Comp Time Request</div>
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+            <label for="employee_input">Employee:</label>
+            <select class="form-select form-select-lg mb-3 employee_name" aria-label=".form-select-lg example"
+                    id="employee_input">
+            </select>
+
+
+            <div class="row">
+                <div class="col text-center">
+
+                    <p>Current Hours:<span id="current_user_hours" class="current_user_hours"></span></p>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark">Check History</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col text-center">
+            <label for="week_ending">Week Ending:</label>
+            <input type="date" id="week_ending">
+
+        </div>
+        <div class="col">
+            <label for="time_and_a_half_hours_worked">Time and A Half Hours Worked</label>
+            <input type="number" id="time_and_a_half_hours_worked" class="working_hours">
+            <label for="double_time_hours_worked">Double Time Hours Worked</label>
+            <input type="number" id="double_time_hours_worked" class="working_hours">
+
+        </div>
+        <div class="col text-center">
+            <h1>Hours Earned</h1>
+            <h3><span id="output_hours_earned" class="output_hours_earned">0.00</span></h3>
+        </div>
+
+
+    </div>
+
+    <div class="row pt-3">
+        <div class="col text-center">
+            <button type="button" class="btn btn-dark">Submit Request</button>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+<script>
+    const employees = ["Keith Jenkins", "Martin Diaz", "William Powderly", "David Banda", "Dragan Cupic", "Shayne MacAuley",
+        "John McCusker", "Connor Morey", "Chris Sirmpoulos", "Jeff Spencer", "Rafael Vega", "Fiona Mckenna", "Don Capodilupo"]
+
+    const employees_updated =
+        {
+            "Keith Jenkins": 8,
+            "Martin Diaz": 15,
+            "Bill Powderly": 4,
+            "David Banda": 12,
+            "Dragan Cupic": 0,
+            "Shayne MacAuley": 4,
+            "John McCusker": 22,
+            "Connor Morey": 4,
+            "Chris Sirmpoulos": 0,
+            "Jeff Spencer": 8,
+            "Rafael Vega": 16,
+            "Fiona Mckenna": 32,
+            "Don Capodilupo": 32
+        }
+
+    for (let [name, banked_hours] of Object.entries(employees_updated)) {
+        let entry_field = document.getElementById("employee_input");
+        let added = document.createElement('option');
+        added.value = name;
+        added.innerHTML = name;
+        entry_field.append(added);
+
+
+    }
+    document.getElementById("current_user_hours").innerText = employees_updated[Object.keys(employees_updated)[0]]
+
+
+    function update_Hours_Earned() {
+        let time_and_half_worked = document.getElementById("time_and_a_half_hours_worked").value;
+        let double_time_worked = document.getElementById("double_time_hours_worked").value;
+
+        let time_and_half_earned = time_and_half_worked * 1.5
+        let double_time_earned = double_time_worked * 2
+        let total_time_earned = time_and_half_earned + double_time_earned
+        console.log(total_time_earned)
+
+        document.getElementById("output_hours_earned").innerText = total_time_earned
+
+
+    }
+
+    function update_Banked_Hours(employee) {
+
+        document.getElementById("current_user_hours").innerText = employees_updated[employee]
+    }
+
+    let working_hours = document.querySelectorAll(".working_hours")
+    working_hours.forEach(function (elem) {
+        elem.addEventListener("input", function (event) {
+            update_Hours_Earned();
+        })
+    })
+
+    let banked_hours = document.querySelectorAll(".employee_name")
+    banked_hours.forEach(function (elem) {
+        elem.addEventListener("input", function (event) {
+            console.log(this.value)
+            update_Banked_Hours(this.value);
+        })
+    })
+
+
+
+</script>
+</html>

@@ -11,136 +11,146 @@
 </head>
 <body>
 
+<div class="test-container">
+    <img src="../static/images/Plant%20Satelite.png" style="width: 100%">
+
+    <button class="btn headworks" onclick="show_Building_Div('Headworks')">Headworks</button>
+    <button class="btn admin" onclick="show_Building_Div('Admin')">Admin</button>
+    <button class="btn ras" onclick="show_Building_Div('Ras')">Ras</button>
+    <button class="btn comag_ras" onclick="show_Building_Div('Comag Ras')">Comag Ras</button>
+    <button class="btn press" onclick="show_Building_Div('Press Building')">Press Building</button>
+    <button class="btn sludge" onclick="show_Building_Div('Sludge Building')">Sludge Building</button>
+
+</div>
+
 
 {% for building in data %}
 
-    <div class="row building_div" id="{{ building }}" style="display: none">
+    <div class="row information-container " id="{{ building }}" style="display: none">
 
 
-        <div class="row title_div">
+        <div class="card text-white bg-dark mb-3"
+             style="width: 50%; margin: auto">
+            <div class="card-body bg-dark">
 
-            <div class="col">
-                <h1>{{ building }} Fire Extinguishers</h1>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=""
-                           id="{{ building }} flexCheckCheckedDisabled" checked
-                           disabled
-                           style="display:none;">
-                    <label class="form-check-label" for="{{ building }} flexCheckCheckedDisabled"
-                           style="display: none">
-                        Disabled checked checkbox
-                    </label>
-                    <input class="form-check-input" type="checkbox" value=""
-                           id="{{ building }} flexCheckDisabled"
-                           disabled>
-                    <label class="form-check-label" for="{{ building }} flexCheckDisabled">
-                        All Extinguishers Checked
-                    </label>
-                </div>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn-close" aria-label="Close"
-                        onclick="close_Window(this)"></button>
-            </div>
-
-        </div>
-
-        <div class="row information_div">
-
-
-            <!--Tabs For Selecting Roll-->
-            <ul class="nav nav-tabs justify-content-center"
-                id="worksheets_tab"
-                role="tablist">
-                {% for extinguisher, location_description in data[building].items() %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link {% if "001" in extinguisher %}active{% endif %}"
-                                id="{{ extinguisher }}-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#{{ extinguisher }}"
-                                type="button"
-                                role="tab"
-                                aria-controls="{% if "001" in extinguisher %}home{% else %}profile{% endif %}"
-                                aria-selected="{% if "001" in extinguisher %}true{% else %}false{% endif %}">
-                            {{ extinguisher }}
-                        </button>
-                    </li>
-                {% endfor %}
-            </ul>
-
-
-            <!--Area for Showing Tab-->
-            <div class="tab-content" id="worksheets_tabContent">
-
-                {% for extinguisher, location_description in data[building].items() %}
-                    <!--{{building}} {{ extinguisher }}-->
-                    <div class="row tab-pane fade {% if "001" in extinguisher %} show active grid justify-content-center{% endif %}"
-                         id="{{ extinguisher }}"
-                         role="tabpanel"
-                         aria-labelledby="{{ extinguisher }}-tab">
-
-                        <div class="row pt-3">
-                            <div class="col extinguisher_photo">
-
-
-                                <img src="../static/images/Fire%20Extinguishers/{{ extinguisher }}.jpg">
-
-
-                            </div>
-
-
-                            <div class="col extinguisher_location_description">
-                                <div class="row">
-                                    <p>{{ location_description }}</p>
-                                    <input class="form-check-input" type="checkbox" id="check1" name="option1"
-                                           value="{{ extinguisher }}"
-                                           onclick="checkbox_Logic(this)">
-                                    <label class="form-check-label">Extinguisher Checked</label>
-                                </div>
-
-
-                                <div class="row">
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text"
-                                              id="basic-addon3">Comment</span>
-                                        </div>
-                                        <input type="text" class="form-control" id="basic-url"
-                                               aria-describedby="basic-addon3">
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card-header text-center">
+                    <div class="row">
+                        <div class="col-lg-11">
+                            <h1>{{ building }} Fire Extinguishers</h1>
                         </div>
-
-
+                        <div class="col-sm-auto">
+                            <button type="button" class="btn-close" aria-label="Close"
+                                    onclick="close_Window(this)"></button>
+                        </div>
                     </div>
 
-                {% endfor %}
+
+                </div>
+
+                <div class="card-body text-white">
+                    <!--All Check Boxes Checked Checkbox-->
+                    <div class="row">
+                        <div class="col-lg"></div>
+                        <div class="col-sm-auto">
+
+                            <input class="form-check-input" type="checkbox" value=""
+                                   id="{{ building }} flexCheckCheckedDisabled" checked
+                                   disabled
+                                   style="display:none;">
+                            <label class="form-check-label" for="{{ building }} flexCheckCheckedDisabled"
+                                   style="display: none">
+                                Disabled checked checkbox
+                            </label>
+                            <input class="form-check-input" type="checkbox" value=""
+                                   id="{{ building }} flexCheckDisabled"
+                                   disabled>
+
+
+                            <label class="form-check-label" for="{{ building }} flexCheckDisabled">
+                                All Extinguishers Checked
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="row information_div">
+
+
+                            <!--Tabs For Selecting Roll-->
+                            <ul class="nav nav-tabs justify-content-center"
+                                id="worksheets_tab"
+                                role="tablist">
+                                {% for extinguisher, location_description in data[building].items() %}
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link {% if "001" in extinguisher %}active{% endif %}"
+                                                id="{{ extinguisher }}-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#{{ extinguisher }}"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="{% if "001" in extinguisher %}home{% else %}profile{% endif %}"
+                                                aria-selected="{% if "001" in extinguisher %}true{% else %}false{% endif %}">
+                                            {{ extinguisher }}
+                                        </button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+
+                            <!--Area for Showing Tab-->
+                            <div class="tab-content" id="worksheets_tabContent">
+
+                                {% for extinguisher, location_description in data[building].items() %}
+                                    <!--{{building}} {{ extinguisher }}-->
+                                    <div class="tab-pane fade {% if "001" in extinguisher %} show active grid justify-content-center{% endif %}" id="{{ extinguisher }}" role="tabpanel" aria-labelledby="{{ extinguisher }}-tab">
+
+                                        <div class="row pt-3">
+                                            <div class="col extinguisher_photo">
+
+
+                                                <img src="../static/images/Fire%20Extinguishers/{{ extinguisher }}.jpg">
+                                            </div>
+
+
+                                            <div class="col extinguisher_location_description">
+                                                <div class="row">
+
+                                                    <p>{{ location_description }}</p>
+                                                    <input class="form-check-input" type="checkbox" id="check1"
+                                                           name="option1"
+                                                           value="{{ extinguisher }}"
+                                                           onclick="checkbox_Logic(this)">
+                                                    <label class="form-check-label">Extinguisher Checked</label>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+
+                                                            <span class="input-group-text"
+                                                                  id="basic-addon3">Comment</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="basic-url"
+                                                               aria-describedby="basic-addon3">
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-
     </div>
 
-
-
-
-
-
-
 {% endfor %}
-
-
-
-<img src="../static/images/Plant%20Satelite.png">
-<button class="btn headworks" onclick="show_Building_Div('Headworks')">Headworks</button>
-<button class="btn admin" onclick="show_Building_Div('Admin')">Admin</button>
-<button class="btn ras" onclick="show_Building_Div('Ras')">Ras</button>
-<button class="btn comag_ras" onclick="show_Building_Div('Comag Ras')">Comag Ras</button>
-<button class="btn press" onclick="show_Building_Div('Press Building')">Press Building</button>
-<button class="btn sludge" onclick="show_Building_Div('Sludge Building')">Sludge Building</button>
 
 </body>
 
@@ -192,11 +202,10 @@
 
 
     function close_Window(current_div) {
-        let window_to_close = current_div.parentElement.parentElement.parentElement.id
+        let window_to_close = current_div.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id
+        console.log(window_to_close)
         document.getElementById(window_to_close).style.display = "none"
     }
 
 
 </script>
-</html>
-

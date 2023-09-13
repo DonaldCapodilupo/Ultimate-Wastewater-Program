@@ -1,15 +1,23 @@
-.container {
-
+.test-container {
+    position: fixed;
+    width: 100%;
 
 }
 
-body img {
-    position: absolute;
-    background-size: cover;
+.information-container {
+    position: fixed;
+    width: 100%;
+    display: grid;
+    align-self: center;
+
+
+    margin: auto;
+
+    padding: 10px;
 }
 
 
-.btn{
+.btn {
     position: absolute;
 
     background-color: #555;
@@ -22,34 +30,86 @@ body img {
     text-align: center;
 }
 
-.headworks{
+.headworks {
     top: 65%;
     left: 71%;
+
+
 }
 
-.admin{
+.admin {
+    position: absolute;
     top: 37%;
     left: 54%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.ras{
+.ras {
+    position: absolute;
     top: 75%;
     left: 36%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.comag_ras{
+.comag_ras {
+    position: absolute;
     top: 50%;
     left: 20%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.press{
+.press {
+    position: absolute;
     top: 34%;
     left: 23%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.sludge{
+.sludge {
+    position: absolute;
     top: 20%;
     left: 45%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .container .btn:hover {
@@ -58,29 +118,23 @@ body img {
 
 .building_div {
     float: left;
-    position: absolute;
+
     left: 30%;
     top: 15%;
-    z-index: 1000;
-    background-color: #92AD40;
-    padding: 5px;
-    color: #FFFFFF;
-    font-weight: bold;
-    border-radius: 10px;
+
 
 }
 
-.building_div img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 500px;
-    height: 500px;
+.information-container img {
+    width: 100%;
+
     object-fit: contain;
 }
 
-.extinguisher_location_description{
+.extinguisher_location_description {
 
 }
-.extinguisher_photo{
+
+.extinguisher_photo {
 
 }

@@ -1,0 +1,450 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <script src="../../static/js/Billerica-Division-Lab-Sheet.js"></script>
+
+
+
+{% endblock %}
+{% block body %}
+    {{ super() }}
+    <!---Main Div to space page-->
+
+
+    <div class="row mt-5 grid justify-content-center" id="user_input_Div">
+        <form action="{{ url_for('daily_Lab_Sheet') }}" enctype=multipart/form-data method="POST">
+
+            <!--Tabs For Selecting Roll-->
+            <ul class="nav nav-tabs justify-content-center"
+                id="myTab"
+                role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active"
+                            id="lab-data-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#lab"
+                            type="button"
+                            role="tab"
+                            aria-controls="home"
+                            aria-selected="true">
+                        Lab Data
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link"
+                            id="yard-data-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#yard"
+                            type="button"
+                            role="tab"
+                            aria-controls="profile"
+                            aria-selected="false">Yard Data
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link"
+                            id="press-data-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#press"
+                            type="button"
+                            role="tab"
+                            aria-controls="profile"
+                            aria-selected="false">Press Data
+                    </button>
+                </li>
+            </ul>
+
+            <!--Buttons to persist through tabs.-->
+            <div class="row d-grid justify-content-center">
+                <div class="buttons_div">
+                    <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Save Data">
+                        Save Data
+                    </button>
+                    <button class="btn btn-dark mr-2" type="submit" name="submit_button" value="Return Home">
+                        Return Home
+                    </button>
+
+                </div>
+            </div>
+
+            <!--Area for Showing Tab-->
+            <div class="tab-content grid justify-content-center" id="myTabContent">
+
+                <!--Lab Data -->
+                <div class="tab-pane fade show active grid justify-content-center"
+                     id="lab"
+                     role="tabpanel"
+                     aria-labelledby="lab-data-tab">
+
+                    <!--Tabs For Selecting Reports-->
+                    <ul class="nav nav-tabs justify-content-center"
+                        id="worksheets_tab"
+                        role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active"
+                                    id="lab-sheet-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#lab_sheet"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="home"
+                                    aria-selected="true">Lab Sheet
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link"
+                                    id="tss-sheet-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#tss_sheet"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="profile"
+                                    aria-selected="false">TSS Sheet
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!--Area for Showing report-->
+                    <div class="tab-content" id="worksheets_tab_Content">
+
+                        <!--Main Lab Sheet-->
+                        <div class="tab-pane fade show active grid justify-content-center"
+                             id="lab_sheet"
+                             role="tabpanel"
+                             aria-labelledby="lab-sheet-tab">
+
+                            <div class="row mt-3 pb-1" id="row-1">
+                                <!--Date -->
+                                <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                                        </div>
+                                        <input type="date" class="form-control" aria-label="Small"
+                                               aria-describedby="inputGroup-sizing-sm" name="Date">
+                                    </div>
+                                </div>
+
+                                <!--Day of Week -->
+                                <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Day</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" id="Day of Week" name="Day of Week"
+                                                    onchange=log_Day()>
+                                                <option>Monday</option>
+                                                <option>Tuesday</option>
+                                                <option>Wednesday</option>
+                                                <option>Thursday</option>
+                                                <option>Friday</option>
+                                                <option>Saturday</option>
+                                                <option>Sunday</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Operator -->
+                                <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Operator</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Small"
+                                               aria-describedby="inputGroup-sizing-sm" name="Operator">
+                                    </div>
+                                </div>
+
+                                <!--Temperature -->
+                                <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="inputGroup-sizing-sm">Temp (<span>&#8457;</span>) </span>
+                                        </div>
+                                        <input type="number" class="form-control" aria-label="Small"
+                                               aria-describedby="inputGroup-sizing-sm" name="Temperature">
+                                    </div>
+                                </div>
+                                <!--Barometer -->
+                                <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                      id="inputGroup-sizing-sm">Barometer</span>
+                                        </div>
+                                        <input type="number" class="form-control" aria-label="Small"
+                                               aria-describedby="inputGroup-sizing-sm" name="Barometer">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--First Row, Influent to TSS/COD/Ecoli-->
+                            <div class="row">
+                                <div class="col">
+                                    <div id="Influent-Table"></div>
+                                    <div id="Ammonia-Table"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="Final-Effluent-Table"></div>
+                                    <div id="Ecoli-Table"></div>
+                                </div>
+                                <div class="col">
+
+                                    <div id="Comp.-pH/ALK-Table"></div>
+                                    <div id="Baker-Table"></div>
+
+                                </div>
+                                <div class="col">
+                                    <div id="BOD-Table"></div>
+                                    <div id="COD-Table"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="TSS-Table"></div>
+                                </div>
+                            </div>
+
+                            <!--Second Row, Chlorine Residual to Aluminum-->
+                            <div class="row">
+                                <div class="col">
+                                    <div id="Chlorine-Residual-Table"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="Total-Q-Table"></div>
+                                    <div id="Total-P-Table"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="#2-D-Box-Table"></div>
+                                </div>
+                                <div class="col">
+                                    <div id="RAS-Pumps-Table"></div>
+                                    <div id="Aluminum-Table"></div>
+                                </div>
+
+                            </div>
+
+                            <!--Plant Chemical Totals-->
+                            <div class="row">
+                                <div class="col">
+                                    <div id="Plant-Chemicals-Table" class="plant_chemical_tanks">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div id="Comag-Chemicals-Table" class="comag_chemicals_tanks">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!--TSS & TVSS Sheet-->
+                        <div class="tab-pane fade"
+                             id="tss_sheet"
+                             role="tabpanel"
+                             aria-labelledby="tss-sheet-tab">
+
+
+                            <!--Total Suspended Solids-->
+                            <div class="row TSS-Background">
+                                <h1 class="display-4 d-grid flex-column justify-content-center">
+                                    Total Suspended
+                                    Solids</h1>
+
+
+                                <!--First Row Influent TSS to Water Dept TSS-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Influent-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Primary-Effluent-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Secondary-Effluent-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="D-Box-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="RAS-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Final-Effluent-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Baker-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Water-Dept-TSS-Table" class="suspended_solids_array"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--Total Volatile Suspended Solids-->
+                            <div class="row TVSS-Backround">
+                                <div class="row">
+                                    <h1 class="display-4 d-grid flex-column justify-content-center">
+                                        Total Volatile Suspended Solids
+                                    </h1>
+                                </div>
+                                <!--First Row Influent TVSS to Water Dept TVSS-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Influent-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Primary-Effluent-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="D-Box-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="RAS-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Secondary-Effluent-TVSS-Table"
+                                             class="suspended_Solids_Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Final-Effluent-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="Baker-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="Water-Dept-TVSS-Table" class="suspended_Solids_Table"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!--Yard Data -->
+                <div class="tab-pane fade grid justify-content-center"
+                     id="yard"
+                     role="tabpanel"
+                     aria-labelledby="yard-data-tab">
+                    <!--Press 1 -->
+                    <div class="row mt-1">
+                        <h1>Hello World</h1>
+
+                        <!--Primary Blanket -->
+                        <div class="col">
+                            <div id="Primary-DOB's-Table"></div>
+                        </div>
+                        <!--Secondary Blanket -->
+                        <div class="col">
+                            <div id="Secondary-DOB's-Table"></div>
+                        </div>
+                        <!--Tertiary Blanket -->
+                        <div class="col">
+                            <div id="Tertiary-DOB's-Table"></div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col">
+                            <div id="Reaction-Tanks-Table"></div>
+                        </div>
+                        <div class="col">
+                            <div id="Turbidity-Table"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Press Data -->
+                <div class="tab-pane fade grid justify-content-center" id="press" role="tabpanel" aria-labelledby="press-data-tab">
+                    <div class="row" id="Press Block">
+                        <!--Cake and Feed Sample Analysis-->
+                        <div class="row">
+                            <div class="col">
+                                <div id="Press-1-Feed-Table" class="press_Table"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Press-1-Cake-Table" class="press_Table"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Press-2-Feed-Table" class="press_Table"></div>
+                            </div>
+                            <div class="col">
+                                <div id="Press-2-Cake-Table" class="press_Table"></div>
+                            </div>
+                        </div>
+
+                        <!--Filtrate and Gravity Thickener Blanket Depths-->
+                        <div class="row">
+                            <div class="col">
+                                <div id="Filtrate-Table" class="filtrate_Table"></div>
+                            </div>
+
+                            <div class="col">
+                                <div id="Gravity-Thickener-Depth-of-Blankets-Table"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+        setUpHTML();
+        //create_Press_Tables();
+        //create_Dynamic_Table("Filtrate Block", "Filtrate", filtrate_obj);
+        //create_Dynamic_Table("Gravity Thickener Blanket Block", "Gravity Thickener Depth of Blankets", gravity_thickener_obj);
+
+        function log_Day() {
+
+            const days_ignore_tvss = ["Tuesday", "Thursday"];
+
+            console.log(document.getElementById("Day of Week").value)
+            console.log(days_ignore_tvss)
+
+            if (days_ignore_tvss.includes(document.getElementById("Day of Week").value)) {
+                document.getElementById("TVSS Section").style.display = "none";
+            } else {
+                document.getElementById("TVSS Section").style.display = "block";
+            }
+
+        }
+
+
+    </script>
+
+{% endblock %}

@@ -32,13 +32,13 @@ def daily_Lab_Sheet():
 
             save_Form_Data(data_to_store)
 
-            return render_template("Daily Lab Sheet.html")
+            return render_template("Capture Data/Daily Lab Sheet.html")
 
         if request.form['submit_button'] == "Return Home":
             return redirect(url_for('main_Menu'))
 
     else:
-        return render_template("Daily Lab Sheet.html")
+        return render_template("Capture Data/Daily Lab Sheet.html")
 
 
 @app.route('/Data', methods=["POST", "GET"])
@@ -75,15 +75,15 @@ def time_Clock():
                 print("Logging in user " + employee)
                 time_card_obj.log_Employee_Punch()
 
-                return render_template("Time Clock.html", employee_name=employee)
+                return render_template("Capture Data/Time Clock.html", employee_name=employee)
 
             else:
                 # Show the frontend that the employee id was invalid.
                 print(user_input_employee_id + " is not a valid employee ID.")
-                return render_template("Time Clock.html", invalid=True)
+                return render_template("Capture Data/Time Clock.html", invalid=True)
 
     else:
-        return render_template("Time Clock.html")
+        return render_template("Capture Data/Time Clock.html")
 
 
 @app.route('/Practice-Quiz', methods=["POST", "GET"])
@@ -96,7 +96,7 @@ def practice_Quiz():
         with open("Test Questions.json", "r") as json_file:
             data = json.load(json_file)
         print(data)
-        return render_template("Practice Quiz.html", questions=data)
+        return render_template("Capture Data/Practice Quiz.html", questions=data)
 
 
 @app.route('/Compliance', methods=["POST", "GET"])
@@ -166,4 +166,4 @@ print("Checking to see if the program needs to be set up...")
 program_Setup_On_Startup()
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", debug=False)

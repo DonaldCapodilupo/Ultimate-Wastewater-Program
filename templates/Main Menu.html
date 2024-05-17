@@ -1,156 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+    {{ super() }}
 
-<head>
-    <meta charset="UTF-8">
-    <title>BWRRF</title>
 
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/Main-Menu.css">
 
-    <script src="../static/js/bootstrap.js"></script>
-    <script src="../static/js/Billerica-Division-Lab-Sheet.js"></script>
-</head>
 
-<body>
 
-    <div class="container">
-        <div class="col-1"></div>
-        <div class="col-10">
+    <div class=" bg-info text-white rounded">
+        <h3 class="display-5 text-center">What would you like to do?</h3>
+    </div>
 
-            <div class="row text-center" id="title_Div">
-                <div class="p-3 mb-2 bg-success text-white d-flex justify-content-center rounded">
-                    <h3 class="display-4 ">Billerica Wastewater Software</h3>
-                </div>
+
+    <form class="mt-5" action="{{ url_for('main_Menu') }}" enctype=multipart/form-data method="POST">
+
+        <!--Lab Sheets-->
+        <div class="row text-end bg-info p-3 rounded">
+            <div class="col">
+                <h4>Laboratory</h4>
             </div>
 
-            <div class="row text-center">
-                <div class="p-3 mb-2 bg-info text-white d-flex justify-content-center rounded">
-                    <h3 class="display-5">What would you like to do?</h3>
-                </div>
-
-
+            <div class="col">
+                <button class="btn btn-dark" type="submit" name="submit_button"
+                        value="Main Lab Sheet">
+                    Update Lab Data
+                </button>
             </div>
 
-            <div class="row pt-3 main-content-div rounded" id="Main Content Div">
-                <form action="{{ url_for('main_Menu') }}" enctype=multipart/form-data method="POST">
+            <!--Check Permit Compliance-->
+            <div class="col">
+                <button class="btn btn-dark" type="submit" name="submit_button"
+                        value="Check Permit Compliance">
+                    Check Permit Compliance
+                </button>
+            </div>
+        </div>
 
-                    <!--Lab Sheets-->
-                    <div class="row bg-info p-3">
-                        <h4>Labratory</h4>
-                        <div class="col">
-                            <button class="btn btn-dark btn-block" type="submit" name="submit_button" value="Main Lab Sheet">
-                                Update Lab Data
-                            </button>
-                        </div>
+        <!--Time Clock-->
+        <div class="row mt-3 bg-danger p-3">
+            <div class="col">
+                <h4>Managerial</h4>
+            </div>
+            <div class="col">
+                <button class="btn btn-dark" type="submit" name="submit_button" value="Access Time Clock">
+                    Access Time Clock
+                </button>
+            </div>
+        </div>
 
+        <!--Take Practice Test-->
+        <div class="row mt-3 bg-warning p-3">
+            <div class="col">
+                <h4>Education & Resources</h4>
+            </div>
 
-
-                        <!--Check Permit Compliance-->
-                        <div class="row mt-3">
-                            <div class="col">
-                                <button class="btn btn-dark btn-block" type="submit" name="submit_button"
-                                    value="Check Permit Compliance">
-                                    Check Permit Compliance
-                                </button>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!--Time Clock-->
-                    <div class="row mt-3 bg-danger p-3">
-                        <h4>Managerial</h4>
-                        <div class="col">
-                            <button class="btn btn-dark" type="submit" name="submit_button" value="Access Time Clock">
-                                Access Time Clock
-                            </button>
-                        </div>
-                        
-
-                    </div>
-
-                    <!--Take Practice Test-->
-                    <div class="row mt-3 bg-warning p-3">
-                        <h4>Education & Resources</h4>
-                        <div class="col">
-                            <button class="btn btn-dark" type="submit" name="submit_button" value="Take Practice Test">
-                                Take Practice Test
-                            </button>
-                        </div>
-                        
-
-                    </div>
-
-                    <!--Check Weekly Tasks-->
-                    <div class="row mt-3 mb-3 bg-secondary p-3">
-                        <h4>Operator Tasks</h4>
-                        <div class="col">
-                            <button class="btn btn-dark" type="submit" name="submit_button" value="Check Weekly Tasks">
-                                Check Weekly Tasks
-                            </button>
-                        </div>
-                        
-
-                    </div>
-
-
-
-                </form>
-
-
+            <div class="col">
+                <button class="btn btn-dark" type="submit" name="submit_button" value="Take Practice Test">
+                    Take Practice Test
+                </button>
             </div>
 
 
         </div>
 
-        <div class="col-1"></div>
+        <!--Check Weekly Tasks-->
+        <div class="row mt-3 mb-3 bg-secondary p-3">
+            <div class="col">
+                <h4>Operator Tasks</h4>
+            </div>
+            <div class="col">
+                <button class="btn btn-dark" type="submit" name="submit_button" value="Check Weekly Tasks">
+                    Check Weekly Tasks
+                </button>
+            </div>
+
+
+        </div>
+
+
+    </form>
+
+
     </div>
 
 
-</body>
+{% endblock %}
 
-</html>
-
-
-
-<!--    Saving these for later I want to incorporate them differently. 
-
-                        <div class="col">
-                            <button class="btn btn-secondary" type="submit" name="submit_button" value="View Data">
-                                View Lab Data
-                            </button>
-                        </div>
-
-
-                        <div class="col">
-                                <button class="btn btn-secondary" type="submit" name="submit_button"
-                                    value="Edit Compliance Parameters">
-                                    Edit Compliance Parameters
-                                </button>
-                            </div>
-
-
-                            <div class="col">
-                            <button class="btn btn-secondary" type="submit" name="submit_button"
-                                value="View Time Clock Data">
-                                View Time Clock Data
-                            </button>
-                        </div>
-
-                        <div class="col">
-                            <button class="btn btn-secondary" type="submit" name="submit_button"
-                                value="Update Practice Test">
-                                Update Practice Test
-                            </button>
-                        </div>
-
-
-                        <div class="col">
-                            <button class="btn btn-secondary" type="submit" name="submit_button"
-                                value="Check Annual Tasks">
-                                Check Annual Tasks
-                            </button>
-                        </div>
--->

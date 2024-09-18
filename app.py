@@ -156,8 +156,44 @@ def check_Checklists():
                 "FESLUDGE003": "This is located in the main lab.",
                 "FESLUDGE004": "This one is located in the specimin room."},
         }
-        return render_template("Fire Extinguisher Checklist.html", data=extinguisher_data)
+        return render_template("Bluebrint Example.html", data=extinguisher_data)
 
+@app.route('/Summary-Sheet', methods=["POST", "GET"])
+def summary_Sheet():
+    import pandas as pd
+    import json
+    with open("static/Dummy Industry Data.json") as json_file:
+        data_dict = json.load(json_file)
+
+    datas = {}
+
+    for month, data_points in data_dict["2024"].items():
+        print("Date: " + month)
+        print("data_points: " )
+        print(data_points)
+        for data_key, data_value in data_points.items():
+            print("data_key: " + data_key)
+            print("data_value: " + data_value)
+            try:
+                datas[data_key].append(data_points[data_key])
+            except KeyError:
+                datas[data_key] = []
+
+
+    df = pd.DataFrame().from_dict(datas)
+
+    df.to_html("templates/Dummy Data.html", index=False)
+
+
+    print(df)
+
+        #df  =pd.read_json("static/Dummy Industry Data.json")
+        #df["Flow"] = [month for month in data_dict["2024"]]
+
+        #df.loc["Average"] = df.mean()
+        #df.loc["Total"] = df.sum()
+        #df.to_html("templates/Dummy Data.html", classes="table table-dark text-center table-hover", index=False)
+    return render_template("Summary Sheet.html")
 
 print("Starting program.")
 from Backend import program_Setup_On_Startup

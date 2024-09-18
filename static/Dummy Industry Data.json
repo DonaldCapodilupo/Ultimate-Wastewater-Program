@@ -1,0 +1,76 @@
+{
+  "2024": {
+    "JAN": {
+      "Flow": "21420",
+      "ph Low": "6.9",
+      "ph High": "8.4",
+      "Acetone": "18"
+    },
+    "FEB": {
+      "Flow": "87221",
+      "ph Low": "7.0",
+      "ph High": "9.0",
+      "Acetone": "24"
+    },
+    "MAR": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "APR": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "MAY": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "JUN": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "JUL": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "AUG": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "SEP": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "OCT": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "NOV": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    },
+    "DEC": {
+      "Flow": "51448",
+      "ph Low": "8.5",
+      "ph High": "8.2",
+      "Acetone": "0"
+    }
+  }
+}
